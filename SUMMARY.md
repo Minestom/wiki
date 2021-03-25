@@ -26,7 +26,6 @@
 ## Feature
 
 * [WIP Adventure](feature/adventure.md)
-* [Chat](feature/chat.md)
 * [Player capabilities](feature/player-capabilities.md)
 * [Events](feature/events.md)
 * [Entities](feature/entities/README.md)
