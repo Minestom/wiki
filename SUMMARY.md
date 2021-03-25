@@ -46,7 +46,7 @@
 ## Release Candidates
 
 * [Adventure](candidates/adventure.md)
-* [WIP Server ticks](candidates/tick-threads.md)
-* [WIP Acquirable API](candidates/acquirable-api/README.md)
+* [Server ticks](candidates/tick-threads.md)
+* [Acquirable API](candidates/acquirable-api/README.md)
   * [The inside](candidates/acquirable-api/inside-the-api.md)
 
