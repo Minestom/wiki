@@ -4,13 +4,18 @@ description: >-
   safely
 ---
 
+{% hint style="info" %}
+This API is currently not in mainstream Minestom.
+The working version can be found [here](https://github.com/Minestom/Minestom/tree/thread-safety-experimental).
+{% endhint %}
+
 # The inside
 
 I will begin by saying that you do not need to know anything written here to utilize the acquirable API. It can however teach you about our code structure and how it achieves thread-safety. Be sure to read all the previous pages in order to properly understand everything said here.
 
 ## Tick architecture 
 
-As described in [Server ticks](../wip-tick-threads.md), ticks are separated in multiple batches. After those are created, every batch gets assigned to a thread from the ThreadProvider thread pool.
+As described in [Server ticks](../tick-threads.md), ticks are separated in multiple batches. After those are created, every batch gets assigned to a thread from the ThreadProvider thread pool.
 
 How are batches assigned? Well, each batch has a "cost" based on the number of entities/chunks/instances it contains. This is less efficient compared to the famous `ExecutorService` interface in the JDK, but it has a huge advantage in our case for acquisitions.
 
