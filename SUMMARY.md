@@ -10,9 +10,6 @@
 ## Thread Architecture
 
 * [Thread safety in the JVM](thread-architecture/thread-safety.md)
-* [WIP Server ticks](thread-architecture/wip-tick-threads.md)
-* [WIP Acquirable API](thread-architecture/wip-acquirable-api/README.md)
-  * [The inside](thread-architecture/wip-acquirable-api/inside-the-api.md)
 
 ## World
 
@@ -25,7 +22,6 @@
 
 ## Feature
 
-* [WIP Adventure](feature/adventure.md)
 * [Player capabilities](feature/player-capabilities.md)
 * [Events](feature/events.md)
 * [Entities](feature/entities/README.md)
@@ -46,4 +42,11 @@
 
 * [Data](storage/data.md)
 * [Persistent data](storage/persistent-data.md)
+
+## Release Candidates
+
+* [Adventure](candidates/adventure.md)
+* [WIP Server ticks](candidates/tick-threads.md)
+* [WIP Acquirable API](candidates/acquirable-api/README.md)
+  * [The inside](candidates/acquirable-api/inside-the-api.md)
 

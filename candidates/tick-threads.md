@@ -1,4 +1,9 @@
-# WIP Server ticks
+{% hint style="info" %}
+This API is currently not in mainstream Minestom.
+The working version can be found [here](https://github.com/Minestom/Minestom/tree/thread-safety-experimental).
+{% endhint %}
+
+# Server ticks
 
 In Minestom, you have the choice to organize how you want threads to execute your instances, chunks & entities tick. This is possible by creating your own `ThreadProvider` \(or use an already existing one\).
 

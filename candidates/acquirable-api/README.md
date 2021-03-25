@@ -1,8 +1,9 @@
-# WIP Acquirable API
-
 {% hint style="info" %}
-This page is WIP, the Acquirable API is not out yet. It is however a way for us to harvest feedbacks for future improvement/rework
+This API is currently not in mainstream Minestom. 
+The working version can be found [here](https://github.com/Minestom/Minestom/tree/thread-safety-experimental).
 {% endhint %}
+
+# Acquirable API
 
 ## Presentation
 
@@ -132,7 +133,7 @@ Collection<Player> players = connectionManager.getUnsafeOnlinePlayers();
 ```
 
 {% hint style="warning" %}
-Those are not safe operations, be sure to read the [Thread safety](../thread-safety.md) page to understand the implications.
+Those are not safe operations, be sure to read the [Thread safety](../../thread-architecture/thread-safety.md) page to understand the implications.
 {% endhint %}
 
 I would personally recommend commenting everywhere you use those unsafe methods to indicate why this operation does not compromise the application thread-safety. If you cannot find any reason, you likely shouldn't.
