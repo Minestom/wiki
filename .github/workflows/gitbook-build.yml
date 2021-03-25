@@ -12,4 +12,4 @@ jobs:
       - name: Gitbook Action
         uses: ZanderZhao/gitbook-action@master
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
