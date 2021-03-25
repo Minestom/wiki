@@ -9,6 +9,7 @@ Adventure is a library for server-controllable user interface elements in Minecr
 
 ### Audiences
 
+#### What is an Audience?
 The following, taken from the Adventure documentation, describes the concept of an `Audience`:
 
 > As an API, `Audience` is designed to be a universal interface for any player, command sender, console, or otherwise who can receive text, titles, boss bars, and other Minecraft media. This allows extending audiences to cover more than one individual receiver - possible “audiences” could include a team, server, world, or all players that satisfy some predicate \(such as having a certain permission\). The universal interface also allows reducing boilerplate by gracefully degrading functionality if it is not applicable.
@@ -19,13 +20,37 @@ In Minestom, the following classes are audiences:
 
 * `CommandSender`,
 * `Player`,
-* `MinecraftServer`,
 * `Instance`,
 * `ConnectionManager`,
 * `Scoreboard`, and
 * `Team`.
 
 This means that if you have an instance of any one of these classes, you can use the full Adventure API to, for example, show a title to every member of the audience. This allows for more powerful and direct control over how you communicate with players.
+
+#### Obtaining Audiences
+As mentioned in the previous section, some Minestom classes implement `Audience` directly. This means that if you have a reference to, for example, an `Instance`, you can simply use the Adventure API on that instance. As an example, the following code would be used to send a message to all players in an instance:
+```java
+instance.sendMessage(Component.text("Hello, instance!"));
+```
+
+Minestom also provides a way to obtain audiences through the `Audiences` class. This class can obtained using `MinestomServer#getAudiences()` or directly through the class via `Audiences#audiences()`. The following code provides an example of how this class would be used in your project:
+```java
+Audiences.audiences().console().sendMessage(Component.text("Hello, console!"));
+Audiences.audiences().players().sendMessage(Component.text("Hello, players!"));
+Audiences.audiences().server().sendMessage(Component.text("Hello, console and players!"));
+```
+
+The `Audiences` class also provides a `players(Predicate)` function that allows you to collect an audience of players that match a specific predicate. For example, this could be used to check permissions before sending a broadcast. Additionally, if you would like access to each audience as an iterable, you can instead use the `IterableAudienceProvider`, an instance of which can be obtained using `Audiences#iterable()`.
+
+##### Custom audiences
+The `Audiences` class also provides the ability to add custom audience members identified by a `Key`. For example, this could be used to add an audience for file logging or a `ForwardingAudience` representing a custom collection of players. Audiences can be registered using the `AudienceRegistry`, an instance of which can be obtained using `Audiences#registry()`.
+
+The `all()` and `of(Predicate)` methods will collect every custom audience using streams, and combine this with the server audience. Such an operation is relatively costly, so should be avoided where possible.
+
+#### Packet grouping
+Minestom also provides a new `ForwardingAudience` implementation called `PacketGroupingAudience`. This is implemented by every audience in Minestom that has multiple players. Instead of the normal `ForwardingAudience` implementation that iterates through the audience members, this implementation uses `PacketUtils#sendGroupedPacket(Collection, ServerPacket)` to attempt to send a grouped packet to all of the players in this audience.
+
+To create your own `PacketGroupingAudience`, you can use the static `of(Collection)` and `of(Iterable)` methods in the class which return an instance of `PacketGroupingAudience` when provided a group of players. 
 
 #### Viewable
 
@@ -42,6 +67,8 @@ With the Adventure API you can simply do:
 ```java
 viewable.getViewersAsAudience().sendMessage(someMessage);
 ```
+
+The added benefit of using the audience provided by the `Viewable` Class is that it implements `PacketGroupingAudience` which means the outgoing packets are grouped where possible, reducing networking overhead when compared to the looping method of sending messages.
 
 ### Color
 
