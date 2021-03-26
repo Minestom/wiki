@@ -21,7 +21,6 @@ In Minestom, the following classes are audiences:
 * `CommandSender`,
 * `Player`,
 * `Instance`,
-* `ConnectionManager`,
 * `Scoreboard`, and
 * `Team`.
 
@@ -43,7 +42,23 @@ Audiences.audiences().server().sendMessage(Component.text("Hello, console and pl
 The `Audiences` class also provides a `players(Predicate)` function that allows you to collect an audience of players that match a specific predicate. For example, this could be used to check permissions before sending a broadcast. Additionally, if you would like access to each audience as an iterable, you can instead use the `IterableAudienceProvider`, an instance of which can be obtained using `Audiences#iterable()`.
 
 ##### Custom audiences
-The `Audiences` class also provides the ability to add custom audience members identified by a `Key`. For example, this could be used to add an audience for file logging or a `ForwardingAudience` representing a custom collection of players. Audiences can be registered using the `AudienceRegistry`, an instance of which can be obtained using `Audiences#registry()`.
+The `Audiences` class also provides the ability to add custom audience members identified by a `Key`. This could be used to add an audience for file logging or a `ForwardingAudience` representing a custom collection of players. Audiences can be registered using the `AudienceRegistry`, an instance of which can be obtained using `Audiences#registry()`. For example, if you wanted to share a collection of staff members to send alerts to between plugins, this could be done using the following code:
+```java
+// create the custom audience
+Audiences.audiences().registry().register(Key.key("myplugin:staff"), staffMembers);
+
+// later, anyone can access the audience using the key
+Audiences.audiences().custom(Key.key("myplugin:staff")).sendMessage(Component.text("Hello, staff!"));
+```
+
+You can also create your own `Audience`, use the Adventure method `Audience.audience(Iterable)` or the Minestom `PacketGroupingAudience.of()` method to create an audience backed on an iterable object. This means that you could register a custom audience backed by a collection that you continue to update and the changes will be reflected when anyone uses the custom methods.
+```java
+// create the custom audience
+Audiences.audiences().registry().register(Key.key("myplugin:staff"), PacketGroupingAudience.of(staffMembers));
+
+// at any time, you can update the audience by changing the collection
+staffMembers.add(newStaffMember);
+```
 
 The `all()` and `of(Predicate)` methods will collect every custom audience using streams, and combine this with the server audience. Such an operation is relatively costly, so should be avoided where possible.
 
