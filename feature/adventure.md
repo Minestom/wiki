@@ -1,8 +1,3 @@
-{% hint style="info" %}
-This API is currently not in mainstream Minestom.
-The working version can be found [here](https://github.com/kezz/Minestom/tree/adventure).
-{% endhint %}
-
 # Adventure
 
 Adventure is a library for server-controllable user interface elements in Minecraft. For a guide on how to use Adventure, check out the [Adventure documentation](https://docs.adventure.kyori.net/).
