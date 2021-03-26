@@ -12,7 +12,7 @@ It is worth reviewing the [Adventure API](adventure.md) before this, because the
 Sidebar#<init>(Component /* title */)
 ```
 
-> Sidebar titles do not support JSON chat components, however the provided   component will be serialized using Adventure's legacy serializer.
+> Sidebar titles do not support JSON chat components, however the provided component will be serialized using Adventure's legacy serializer.
 
 Once created, a scoreboard can be added and removed from players as follows:
 

@@ -1,11 +1,12 @@
-{% hint style="info" %}
-This API is currently not in mainstream Minestom. 
-The working version can be found [here](https://github.com/Minestom/Minestom/tree/thread-safety-experimental).
-{% endhint %}
-
 # Acquirable API
 
-## Presentation
+{% hint style="info" %}
+This API is currently not in mainstream Minestom. The working version can be found [here](https://github.com/Minestom/Minestom/tree/thread-safety-experimental).
+{% endhint %}
+
+## Acquirable API
+
+### Presentation
 
 An `Acquirable<T>` object represents an object of type `T` that you can retrieve but where its thread-safe access is not certain.
 
@@ -65,7 +66,7 @@ Hey I scheduled the acquisition
 Hallo
 ```
 
-## Acquirable Collections
+### Acquirable Collections
 
 Let's say you have a `Collection<Acquirable<Player>>` and you want to access **safely** all of the players it contains. You have multiple solutions, each having pros & cons.
 
@@ -111,9 +112,7 @@ Acquisition.acquireForEach(acquirablePlayers, player -> {
 
 It is the most used one, simply because it doesn't create as much overhead as the previous ones. The element in the consumer is released directly without having to wait for the others.
 
-
-
-## Access the acquirable object without acquiring it
+### Access the acquirable object without acquiring it
 
 I can understand that having callbacks everywhere even if you know what you are doing is not ideal. You also have the choice to directly unwrap the acquirable object to retrieve the value inside.
 
@@ -138,7 +137,7 @@ Those are not safe operations, be sure to read the [Thread safety](../../thread-
 
 I would personally recommend commenting everywhere you use those unsafe methods to indicate why this operation does not compromise the application thread-safety. If you cannot find any reason, you likely shouldn't.
 
-## What type to request and return in methods
+### What type to request and return in methods
 
 You have obviously the right to do what you prefer. But as a general rule, you should return `Acquirable<T>` objects and request for `T`.
 

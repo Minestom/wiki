@@ -2,9 +2,10 @@
 
 Adventure is a library for server-controllable user interface elements in Minecraft. For a guide on how to use Adventure, check out the [Adventure documentation](https://docs.adventure.kyori.net/).
 
-### Audiences
+## Audiences
 
-#### What is an Audience?
+### What is an Audience?
+
 The following, taken from the Adventure documentation, describes the concept of an `Audience`:
 
 > As an API, `Audience` is designed to be a universal interface for any player, command sender, console, or otherwise who can receive text, titles, boss bars, and other Minecraft media. This allows extending audiences to cover more than one individual receiver - possible “audiences” could include a team, server, world, or all players that satisfy some predicate \(such as having a certain permission\). The universal interface also allows reducing boilerplate by gracefully degrading functionality if it is not applicable.
@@ -21,35 +22,41 @@ In Minestom, the following classes are audiences:
 
 This means that if you have an instance of any one of these classes, you can use the full Adventure API to, for example, show a title to every member of the audience. This allows for more powerful and direct control over how you communicate with players.
 
-#### Obtaining Audiences
+### Obtaining Audiences
+
 As mentioned in the previous section, some Minestom classes implement `Audience` directly. This means that if you have a reference to, for example, an `Instance`, you can simply use the Adventure API on that instance. As an example, the following code would be used to send a message to all players in an instance:
+
 ```java
 instance.sendMessage(Component.text("Hello, instance!"));
 ```
 
 Minestom also provides a way to obtain audiences through the `Audiences` class. This class can obtained using `MinestomServer#getAudiences()` or directly through the class via `Audiences#audiences()`. The following code provides an example of how this class would be used in your project:
+
 ```java
-Audiences.audiences().console().sendMessage(Component.text("Hello, console!"));
-Audiences.audiences().players().sendMessage(Component.text("Hello, players!"));
-Audiences.audiences().server().sendMessage(Component.text("Hello, console and players!"));
+Audiences.console().sendMessage(Component.text("Hello, console!"));
+Audiences.players().sendMessage(Component.text("Hello, players!"));
+Audiences.server().sendMessage(Component.text("Hello, console and players!"));
 ```
 
 The `Audiences` class also provides a `players(Predicate)` function that allows you to collect an audience of players that match a specific predicate. For example, this could be used to check permissions before sending a broadcast. Additionally, if you would like access to each audience as an iterable, you can instead use the `IterableAudienceProvider`, an instance of which can be obtained using `Audiences#iterable()`.
 
-##### Custom audiences
+#### Custom audiences
+
 The `Audiences` class also provides the ability to add custom audience members identified by a `Key`. This could be used to add an audience for file logging or a `ForwardingAudience` representing a custom collection of players. Audiences can be registered using the `AudienceRegistry`, an instance of which can be obtained using `Audiences#registry()`. For example, if you wanted to share a collection of staff members to send alerts to between plugins, this could be done using the following code:
+
 ```java
 // create the custom audience
-Audiences.audiences().registry().register(Key.key("myplugin:staff"), staffMembers);
+Audiences.registry().register(Key.key("myplugin:staff"), staffMembers);
 
 // later, anyone can access the audience using the key
-Audiences.audiences().custom(Key.key("myplugin:staff")).sendMessage(Component.text("Hello, staff!"));
+Audiences.custom(Key.key("myplugin:staff")).sendMessage(Component.text("Hello, staff!"));
 ```
 
 You can also create your own `Audience`, use the Adventure method `Audience.audience(Iterable)` or the Minestom `PacketGroupingAudience.of()` method to create an audience backed on an iterable object. This means that you could register a custom audience backed by a collection that you continue to update and the changes will be reflected when anyone uses the custom methods.
+
 ```java
 // create the custom audience
-Audiences.audiences().registry().register(Key.key("myplugin:staff"), PacketGroupingAudience.of(staffMembers));
+Audiences.registry().register(Key.key("myplugin:staff"), PacketGroupingAudience.of(staffMembers));
 
 // at any time, you can update the audience by changing the collection
 staffMembers.add(newStaffMember);
@@ -57,12 +64,13 @@ staffMembers.add(newStaffMember);
 
 The `all()` and `of(Predicate)` methods will collect every custom audience using streams, and combine this with the server audience. Such an operation is relatively costly, so should be avoided where possible.
 
-#### Packet grouping
+### Packet grouping
+
 Minestom also provides a new `ForwardingAudience` implementation called `PacketGroupingAudience`. This is implemented by every audience in Minestom that has multiple players. Instead of the normal `ForwardingAudience` implementation that iterates through the audience members, this implementation uses `PacketUtils#sendGroupedPacket(Collection, ServerPacket)` to attempt to send a grouped packet to all of the players in this audience.
 
-To create your own `PacketGroupingAudience`, you can use the static `of(Collection)` and `of(Iterable)` methods in the class which return an instance of `PacketGroupingAudience` when provided a group of players. 
+To create your own `PacketGroupingAudience`, you can use the static `of(Collection)` and `of(Iterable)` methods in the class which return an instance of `PacketGroupingAudience` when provided a group of players.
 
-#### Viewable
+### Viewable
 
 In addition, the `Viewable` class includes two methods to obtain the viewers of the viewable object as an audience. This means that you can use the full Adventure API on the viewers of a viewable object. For example, to send a message to everyone who can view a player in the old API you would do:
 
@@ -80,7 +88,7 @@ viewable.getViewersAsAudience().sendMessage(someMessage);
 
 The added benefit of using the audience provided by the `Viewable` Class is that it implements `PacketGroupingAudience` which means the outgoing packets are grouped where possible, reducing networking overhead when compared to the looping method of sending messages.
 
-### Color
+## Color
 
 Alongside the deprecation of the Minestom `ChatColor` class, a new `color` package has been created to replace all existing usage of the `ChatColor` class. These new classes are an accurate representation of how Minecraft stores colors for certain objects and allows for proper validation, preventing developers from applying styles to colorable objects at compile-time.
 
@@ -88,7 +96,7 @@ The base class is the `Color` class is a general purpose class for representing 
 
 There is also one additional color class; `DyeColor`. This enum represents the different colors of the dyes within Minecraft and provides values for each of the different vanilla dye types. This class includes a method to get the RGB color of the dye and the equivalent firework color. As with the `Color` class, this class also implements `RGBLike` so it can also be used throughout the Adventure API.
 
-### Translation
+## Translation
 
 The Adventure update in Minestom adds the `SerializationManager` class, a powerful and feature-rich way to control the flow of component translation. Adventure provides the concept of a `GlobalTranslator`. By supplying sources, a collection of key-value pairs, you can perform server-side translations without any additional code or complicated localization libraries.
 
@@ -114,11 +122,11 @@ Function<Component, Component> dogRemover = component -> component.replaceText(c
 manager.setSerializer(component.andThen(oldSerializer));
 ```
 
-### Migrating to Adventure
+## Migrating to Adventure
 
 The Adventure update in Minestom replaces and deprecates a lot of old functionality existing in Minestom. This section of the wiki will explain how to migrate your code to use the new Adventure API.
 
-#### Boss Bar
+### Boss Bar
 
 The `net.minestom.server.bossbar` package has been entirely deprecated. To create a boss bar you should instead use the static builder methods in the Adventure `BossBar` class. For example, with the old API you might do:
 
@@ -139,11 +147,11 @@ player.showBossBar(bar);
 
 As before, any changes made to the boss bar will be automatically propagated to all those who have been added to a boss bar.
 
-#### Books
+### Books
 
 With the old API you would display a `WrittenBookMeta` to a player using `Player#openBook(WrittenBookMeta)`. This has been replaced with `Player#openBook(Book)`. The `Book` component can be constructed using the builder methods as described in the [documentation](https://docs.adventure.kyori.net/book.html).
 
-#### Sound
+### Sound
 
 In order to prevent name clashes and to more accurately represent the contents of the enum, the generated `Sound` enum has been renamed to `SoundEvent`. This is because the values for the enum do not represent specific sounds, rather representing events that are linked to one or more specific sounds. For more information about sound events, see the Minecraft Wiki page on [sound events](https://minecraft.fandom.com/wiki/Sounds.json#Sound_events).
 
@@ -163,7 +171,7 @@ player.playSound(Sound.sound(SoundEvent.MUSIC_DISC_11, Source.RECORD, 1f, 1f));
 
 Additionally, you can now stop specific sounds constructing a `SoundStop` object and passing that to a player using `Player#stopSound`. This `StopSound` object can be used to stop all sounds, using`SoundStop#all()`, in addition to specific sounds, using `SoundStop#named(SoundEvent)` or `SoundStop#named(Key)`, or specific sounds in specific sources, using the previous methods with an additional `Sound.Source` argument.
 
-#### Text
+### Text
 
 The biggest difference between the old chat API and Adventure is that in Adventure, chat components are **immutable**. This means that any methods used on components do not change the component and instead return a new component. This is explained more on the Adventure documentation.
 
@@ -186,7 +194,7 @@ However, with the Adventure API you can simply do:
 Component message = Component.text("Some Text", NamedTextColor.RED).hoverEvent(item);
 ```
 
-#### Title
+### Title
 
 The methods used to send titles to players have been deprecated and replaced with Adventure methods. The multiple different messages have been replaced with the two Adventure methods `#sendTitle(Title)` and `#showActionBar(Component)`.
 

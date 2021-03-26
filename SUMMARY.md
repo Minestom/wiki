@@ -46,7 +46,7 @@
 
 ## Release Candidates
 
-* [Server ticks](candidates/tick-threads.md)
-* [Acquirable API](candidates/acquirable-api/README.md)
-  * [The inside](candidates/acquirable-api/inside-the-api.md)
+* [Server ticks](release-candidates/tick-threads.md)
+* [Acquirable API](release-candidates/acquirable-api/README.md)
+  * [The inside](release-candidates/acquirable-api/inside-the-api.md)
 
