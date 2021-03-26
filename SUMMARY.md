@@ -22,6 +22,7 @@
 
 ## Feature
 
+* [Adventure](feature/adventure.md)
 * [Player capabilities](feature/player-capabilities.md)
 * [Events](feature/events.md)
 * [Entities](feature/entities/README.md)
@@ -45,7 +46,6 @@
 
 ## Release Candidates
 
-* [Adventure](candidates/adventure.md)
 * [Server ticks](candidates/tick-threads.md)
 * [Acquirable API](candidates/acquirable-api/README.md)
   * [The inside](candidates/acquirable-api/inside-the-api.md)
