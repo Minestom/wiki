@@ -151,8 +151,6 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-
     // WARNING: outdated version, replace it to the latest
     // Reminder: can be found at https://jitpack.io/#Minestom/Minestom
     compile 'com.github.Minestom:Minestom:1eea505da0'
