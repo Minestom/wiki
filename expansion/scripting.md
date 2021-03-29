@@ -12,16 +12,30 @@ MineScript is a command-based API, the only way to interact with the Minecraft s
 
 ```javascript
 // 'executor' is a global object, used to execute commands and listen to signals.
-executor.run("tellraw Notch Hey")
+executor.run("tellraw Notch Hey");
 
-// Each command can return data, members should be specified in documentation.
+// Commands can be registered using the command string syntax. Each command gets a callback
+// with the sender and command metadata.
+executor.registerCommand("entity Literal<get> Player<target>", (sender, context) => {
+    console.log("Retrieving " + context.player);
+    // let somePlayer = ...;
+    return somePlayer;
+});
+
+// Each command can return data, members are specified in documentation.
 let player = executor.run("entity get Notch").entity;
-console.log("You retrieved the player " + player.username + "!")
+console.log("You retrieved the player " + player.username + "!");
+
+// Commands can be aliases for ease of use multiple times or shortening.
+// {n} can be used to reference the nth argument during execution.
+let getPlayer = executor.alias("entity get {0}");
+player = getPlayer("Notch");
 
 // 'signals' are general purpose listenable event,
-// they can be game event, called with the '/signal' command,
+// they can be game events, called with the '/signal' command,
 // or from another script
-executor.onSignal("move", (properties) => { // Listen to player movement
+executor.onSignal("move", (properties) => {
+   // Listen to player movement
    // 'properties' contains data specific to the signal
    let player = properties.player
    let username = player.username
