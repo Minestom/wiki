@@ -131,7 +131,7 @@ jar {
 
 With all of this set, all that is remaining is the build command, shadow provides the handy `shadowJar` task that you need to run and a working jar will magically appear!
 
-Now, just to be sure that you understood everything, here is the complete `build.gradle` file that I have used to demonstrate it. 
+Now, just to be sure that you understood everything, here is the complete `build.gradle` file that I have used to demonstrate it.
 
 ```java
 plugins {
@@ -146,6 +146,7 @@ repositories {
     mavenCentral()
 
     maven { url 'https://repo.spongepowered.org/maven' }
+    maven { url 'https://repo.velocitypowered.com/snapshots/' }
     maven { url 'https://libraries.minecraft.net' }
     maven { url 'https://jitpack.io' }
 }
