@@ -29,8 +29,6 @@
   * [AI](feature/entities/ai.md)
 * [Schedulers](feature/schedulers.md)
 * [Commands](feature/commands.md)
-* [Extensions](feature/extensions.md)
-* [Mixin support](feature/mixin-support.md)
 * [Inventories](feature/inventories.md)
 * [Player UUID](feature/player-uuid.md)
 * [Player skin](feature/player-skin.md)
@@ -38,6 +36,12 @@
 * [Advancements](feature/advancements.md)
 * [Map rendering](feature/map-rendering/README.md)
   * [GLFWMapRendering](feature/map-rendering/glfwmaprendering.md)
+
+## Expansion
+
+* [Extensions](expansion/extensions.md)
+* [Mixin support](expansion/mixin-support.md)
+* [Scripting](expansion/scripting.md)
 
 ## Storage
 
