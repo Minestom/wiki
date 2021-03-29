@@ -28,7 +28,7 @@ console.log("You retrieved the player " + player.username + "!");
 
 // Commands can be aliases for ease of use multiple times or shortening.
 // {n} can be used to reference the nth argument during execution.
-let getPlayer = executor.alias("entity get {0}");
+let getPlayer = executor.make("entity get {0}");
 player = getPlayer("Notch").entity;
 
 // 'signals' are general purpose listenable event,
