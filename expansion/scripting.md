@@ -36,6 +36,23 @@ executor.onSignal("my_signal", (properties, output) => {
 
 // ... and be retrieved back
 let output = executor.signal("my_signal")
-console.log("Value: " + output.value)
+console.log("Value: " + output.value) // -> "I am a text"
+```
+
+## Setup
+
+All scripts should be available in the scripts/ folder. They can either be contained within a single file or in a folder, the structure is as follow:
+
+```javascript
+scripts/
+ - randomscript.js // Individual file can have the name you want
+ - myscript.js
+ - Essentials/ // The folder name will be used in the '/script' command
+    - main.js // -> "main.js" is the main file used to initialize the script
+    - Config.js
+ - WorldGuard/
+    - main.js
+    - Config.js
+    - Regions.js
 ```
 
