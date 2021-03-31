@@ -41,7 +41,9 @@
 
 * [Extensions](expansion/extensions.md)
 * [Mixin support](expansion/mixin-support.md)
-* [Scripting](expansion/scripting.md)
+* [Scripting](expansion/scripting/README.md)
+  * [WIP Commands](expansion/scripting/wip-commands.md)
+  * [WIP Java Interoperability](expansion/scripting/wip-java-interoperability.md)
 
 ## Storage
 
