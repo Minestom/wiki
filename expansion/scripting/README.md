@@ -14,8 +14,8 @@ MineScript is a command-based API, the only way to interact with the Minecraft s
 // 'executor' is a global object, used to execute commands and listen to signals.
 executor.run("tellraw Notch Hey");
 
-// Commands can be registered using the command string syntax. Each command gets a callback
-// with the sender and command metadata.
+// Commands can be registered using the command string syntax. 
+// Each command gets a callback with the sender and command metadata.
 executor.registerCommand("entity Literal<get> Player<target>", (sender, context) => {
     console.log("Retrieving " + context.player);
     // let somePlayer = ...;
