@@ -17,7 +17,7 @@ executor.run("tellraw Notch Hey");
 // Commands can be registered using the command string syntax. 
 // Each command gets a callback with the sender and command metadata.
 executor.registerCommand("entity Literal<get> Player<target>", (sender, context) => {
-    console.log("Retrieving " + context.player);
+    console.log("Retrieving " + context.target);
     // let somePlayer = ...;
     return somePlayer;
 });
