@@ -112,13 +112,13 @@ Minestom does not provide a jar of itself for the simple reason that this is you
 
 First of all, the fat jar can be built using the Gradle shadow plugin as simple as adding
 
-```java
+```groovy
 id "com.github.johnrengelman.shadow" version "6.1.0"
 ```
 
 If the jar is meant to be run, you also need to specify the class containing the main method.
 
-```java
+```groovy
 // Code sample, be sure to modify the 'Main-Class' value
 // based on your application
 jar {
@@ -133,7 +133,7 @@ With all of this set, all that is remaining is the build command, shadow provide
 
 Now, just to be sure that you understood everything, here is the complete `build.gradle` file that I have used to demonstrate it.
 
-```java
+```groovy
 plugins {
     id 'java'
     id "com.github.johnrengelman.shadow" version "6.1.0"
@@ -154,7 +154,7 @@ repositories {
 dependencies {
     // WARNING: outdated version, replace it to the latest
     // Reminder: can be found at https://jitpack.io/#Minestom/Minestom
-    compile 'com.github.Minestom:Minestom:1eea505da0'
+    implementation 'com.github.Minestom:Minestom:1eea505da0'
 }
 
 jar {
