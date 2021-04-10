@@ -25,7 +25,7 @@
 * [Adventure](feature/adventure.md)
 * [Player capabilities](feature/player-capabilities.md)
 * [Events](feature/events.md)
-* [Items](feature/item.md)
+* [Items](feature/items.md)
 * [Entities](feature/entities/README.md)
   * [AI](feature/entities/ai.md)
 * [Schedulers](feature/schedulers.md)
