@@ -34,7 +34,7 @@ Minestom needs Java 11 or newer in order to run. Launching the server for the fi
 
 When using Maven it is recommended to exclude the artifact `shrinkwrap-resolver-depchain` from the group `org.jboss.shrinkwrap.resolver` as otherwise resolving the dependencies will fail. Shrinkwrap can be added as a separate dependency if needed without issues to restore its functionality. Minestom as a dependency would look like this:
 
-```xml
+```markup
 <dependency>
   <groupId>com.github.Minestom</groupId>
   <artifactId>Minestom</artifactId>
