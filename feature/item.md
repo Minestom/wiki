@@ -38,5 +38,12 @@ item = item.withAmount(5);
 item = item.withAmount(amount -> amount * 2);
 // Same with various other fields
 item = item.withDisplayName(Component.text("New display name!"));
+
+// Start rebuilding the item
+// More performant than the above if you need to modify multiple fields
+item = item.with(builder -> {
+        builder.amount(32)
+                .displayName(Component.text("Again..."));
+        });
 ```
 
