@@ -26,6 +26,9 @@ However, as items are immutable, creating complex objects require using a builde
 ItemStack item = ItemStack.builder(Material.STONE)
         .displayName(Component.text("Display name!", NamedTextColor.GREEN))
         .lore(Component.text("Line 1"), Component.text("Line 2"))
+        .meta(metaBuilder ->
+                metaBuilder.enchantment(Enchantment.EFFICIENCY, (short) 10)
+                        .hideFlag(ItemHideFlag.HIDE_ENCHANTS))
         .build();
 ```
 
