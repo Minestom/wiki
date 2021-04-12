@@ -30,7 +30,7 @@ As mentioned in the previous section, some Minestom classes implement `Audience`
 instance.sendMessage(Component.text("Hello, instance!"));
 ```
 
-Minestom also provides a way to obtain audiences through the `Audiences` class. This class can obtained using `MinestomServer#getAudiences()` or directly through the class via `Audiences#audiences()`. The following code provides an example of how this class would be used in your project:
+Minestom also provides a way to obtain audiences through the `Audiences` class. The following code provides an example of how this class would be used in your project:
 
 ```java
 Audiences.console().sendMessage(Component.text("Hello, console!"));
