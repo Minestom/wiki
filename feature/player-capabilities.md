@@ -56,7 +56,7 @@ Sidebar#updateLineScore(String /* unique id */, Int /* new score */);
 
 `Notification`s are a system to send advancement completion toasts to a player as a form of communication.
 
-They are a wrapper around `Advancement`s, so you do not need to create any advancements to use them, just a `Notification`. See the [Advancements](advancements.md) page for more information on advancements.
+They are a wrapper around `Advancement`, so you do not need to create any advancements to use them, just a `Notification`. See the [Advancements](advancements.md) page for more information on advancements.
 
 ```java
 Notification#<init>(Component /* title */, FrameType, ItemStack /* icon */);
@@ -65,7 +65,7 @@ Notification#<init>(Component /* title */, FrameType, ItemStack /* icon */);
 Notification notification = new Notification(
         Component.text("Hello, Notifications!", NamedTextColor.GREEN),
         FrameType.GOAL,
-        new ItemStack(Material.GOLD_INGOT, (byte) 1)
+        ItemStack.of(Material.GOLD_INGOT)
 );
 ```
 
