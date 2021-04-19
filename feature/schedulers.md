@@ -7,7 +7,7 @@ Be aware that scheduled tasks are executed in their own thread pool, synchroniza
 There are 4 types of schedulers, each one of them can be accessed by calling the `SchedulerManager`.
 
 ```java
-ScheudleManager schedulerManager = MinecraftServer.getSchedulerManager();
+SchedulerManager schedulerManager = MinecraftServer.getSchedulerManager();
 
 // First scheduler to repeat the task each time
 schedulerManager.buildTask(new Runnable() {
