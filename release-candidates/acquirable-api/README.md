@@ -112,10 +112,10 @@ It is the most efficient way to loop through a collection, the callback is execu
 
 ```java
 AcquirableCollection<Player> acquirablePlayers = getOnlinePlayers();
-acquirablePlayers.forEachSync(player -> {
+acquirablePlayers.acquireSync(player -> {
     // Do something...
 });
-acquirablePlayers.forEachAsync(player -> {
+acquirablePlayers.acquireAsync(player -> {
     // Do something async...
 });
 ```
