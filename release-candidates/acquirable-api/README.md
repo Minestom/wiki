@@ -23,7 +23,7 @@ Here how the acquirable API looks in practice:
 ```java
 Acquirable<Entity> acquirableEntity = ...;
 System.out.println("Start acquisition...");
-acquirableEntity.acquire(entity -> {
+acquirableEntity.acquire().sync(entity -> {
     // You can use "entity" safely in this consumer!
 });
 System.out.println("Acquisition happened successfully");
@@ -41,7 +41,7 @@ The entity object from the consumer should however **only** be used inside of th
 
     public void randomMethod(Acquirable<Entity> acquirableEntity) {
         this.myEntity = acquirableEntity;
-        acquirableEntity.acquire(entity -> {
+        acquirableEntity.acquire().sync(entity -> {
             // "myEntity = entity" is not safe, always cache the acquirable object
         });
     }
@@ -52,7 +52,7 @@ Now, if you do not need the acquisition to happen synchronously you have the cho
 ```java
 Acquirable<Entity> acquirableEntity = getAcquiredElement();
 System.out.println("Hey I am starting the acquisition");
-acquirableEntity.scheduledAcquire(entity -> {
+acquirableEntity.acquire().async(entity -> {
     System.out.println("Hallo");
 });
 System.out.println("Hey I scheduled the acquisition");
@@ -66,9 +66,29 @@ Hey I scheduled the acquisition
 Hallo
 ```
 
+And a few other options:
+
+```java
+Acquirable<Player> acquirable = getAcquirable();
+
+// #local() allows you to retrieve the element only if present
+// in the current thread
+Optional<Player> local = acquirable.local();
+local.ifPresent(player -> {
+    // Run code...
+});
+
+// #lock() allows you to manually control when to unlock the acquisition
+// if you cannot use #sync()
+Acquired<Player> acquiredPlayer = acquirable.lock();
+Player player = acquiredPlayer.get();
+// Run code...
+acquiredPlayer.unlock();
+```
+
 ### Acquirable Collections
 
-Let's say you have a `Collection<Acquirable<Player>>` and you want to access **safely** all of the players it contains. You have multiple solutions, each having pros & cons.
+Let's say you have a `AcquirableCollection<Player>` and you want to access **safely** all of the players it contains. You have multiple solutions, each having pros & cons.
 
 #### Naive loop
 
@@ -76,9 +96,9 @@ The one that you probably have in mind is:
 
 ```java
 // NAIVE ACQUIRABLE LOOP
-Collection<Acquirable<Player>> acquirablePlayers = getOnlinePlayers();
+AcquirableCollection<Player> acquirablePlayers = getOnlinePlayers();
 for(Acquirable<Player> acquirablePlayer : acquirablePlayers){
-    acquirablePlayer.acquire(player -> {
+    acquirablePlayer.acquire().sync(player -> {
         // Do something...
     });
 }
@@ -86,27 +106,17 @@ for(Acquirable<Player> acquirablePlayer : acquirablePlayers){
 
 It does work, but not efficient at all since you have to acquire each element one by one.
 
-#### Acquisition\#acquireCollection
+#### AcquirableCollection\#forEachSync
 
-This solution will create a new collection, acquire efficiently every element, and execute the callback.
+It is the most efficient way to loop through a collection, the callback is executed for each individual element and stops only once all elements have been acquired.
 
 ```java
-Collection<Acquirable<Player>> acquirablePlayers = getOnlinePlayers();
-Acquisition.acquireCollection(acquirablePlayers, ArrayList::new, players -> {
+AcquirableCollection<Player> acquirablePlayers = getOnlinePlayers();
+acquirablePlayers.forEachSync(player -> {
     // Do something...
 });
-```
-
-Useful when you absolutely need to have a collection with the same elements. Can be quite expensive since a new collection is allocated every time and that all elements are blocked until the collection is created and released.
-
-#### Acquisition\#acquireForEach
-
-It is the most efficient way to loop through a collection, the callback is executed for each individual element and stop only once all elements have been acquired.
-
-```java
-Collection<Acquirable<Player>> acquirablePlayers = getOnlinePlayers();
-Acquisition.acquireForEach(acquirablePlayers, player -> {
-    // Do something...
+acquirablePlayers.forEachAsync(player -> {
+    // Do something async...
 });
 ```
 
@@ -118,24 +128,27 @@ I can understand that having callbacks everywhere even if you know what you are 
 
 ```java
 Acquirable<Entity> acquirableEntity = ...;
-Entity entity = acquirableEntity.unsafeUnwrap();
+Entity entity = acquirableEntity.unwrap();
 ```
 
 A similar method exists for collections.
 
 ```java
-ConnectionManager connectionManager = MinecraftServer.getConnectionManager();
-// Create an unsafe collection view from an acquirable one
-Collection<Player> players = new AcquirableCollectionView<>(connectionManager.getOnlinePlayers());
-// Shortcut
-Collection<Player> players = connectionManager.getUnsafeOnlinePlayers();
+AcquirableCollection<Player> acquirablePlayers = getOnlinePlayers();
+Stream<Player> players = acquirablePlayers.unwrap();
 ```
 
 {% hint style="warning" %}
 Those are not safe operations, be sure to read the [Thread safety](../../thread-architecture/thread-safety.md) page to understand the implications.
 {% endhint %}
 
-I would personally recommend commenting everywhere you use those unsafe methods to indicate why this operation does not compromise the application thread-safety. If you cannot find any reason, you likely shouldn't.
+I would personally recommend commenting everywhere you use those unsafe methods to indicate why this operation does not compromise the application's safety. If you cannot find any reason, you likely shouldn't.
+
+### Access all the entities in the current thread
+
+```java
+Stream<Entity> entities = Acquirable.currentEntities();
+```
 
 ### What type to request and return in methods
 
