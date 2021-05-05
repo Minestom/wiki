@@ -25,6 +25,7 @@
 * [Adventure](feature/adventure.md)
 * [Player capabilities](feature/player-capabilities.md)
 * [Events](feature/events.md)
+  * [Server list ping](feature/events/server-list-ping.md)
 * [Items](feature/items.md)
 * [Entities](feature/entities/README.md)
   * [AI](feature/entities/ai.md)
@@ -37,6 +38,8 @@
 * [Advancements](feature/advancements.md)
 * [Map rendering](feature/map-rendering/README.md)
   * [GLFWMapRendering](feature/map-rendering/glfwmaprendering.md)
+* [Query system](feature/query.md)
+* [Open to LAN](feature/open-to-lan.md)
 
 ## Expansion
 
