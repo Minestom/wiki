@@ -6,10 +6,6 @@ description: >-
 
 # The inside
 
-{% hint style="info" %}
-This API is currently not in mainstream Minestom. The working version can be found [here](https://github.com/Minestom/Minestom/tree/thread-safety-experimental).
-{% endhint %}
-
 ## The inside
 
 I will begin by saying that you do not need to know anything written here to utilize the acquirable API. It can however teach you about our code structure and how it achieves thread-safety. Be sure to read all the previous pages in order to properly understand everything said here.
