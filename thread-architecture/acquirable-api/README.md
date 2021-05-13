@@ -1,14 +1,8 @@
 # Acquirable API
 
-{% hint style="info" %}
-This API is currently not in mainstream Minestom. The working version can be found [here](https://github.com/Minestom/Minestom/tree/thread-safety-experimental).
-{% endhint %}
-
-## Acquirable API
-
 ### Presentation
 
-An `Acquirable<T>` object represents an object of type `T` that you can retrieve but where its thread-safe access is not certain.
+`Acquirable<T>` represents an object of type `T` that you can retrieve but where its thread-safe access is not certain.
 
 To give an example, imagine two entities very far from each other and therefore ticked in different threads. Let's imagine that entity A wants to trade items with entity B, it is something that would require synchronization to ensure that the trade happens successfully. From entity A's thread, you can retrieve a `Acquirable<Entity>` containing entity B, and from there acquire it to have safe access to the entity in a different thread.
 
@@ -139,7 +133,7 @@ Stream<Player> players = acquirablePlayers.unwrap();
 ```
 
 {% hint style="warning" %}
-Those are not safe operations, be sure to read the [Thread safety](../../thread-architecture/thread-safety.md) page to understand the implications.
+Those are not safe operations, be sure to read the [Thread safety](../thread-safety.md) page to understand the implications.
 {% endhint %}
 
 I would personally recommend commenting everywhere you use those unsafe methods to indicate why this operation does not compromise the application's safety. If you cannot find any reason, you likely shouldn't.

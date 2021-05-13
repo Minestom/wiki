@@ -10,6 +10,8 @@
 ## Thread Architecture
 
 * [Thread safety in the JVM](thread-architecture/thread-safety.md)
+* [Acquirable API](thread-architecture/acquirable-api/README.md)
+  * [The inside](thread-architecture/acquirable-api/inside-the-api.md)
 
 ## World
 
@@ -24,7 +26,7 @@
 
 * [Adventure](feature/adventure.md)
 * [Player capabilities](feature/player-capabilities.md)
-* [Events](feature/events.md)
+* [Events](feature/events/README.md)
   * [Server list ping](feature/events/server-list-ping.md)
 * [Items](feature/items.md)
 * [Entities](feature/entities/README.md)
@@ -57,6 +59,4 @@
 ## Release Candidates
 
 * [Server ticks](release-candidates/tick-threads.md)
-* [Acquirable API](release-candidates/acquirable-api/README.md)
-  * [The inside](release-candidates/acquirable-api/inside-the-api.md)
 
