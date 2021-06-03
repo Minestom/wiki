@@ -17,7 +17,7 @@ Here how the acquirable API looks in practice:
 ```java
 Acquirable<Entity> acquirableEntity = ...;
 System.out.println("Start acquisition...");
-acquirableEntity.acquire().sync(entity -> {
+acquirableEntity.sync(entity -> {
     // You can use "entity" safely in this consumer!
 });
 System.out.println("Acquisition happened successfully");
@@ -35,7 +35,7 @@ The entity object from the consumer should however **only** be used inside of th
 
     public void randomMethod(Acquirable<Entity> acquirableEntity) {
         this.myEntity = acquirableEntity;
-        acquirableEntity.acquire().sync(entity -> {
+        acquirableEntity.sync(entity -> {
             // "myEntity = entity" is not safe, always cache the acquirable object
         });
     }
@@ -46,7 +46,7 @@ Now, if you do not need the acquisition to happen synchronously you have the cho
 ```java
 Acquirable<Entity> acquirableEntity = getAcquiredElement();
 System.out.println("Hey I am starting the acquisition");
-acquirableEntity.acquire().async(entity -> {
+acquirableEntity.async(entity -> {
     System.out.println("Hallo");
 });
 System.out.println("Hey I scheduled the acquisition");
@@ -92,7 +92,7 @@ The one that you probably have in mind is:
 // NAIVE ACQUIRABLE LOOP
 AcquirableCollection<Player> acquirablePlayers = getOnlinePlayers();
 for(Acquirable<Player> acquirablePlayer : acquirablePlayers){
-    acquirablePlayer.acquire().sync(player -> {
+    acquirablePlayer.sync(player -> {
         // Do something...
     });
 }
