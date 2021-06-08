@@ -30,8 +30,8 @@ EventNode<Event> node = EventNode.all("demo");
 EventNode<EntityEvent> entityNode = EventNode.type("entity-listener", EventFilter.ENTITY);
 // Can only listen to player events
 EventNode<PlayerEvent> playerNode = EventNode.type("player-listener", EventFilter.PLAYER);
-// Listen to player events where the player is in creative mode
-EventNode<PlayerEvent> creativeNode = EventNode.value("player-listener", EventFilter.PLAYER, Player::isCreative);
+// Listen to player events with the player in creative mode
+EventNode<PlayerEvent> creativeNode = EventNode.value("creative-listener", EventFilter.PLAYER, Player::isCreative);
 ```
 
 Each node needs a name to be debuggable and be retrieved later on, an `EventFilter` containing the event type target and a way to retrieve the actor from it \(i.e. a `Player` from a `PlayerEvent`\). All factory methods accept a predicate to provide an additional condition for filtering purposes.
