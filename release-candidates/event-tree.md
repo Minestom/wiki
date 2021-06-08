@@ -81,11 +81,38 @@ node.call(new MyEvent());
 
 Now that you are familiar with the API, here is how you should use it inside your Minestom project.
 
-### Server JAR
+### Node to use 
+
+#### Server JAR
 
 The root node of the server can be retrieved using `MinecraftServer#getGlobalEventHandler()`, you can safely insert new nodes
 
-### Extensions
+#### Extensions
 
 Extensions should use their defined node from `Extension#getEventNode()`, which is removed from the root node once unloaded. Listeners inserted to external nodes must be removed manually.
+
+### Structure
+
+Having an image of your tree is highly recommended, for documentation purposes and ensuring an optimal filtering path. It is then possible to use packages for major nodes, and classes for minor filtering.
+
+```java
+Server/
+   Global.java
+   Lobby/
+      Rank/
+         - AdminRank.java
+         - VipRank.java
+      - DefaultRank.java
+   Game/
+      Bedwars/
+         Kit/
+            PvpKit.java
+            BuildKit.java
+         Bedwars.java
+      Skywars/
+         Kit/
+            PvpKit.java
+            BuildKit.java
+         Skywars.java
+```
 
