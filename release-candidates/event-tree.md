@@ -34,7 +34,7 @@ EventNode<PlayerEvent> playerNode = EventNode.type("player-listener", EventFilte
 EventNode<PlayerEvent> creativeNode = EventNode.value("creative-listener", EventFilter.PLAYER, Player::isCreative);
 ```
 
-Each node needs a name to be debuggable and be retrieved later on, an `EventFilter` containing the event type target and a way to retrieve the actor from it \(i.e. a `Player` from a `PlayerEvent`\). All factory methods accept a predicate to provide an additional condition for filtering purposes.
+Each node needs a name to be debuggable and be retrieved later on, an `EventFilter` containing the event type target and a way to retrieve its actor \(i.e. a `Player` from a `PlayerEvent`\). All factory methods accept a predicate to provide an additional condition for filtering purposes.
 
 ### Listener
 
