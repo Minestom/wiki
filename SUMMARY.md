@@ -59,4 +59,5 @@
 ## Release Candidates
 
 * [Server ticks](release-candidates/tick-threads.md)
+* [Event tree](release-candidates/event-tree.md)
 
