@@ -4,7 +4,7 @@
 
 Event listening is a fairly hard part to keep easy while having a clear understanding of the execution flow. In Minestom, a tree is used to define inheritance for filtering and extensibility. Each node of the tree contains:
 
-* Event class, where only superclasses are allowed to enter \(Event/PlayerEvent/etc...\)
+* Event class, where only superclasses are allowed to enter \(`Event`/`PlayerEvent`/etc...\)
 * Condition for filtering
 * List of listeners
 * Name for identification
