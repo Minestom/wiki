@@ -118,5 +118,5 @@ Server/
 
 ### Custom event
 
-Event is an interface that you can freely implement, traits like `CancellableEvent` \(to stop the execution after a certain point\) and `EntityEvent` \(telling the dispatcher that the event contains an entity actor\) are also present to ensure your code will work with existing logic. You can then choose to run your custom event from an arbitrary node \(see [example](event-tree.md#event-execution)\), or from the root with `EventDispatcher#call(Event)`.
+`Event` is an interface that you can freely implement, traits like `CancellableEvent` \(to stop the execution after a certain point\) and `EntityEvent` \(telling the dispatcher that the event contains an entity actor\) are also present to ensure your code will work with existing logic. You can then choose to run your custom event from an arbitrary node \(see [example](event-tree.md#event-execution)\), or from the root with `EventDispatcher#call(Event)`.
 
