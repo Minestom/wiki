@@ -19,7 +19,7 @@ The tree structure provides us many advantages:
 * Ability to store the event tree as an image for documentation purpose
 * Listener injection into existing nodes
 
-## Event listening
+## API
 
 ### Node
 
