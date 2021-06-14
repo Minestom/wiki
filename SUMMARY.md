@@ -26,8 +26,8 @@
 
 * [Adventure](feature/adventure.md)
 * [Player capabilities](feature/player-capabilities.md)
-* [Events](feature/events/README.md)
-  * [Server list ping](feature/events/server-list-ping.md)
+* [Events](feature/event-tree/README.md)
+  * [Server list ping](feature/event-tree/server-list-ping.md)
 * [Items](feature/items.md)
 * [Entities](feature/entities/README.md)
   * [AI](feature/entities/ai.md)
@@ -59,5 +59,8 @@
 ## Release Candidates
 
 * [Server ticks](release-candidates/tick-threads.md)
-* [Event tree](release-candidates/event-tree.md)
+
+## Archive
+
+* [Events](archive/events.md)
 
