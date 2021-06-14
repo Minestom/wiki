@@ -10,7 +10,7 @@ Event listening is a fairly hard part to keep easy while having a clear understa
 * Name for identification
 * Priority
 
-![](../../.gitbook/assets/event-tree.gif)
+![Event tree with all nodes being executed](../../.gitbook/assets/event-tree.gif)
 
 The tree structure provides us many advantages:
 
