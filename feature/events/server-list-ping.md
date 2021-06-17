@@ -32,6 +32,14 @@ responseData.addEntry(NamedAndIdentified.named(Component.text("Sally", TextColor
 
 The methods that do not take a UUID will use a random UUID, allowing you to create any number of players without the risk of a conflicting UUID being used. Additionally, each entry can use components or strings. Using components allows you to use colour and styling for each entry. The player list displayed in the vanilla Minecraft client supports the legacy section sign color coding and the names of each entry are automatically converted to this format.
 
+In the modern category, the player sample, along with the online and maximum players, may be hidden completely as well:
+
+```java
+responseData.setPlayersHidden(true);
+```
+
+In the Vanilla client, the online / maximum player count will be replaced with `???`
+
 ### Legacy
 
 Covered by the `LEGACY_VERSIONED` and `LEGACY_UNVERSIONED` constants, this category represents server list pings that are sent by clients on version 1.6 or lower. These ping types only support the description and the current/max number of players. The `LEGACY_VERSIONED` type additionally supports the version of the server.
@@ -44,3 +52,18 @@ Covered by the `OPEN_TO_LAN` constant, this category represents server list ping
 
 For more information on opening a server to LAN, see the [Open to LAN](../open-to-lan.md) page.
 
+## Ping
+
+After receiving the server list ping response, modern clients send an additional packet intended to calculate latency. Minestom provides the `ClientPingServerEvent` for this.
+
+The event may be cancelled, in which case a response packet will not be sent. However, various delay methods can affect the apparant latency:
+
+```java
+event.setDelay(new UpdateOption(5, TimeUnit.SECOND));
+event.addDelay(new UpdateOption(200, TimeUnit.MILLISECOND));
+
+// Of course, there is still some latency between the client and the server
+event.noDelay();
+```
+
+Finally, just as the `ServerListPingEvent`, the underlying `PlayerConnection` is accessible.
