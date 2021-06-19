@@ -6,15 +6,22 @@ In order to increase performance, Minestom stores block states as a block id tha
 
 ```java
 int prim = 0;
-String block = null;
+Block blockLast = Block.AIR;
 
 for (int i = 0; i < 17111; i++) {
-    String blockName = Block.fromStateId((short) i).name();
-    if (blockName != block) {
-        System.out.println(blockName + ": " + prim + " -> " + (i - 1));
-        prim = i;
-        block = blockName;
+    final Block block = Block.fromStateId((short) i);
+    
+    if (block == null) {
+        continue;
     }
+    
+    if (block.equals(blockLast)) {
+        continue;
+    }
+    
+    System.out.println(blockLast.getName() + ": " + prim + " -> " + (i - 1));
+    prim = i;
+    blockLast = block;
 }
 ```
 
