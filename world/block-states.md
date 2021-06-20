@@ -10,15 +10,15 @@ Block blockLast = Block.AIR;
 
 for (int i = 0; i < 17111; i++) {
     final Block block = Block.fromStateId((short) i);
-    
+
     if (block == null) {
         continue;
     }
-    
+
     if (block.equals(blockLast)) {
         continue;
     }
-    
+
     System.out.println(blockLast.getName() + ": " + prim + " -> " + (i - 1));
     prim = i;
     blockLast = block;
@@ -31,25 +31,25 @@ This is done by getting the gross amount of permutations for each block property
 
 For example:
 
-Here I have an iron bar's block state's specification \(found on [https://minecraft.gamepedia.com/](https://minecraft.gamepedia.com/)\) \(notice order is important\): 
+Here I have an iron bar's block state's specification \(found on [https://minecraft.gamepedia.com/](https://minecraft.gamepedia.com/)\) \(notice order is important\):
 
-**east** \| `false`  - `false` `true`
+**east** \| `false` - `false` `true`
 
- **north** \| `false`  - `false` `true` 
+**north** \| `false` - `false` `true`
 
-**south** \| `false`  - `false` `true` 
+**south** \| `false` - `false` `true`
 
-**waterlogged** \| `false`  - `false` `true` 
+**waterlogged** \| `false` - `false` `true`
 
-**west** \| `false`  - `false` `true` 
+**west** \| `false` - `false` `true`
 
-For the **east** property, there are two values. 
+For the **east** property, there are two values.
 
 For the **north** property, there are two values.
 
-For the **south** property, there are two values. 
+For the **south** property, there are two values.
 
-For the **waterlogged** property, there are two values. 
+For the **waterlogged** property, there are two values.
 
 For the **west** property, there are two values.
 
@@ -67,15 +67,15 @@ There is a difference of 32 here.
 
 `2 * 2 * 2 * 2 * 2 = 32`
 
-Now to calculate the ID with our chosen values, we need to loop the property values from top to bottom \(left to right\). Identically to how binary bits operate. For example: 
+Now to calculate the ID with our chosen values, we need to loop the property values from top to bottom \(left to right\). Identically to how binary bits operate. For example:
 
-4633 \| **east**: `false`, **north**: `false`, **south**: `false`, **waterlogged**: `false`, **west**: `false` 
+4633 \| **east**: `false`, **north**: `false`, **south**: `false`, **waterlogged**: `false`, **west**: `false`
 
-4634 \| **east**: `true`, **north**: `false`, **south**: `false`, **waterlogged**: `false`, **west**: `false` 
+4634 \| **east**: `true`, **north**: `false`, **south**: `false`, **waterlogged**: `false`, **west**: `false`
 
-4635 \| **east**: `false`, **north**: `true`, **south**: `false`, **waterlogged**: `false`, **west**: `false` 
+4635 \| **east**: `false`, **north**: `true`, **south**: `false`, **waterlogged**: `false`, **west**: `false`
 
-4636 \| **east**: `true`, **north**: `true`, **south**: `false`, **waterlogged**: `false`, **west**: `false` 
+4636 \| **east**: `true`, **north**: `true`, **south**: `false`, **waterlogged**: `false`, **west**: `false`
 
 4637 \| **east**: `false`, **north**: `false`, **south**: `true`, **waterlogged**: `false`, **west**: `false`
 

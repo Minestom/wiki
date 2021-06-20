@@ -146,9 +146,7 @@ repositories {
     mavenCentral()
 
     maven { url 'https://repo.spongepowered.org/maven' }
-    maven { url 'https://repo.velocitypowered.com/snapshots/' }
     maven { url 'https://jitpack.io' }
-    maven { url 'https://repo.minestom.net/repository/maven-public/' }
 }
 
 dependencies {
