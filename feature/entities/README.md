@@ -54,7 +54,7 @@ Making a boat look menacing:
 BoatMeta meta = (BoatMeta) boat.getEntityMeta();
 meta.setOnFire(true);
 meta.setCustomNameVisible(true);
-meta.setCustomName(ColoredText.of(ChatColor.RED, "Dangerous boat"));
+meta.setCustomName(Component.text("Dangerous boat", NamedTextColor.RED));
 ```
 
 ### Useful methods
@@ -84,7 +84,7 @@ BoatMeta meta = (BoatMeta) boat.getEntityMeta();
 meta.setNotifyAboutChanges(false); // this
 meta.setOnFire(true);
 meta.setCustomNameVisible(true);
-meta.setCustomName(ColoredText.of(ChatColor.RED, "Dangerous boat"));
+meta.setCustomName(Component.text("Dangerous boat", NamedTextColor.RED));
 meta.setNotifyAboutChanges(true); // and this
 ```
 
