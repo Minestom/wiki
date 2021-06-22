@@ -2,7 +2,7 @@
 
 ## Overview
 
-A `Tag` represents a key, and a way to read/write a specific type of data. Generally exposed as a constant, you can use it to apply or read data from any `TagReadable` \(e.g. `Entity`, `ItemStack`, and soon enough `Block`\).
+A `Tag` represents a key, and a way to read/write a specific type of data. Generally exposed as a constant, you can use it to apply or read data from any `TagReadable` \(e.g. `Entity`, `ItemStack`, and soon `Block`\).
 
 ```java
 Tag<String> myTag = Tag.String("key");

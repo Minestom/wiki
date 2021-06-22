@@ -31,6 +31,7 @@
 * [Items](feature/items.md)
 * [Entities](feature/entities/README.md)
   * [AI](feature/entities/ai.md)
+* [Tags](feature/tags.md)
 * [Schedulers](feature/schedulers.md)
 * [Commands](feature/commands.md)
 * [Inventories](feature/inventories.md)
@@ -63,8 +64,4 @@
 ## Archive
 
 * [Events](archive/events.md)
-
----
-
-* [Tags](tags.md)
 
