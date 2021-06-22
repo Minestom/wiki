@@ -45,10 +45,14 @@ hardness = tnt.registry().hardness();
 
 ```java
 Tag<String> tag = Tag.String("my-key");
+Block tnt = Block.TNT;
 // Create a new block with the tag sets to "my-value"
 tnt = tnt.withTag(tag, "my-value");
 // Retrieve the value from the newly created block
 String value = tnt.getTag(tag);
+
+// Block can also expose a convenient view of their nbt
+NBTCompound nbt = tnt.nbt();
 ```
 
 Tags data can be serialized and will be saved on disk automatically.
