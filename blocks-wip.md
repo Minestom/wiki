@@ -41,7 +41,7 @@ hardness = tnt.registry().hardness();
 
 ## Tags
 
-`Blocks` implements `TagReadable` meaning that they can contain all kinds of data. \(see [Tags](feature/tags.md)\)
+`Block` implements `TagReadable` meaning that they can contain all kinds of data. \(see [Tags](feature/tags.md)\)
 
 ```java
 Tag<String> tag = Tag.String("my-key");
