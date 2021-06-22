@@ -64,3 +64,7 @@
 
 * [Events](archive/events.md)
 
+---
+
+* [Tags](tags.md)
+
