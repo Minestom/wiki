@@ -19,3 +19,11 @@ Some things to point out are the `CustomBlock#getCustomBlockId` which should ret
 
 There is also a special `CustomBlock#getBreakDelay` which can be used to customize the breaking time of any custom block, can be disabled when &lt; 0
 
+### Placing Custom block 
+
+In order to place a custom block you would use something similar to the following code
+
+...java
+instance.setCustomBlock(BlockPosition(0, 0, 0) ,"your_custom_block_identifyer")
+...
+
