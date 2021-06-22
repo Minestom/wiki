@@ -36,6 +36,7 @@ Block block = Block.GRASS;
 boolean solid = tnt.registry().isSolid();
 // ... you can however retrieve them from string
 double hardness = tnt.registry().getDouble("hardness");
+hardness = tnt.registry().hardness();
 ```
 
 ## Tags
