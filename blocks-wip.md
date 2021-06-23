@@ -33,10 +33,10 @@ Each block has unique data which can be retrieved with `Block#registry()`.
 ```java
 Block block = Block.GRASS;
 // Some fields have their own dedicated method
-boolean solid = tnt.registry().isSolid();
+boolean solid = block.registry().isSolid();
 // ... you can however retrieve them from string
-double hardness = tnt.registry().getDouble("hardness");
-hardness = tnt.registry().hardness();
+double hardness = block.registry().getDouble("hardness");
+hardness = block.registry().hardness();
 ```
 
 ## Tags
