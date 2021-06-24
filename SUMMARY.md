@@ -59,13 +59,10 @@
 
 ## Release Candidates
 
+* [Blocks WIP](release-candidates/blocks-wip.md)
 * [Server ticks](release-candidates/tick-threads.md)
 
 ## Archive
 
 * [Events](archive/events.md)
-
----
-
-* [Blocks WIP](blocks-wip.md)
 
