@@ -48,3 +48,7 @@ instance.getTag(stringTag.defaultValue("default"))
 
 A structure tag is a wrapper around an nbt compound \(map\) independent from all the other tags.
 
+## View
+
+A view can access every tag and is therefore mostly unsafe, should only be used at last resort.
+
