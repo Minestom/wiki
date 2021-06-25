@@ -68,7 +68,7 @@ public class DemoHandler implements BlockHandler {
         if (placement instanceof PlayerPlacement) {
             // A player placed the block
         }
-        Block block = placement.block();
+        Block block = placement.getBlock();
         System.out.println("The block " + block.name() + " has been placed");
     }
 
