@@ -11,7 +11,7 @@ All coordinates classes in Minestom are immutables \(like a lot of others\), `Po
 Some may express concern about the performance penalty of using immutable classes for math. Here is our reasoning:
 
 * Immutability give us the guarantee that coordinate objects can be reused, reducing allocation
-* [Scalar replacement](https://shipilev.net/jvm/anatomy-quarks/18-scalar-replacement/) may do stack allocation in some specific situation \(more likely inline computation\)
+* [Scalar replacement](https://shipilev.net/jvm/anatomy-quarks/18-scalar-replacement/) may happen in some specific situation \(builder mode\)
 * [Primitive objects](https://openjdk.java.net/jeps/401) will ultimately arrive, removing the concern altogether and improving performance compared to the mutable equivalent
 
 ## API
