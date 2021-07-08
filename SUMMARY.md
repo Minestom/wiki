@@ -60,6 +60,7 @@
 ## Release Candidates
 
 * [Blocks WIP](release-candidates/blocks-wip.md)
+* [Coordinates WIP](release-candidates/coordinates-wip.md)
 * [Server ticks](release-candidates/tick-threads.md)
 
 ## Archive
