@@ -2,7 +2,7 @@
 
 Permissions are the feature allowing you to determine if a player is able to perform an action or not.
 
-[`Permission`](https://javadoc.minestom.com/net/minestom/server/permission/Permission.html) is an immutable class that can be added to any [`PermissionHandler`](https://minestom.github.io/Minestom/net/minestom/server/permission/PermissionHandler.html).
+[`Permission`](https://minestom.github.io/Minestom/net/minestom/server/permission/Permission.html) is an immutable class that can be added to any [`PermissionHandler`](https://minestom.github.io/Minestom/net/minestom/server/permission/PermissionHandler.html).
 
 A permission contains 2 things, a unique name \(same as with Bukkit if you are familiar with it\), and an optional `NBTCompound` which can be used to add additional data to the permission \(no more "my.permission.X" where X represents a number\).
 
