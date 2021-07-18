@@ -42,7 +42,7 @@ WARNING: You shouldn't open a data location using a different StorageSystem than
 
 ### Integration with SerializableData
 
-Most of the data that you will store will be in the form of SerializableData. \([see data](https://github.com/Minestom/Minestom/wiki/Data)\)
+Most of the data that you will store will be in the form of SerializableData. \([see data](https://wiki.minestom.com/storage/data)\)
 
 There are two kinds of SerializableData that you would want to store:
 
