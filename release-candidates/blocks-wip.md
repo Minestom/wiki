@@ -42,7 +42,7 @@ hardness = block.registry().hardness();
 ## Tags
 
 `Block` implements `TagReadable` meaning that they can contain all kinds of data. \(see [Tags](../feature/tags.md)\)
-
+Warning: Tags id, x, y, z and keepPacked are used by the anvil loader and may cause unexpected behaviour when added to blocks.
 ```java
 Tag<String> tag = Tag.String("my-key");
 Block tnt = Block.TNT;
