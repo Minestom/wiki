@@ -8,7 +8,7 @@ description: >-
 
 ## Load/Save Steps
 
-When trying to load a chunk, the instance container does multiple checks in this order: 
+When trying to load a chunk, the instance container does multiple checks in this order:
 
 1. Verify if the chunk is already loaded \(stop here if yes\)
 2. Try to load the chunk from the instance [IChunkLoader](https://minestom.github.io/Minestom/net/minestom/server/instance/IChunkLoader.html) using [IChunkLoader\#loadChunk](https://minestom.github.io/Minestom/net/minestom/server/instance/IChunkLoader.html#loadChunk%28net.minestom.server.instance.Instance,int,int,net.minestom.server.utils.chunk.ChunkCallback%29) \(stop here if the chunk loading is successful\)

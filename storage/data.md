@@ -16,7 +16,7 @@ data.set("test", 1, Integer.class);
 int test = data.get("test");
 ```
 
-### Serializable data
+## Serializable data
 
 A SerialiableData object can, as the name imply, be serialized.
 

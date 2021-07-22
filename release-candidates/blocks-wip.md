@@ -57,7 +57,11 @@ NBTCompound nbt = tnt.nbt();
 
 Tags data can be serialized and will be saved on disk automatically.
 
-## BlockHandler
+{% hint style="warning" %}
+Tags `id`, `x`, `y`, `z` and `keepPacked`are used by the anvil loader and may cause unexpected behavior when added to blocks.
+{% endhint %}
+
+## Handlers
 
 The `BlockHandler` interface allows blocks to have behavior by listening to some events like placement or interaction. And can be serialized to disk thanks to their namespace.
 

@@ -19,7 +19,7 @@ storageManager.defineDefaultStorageSystem(FileStorageSystem::new);
 
 You can easily create your own by implementing the StorageSystem interface.
 
-### Storage location
+## Storage location
 
 Storage locations are a way to separate your data in multiple categories. There are created/retrieved by calling:
 
@@ -40,7 +40,7 @@ data = storageLocation.get("test");
 
 WARNING: You shouldn't open a data location using a different StorageSystem than the one it has been created with
 
-### Integration with SerializableData
+## Integration with SerializableData
 
 Most of the data that you will store will be in the form of SerializableData. \([see data](https://wiki.minestom.com/storage/data)\)
 
