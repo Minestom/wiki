@@ -37,7 +37,6 @@ When using Maven it is recommended to exclude the artifact `shrinkwrap-resolver-
   <groupId>com.github.Minestom</groupId>
   <artifactId>Minestom</artifactId>
   <version><!--Minestom commit here--></version>
-  <scope>provided</scope>
   <exclusions>
     <exclusion>
       <groupId>org.jboss.shrinkwrap.resolver</groupId>
