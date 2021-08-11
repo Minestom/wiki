@@ -61,7 +61,7 @@ Then, create a `extension.json` at the root of the resources folder \(`src/main/
 
 * `entrypoint`: Fully qualified name of your extension class
 * `name`: Name to use to represent the extension to users. Must match regex `[A-Za-z][_A-Za-z0-9]+`
-* `version`: Version of your  extension
+* `version`: Version of your extension
 * `codeModifiers (optional)`: List of code modifier fully qualified-named classes to modify Minestom classes at launch time
 * `mixinConfig (optional)`: Name of a JSON file for support of Mixin injection
 * `dependencies (optional)`: List of extension names required for this extension to work.
