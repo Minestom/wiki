@@ -39,6 +39,7 @@ Then, create a `extension.json` at the root of the resources folder \(`src/main/
 {
   "entrypoint": "testextension.TestExtension",
   "name": "TestExtension",
+  "version": "1.0.0",
   "codeModifiers": [
     "testextension.TestModifier"
   ],
