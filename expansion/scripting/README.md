@@ -8,7 +8,7 @@ The scripting engine is open-source available [here](https://github.com/ReWrite-
 
 ## Overview
 
-MineScript is a command-based API, the only way to interact with the Minecraft server is to trigger commands and retrieve their data when needed. `Signals` are also available to execute code at specific moments.
+Reddox is a command-based API, the only way to interact with the Minecraft server is to trigger commands and retrieve their data when needed. `Signals` are also available to execute code at specific moments.
 
 ```javascript
 // 'executor' is a global object, used to execute commands and listen to signals.

@@ -91,10 +91,9 @@ The extension is then instanciated from the class provided inside `entrypoint`, 
 
 ## Dependencies
 
-Minestom extensions can have two types of dependencies: 
+Minestom extensions can have two types of dependencies:
 
-1. Extension dependencies 
-
+1. Extension dependencies
 2. External dependencies
 
 ### Extension dependencies
@@ -221,11 +220,9 @@ extensionManager.loadDynamicExtension(extensionJar);
 
 ### Swapping extension jar at runtime
 
-Now that you know how to dynamically unload and load an extension, the procedure is rather simple: 
+Now that you know how to dynamically unload and load an extension, the procedure is rather simple:
 
-1. Unload the extension via `ExtensionManager#unload(String)` 
-
-2. Replace the jar 
-
+1. Unload the extension via `ExtensionManager#unload(String)`
+2. Replace the jar
 3. \(Re-\)Load the extension via `ExtensionManager#loadDynamicExtension(File)`
 
