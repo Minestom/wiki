@@ -85,7 +85,17 @@ Now that you are familiar with the API, here is how you should use it inside you
 
 #### Server JAR
 
-The root node of the server can be retrieved using `MinecraftServer#getGlobalEventHandler()`, you can safely insert new nodes
+The root node of the server can be retrieved using `MinecraftServer#getGlobalEventHandler()`, you can safely insert new nodes.
+
+```java
+var handler = MinecraftServer.getGlobalEventHandler();
+handler.addListener(PlayerChatEvent.class,
+        event -> event.getPlayer().sendMessage("You sent a message!"));
+var node = EventNode.all("demo");
+node.addListener(PlayerMoveEvent.class,
+        event -> event.getPlayer().sendMessage("You moved!"));
+handler.addChild(node);
+```
 
 #### Extensions
 
