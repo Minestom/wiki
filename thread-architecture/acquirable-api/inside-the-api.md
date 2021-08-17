@@ -30,5 +30,5 @@ During acquisition handling, the thread is blocked until all of them are process
 
 ### Conclusion
 
-Nothing is magical, and this API is not an exception. It has the potential to make your application faster when acquisitions are controlled \(to limit synchronization\) and with a `ThreadProvider` specific to your need. If you want to have one world per player, then using one batch per `Instance` is probably the best solution. If you have a very precise pattern where every 3 chunks are completely independent of each other, manage your bathes in this direction!
+Nothing is magical, and this API is not an exception. It has the potential to make your application faster when acquisitions are controlled \(to limit synchronization\) and with a `ThreadProvider` specific to your need. If you want to have one world per player, then using one batch per `Instance` is probably the best solution. If you have a very precise pattern where every 3 chunks are completely independent of each other, manage your batches in this direction!
 
