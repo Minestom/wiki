@@ -1,9 +1,5 @@
 # Coordinates
 
-{% hint style="info" %}
-Part of the `new-block-api` branch, soon to be merged
-{% endhint %}
-
 ## Overview
 
 All coordinates classes in Minestom are immutables \(like a lot of others\), `Point` being the common interface, and the implementations `Pos` and `Vec`.

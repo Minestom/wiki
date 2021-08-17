@@ -1,9 +1,5 @@
 # Blocks
 
-{% hint style="info" %}
-Part of the `new-block-api` branch, soon to be merged
-{% endhint %}
-
 ## Overview
 
 A `Block` is an **immutable** object containing:
