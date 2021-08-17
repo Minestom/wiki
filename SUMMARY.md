@@ -18,7 +18,7 @@
 * [Instances](world/instances.md)
 * [Chunk management](world/chunk-management.md)
 * [Blocks](world/blocks.md)
-* [Block States](world/block-states.md)
+* [Coordinates](world/coordinates.md)
 * [Chunk generator](world/chunk-generator.md)
 * [Batch](world/batch.md)
 
@@ -59,11 +59,11 @@
 
 ## Release Candidates
 
-* [Blocks WIP](release-candidates/blocks-wip.md)
-* [Coordinates WIP](release-candidates/coordinates-wip.md)
 * [Server ticks](release-candidates/tick-threads.md)
 
 ## Archive
 
 * [Events](archive/events.md)
+* [Blocks](archive/blocks.md)
+* [Block States](archive/block-states.md)
 

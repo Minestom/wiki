@@ -1,4 +1,8 @@
-# Coordinates WIP
+# Coordinates
+
+{% hint style="info" %}
+Part of the `new-block-api` branch, soon to be merged
+{% endhint %}
 
 ## Overview
 
