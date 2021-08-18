@@ -24,7 +24,7 @@ import net.minestom.server.entity.ai.EntityAIGroupBuilder;
 import net.minestom.server.entity.ai.goal.RandomLookAroundGoal;
 import net.minestom.server.entity.type.monster.EntityZombie;
 import net.minestom.server.entity.EntityType;
-import net.minestom.server.utils.Position;
+import net.minestom.server.coordinate.Pos;
 
 public class ZombieCreature extends EntityCreature {
 
