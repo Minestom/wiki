@@ -58,14 +58,11 @@ This method is ONLY required if you instantiate your instance object manually, `
 
 It is also essential to notice that, by default, the chunks of the instance are only stored in memory. In order to have them stored in a persistent way, you need to serialize and deserialize them. Please check the [Chunks management](chunk-management.md) page for further information.
 
-Check [here](../storage/persistent-data.md) if you want more information about storage \(do not forget to define a `StorageSystem` beforehand\)
+Minestom uses Anvil as its default world format, conveniently located in the `AnvilLoader` class. Just put your world in the `world` folder, and see it work :\)
 
 ```java
-// Here is how to create an instance having a storage location
-StorageLocation storageLocation = MinecraftServer.getStorageManager().getLocation("chunk_data");
-InstanceContainer instanceContainer = instanceManager.createInstanceContainer(storageLocation);
-// Save all chunks based on the IChunkLoader (instance containers save to the current storage location by default)
-// you can specify a callback in order to know when the saving is done
+var instance = instanceManager.createInstanceContainer(storageLocation);
+// Save all currently loaded chunks to the IChunkLoader
 instanceContainer.saveChunksToStorage();
 ```
 
