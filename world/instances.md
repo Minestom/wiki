@@ -61,7 +61,7 @@ It is also essential to notice that, by default, the chunks of the instance are 
 Minestom uses Anvil as its default world format, conveniently located in the `AnvilLoader` class. Just put your world in the `world` folder, and see it work :\)
 
 ```java
-var instance = instanceManager.createInstanceContainer(storageLocation);
+var instance = instanceManager.createInstanceContainer();
 // Save all currently loaded chunks to the IChunkLoader
 instanceContainer.saveChunksToStorage();
 ```
