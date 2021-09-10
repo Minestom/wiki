@@ -27,6 +27,7 @@
 * [Adventure](feature/adventure.md)
 * [Player capabilities](feature/player-capabilities.md)
 * [Events](feature/events/README.md)
+  * [Implementation](feature/events/implementation.md)
   * [Server list ping](feature/events/server-list-ping.md)
 * [Items](feature/items.md)
 * [Entities](feature/entities/README.md)

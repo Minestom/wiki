@@ -6,7 +6,7 @@ description: Describes how to add Minestom as a dependency in your project.
 
 Adding Minestom to your java project is really simple, you only need to add a few repositories:
 
-### Repositories
+## Repositories
 
 {% tabs %}
 {% tab title="Gradle \(Groovy\)" %}
@@ -48,7 +48,7 @@ repositories {
 {% endtab %}
 {% endtabs %}
 
-### Dependencies
+## Dependencies
 
 {% tabs %}
 {% tab title="Gradle \(Groovy\)" %}
@@ -96,3 +96,4 @@ A list of versions can be found at [https://jitpack.io/\#Minestom/Minestom](http
 {% hint style="info" %}
 Minestom needs Java 11 or newer in order to run.
 {% endhint %}
+
