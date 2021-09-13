@@ -33,7 +33,7 @@ repositories {
 
 {% tab title="Maven" %}
 ```markup
-<respositories>
+<repositories>
     <!-- ... -->
     <repository>
         <id>spongepowered</id>
