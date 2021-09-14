@@ -17,14 +17,12 @@ Every tick, the entity will find the goal to follow based on its priority. If th
 You might find yourself wanting to have multiple goals being executed at the same time. For example, having an entity attacking its target while swimming to avoid dying. This is done by adding multiple `EntityAIGroup` to the entity, each group contains a list of goals to be executed independently.
 
 ```java
-
 package demo.entity;
 
 import net.minestom.server.entity.ai.EntityAIGroupBuilder;
 import net.minestom.server.entity.ai.goal.RandomLookAroundGoal;
 import net.minestom.server.entity.type.monster.EntityZombie;
 import net.minestom.server.entity.EntityType;
-import net.minestom.server.utils.Position;
 
 public class ZombieCreature extends EntityCreature {
 

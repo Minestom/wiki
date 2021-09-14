@@ -18,17 +18,7 @@ When trying to save a chunk, [IChunkLoader\#saveChunk](https://minestom.github.i
 
 ### Default behavior
 
-[BasicChunkLoader](https://minestom.github.io/Minestom/net/minestom/server/instance/MinestomBasicChunkLoader.html) is the default chunk loader used by all `InstanceContainer`, it does make use of the storage location of the instance \(WARNING: will not work if the storage location is null\)
-
-### I still cannot join the instance
-
-Even if your instance is able to load chunks it doesn't mean that it will do so automatically. However, you can configure it to do so with the following:
-
-```java
-instanceContainer.enableAutoChunkLoad(true);
-```
-
-It is required because some servers could prefer to have complete control over which chunks are loaded, in order to save memory or for performance purpose.
+`AnvilLoader` is the default chunk loader used by all `InstanceContainer`
 
 ## Create your own chunk type
 

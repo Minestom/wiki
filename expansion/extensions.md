@@ -11,7 +11,7 @@ Summary:
 
 ## Writing your own extension for Minestom
 
-_To test in a dev environnement, see last section._
+_To test in a dev environment, see last section._
 
 Start by creating a new extension class:
 

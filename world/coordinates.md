@@ -1,4 +1,4 @@
-# Coordinates WIP
+# Coordinates
 
 ## Overview
 

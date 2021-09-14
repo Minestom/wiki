@@ -18,7 +18,7 @@
 * [Instances](world/instances.md)
 * [Chunk management](world/chunk-management.md)
 * [Blocks](world/blocks.md)
-* [Block States](world/block-states.md)
+* [Coordinates](world/coordinates.md)
 * [Chunk generator](world/chunk-generator.md)
 * [Batch](world/batch.md)
 
@@ -27,6 +27,7 @@
 * [Adventure](feature/adventure.md)
 * [Player capabilities](feature/player-capabilities.md)
 * [Events](feature/events/README.md)
+  * [Implementation](feature/events/implementation.md)
   * [Server list ping](feature/events/server-list-ping.md)
 * [Items](feature/items.md)
 * [Entities](feature/entities/README.md)
@@ -59,11 +60,11 @@
 
 ## Release Candidates
 
-* [Blocks WIP](release-candidates/blocks-wip.md)
-* [Coordinates WIP](release-candidates/coordinates-wip.md)
 * [Server ticks](release-candidates/tick-threads.md)
 
 ## Archive
 
 * [Events](archive/events.md)
+* [Blocks](archive/blocks.md)
+* [Block States](archive/block-states.md)
 
