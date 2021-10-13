@@ -27,7 +27,7 @@ Here is a correct example:
 
 However even after those steps, you will not be able to connect, what we miss here is an instance (the world)
 
-_Please check the_ [_instances_](../world/instances.md) _and_ [_events_](../archive/events.md) _pages if you have any question about how to create/listen to one_
+_Please check the_ [_instances_](../world/instances.md) _and_ [_events_](../feature/events/) _pages if you have any question about how to create/listen to one_
 
 ```java
 player.addEventCallback(PlayerLoginEvent.class, event -> {

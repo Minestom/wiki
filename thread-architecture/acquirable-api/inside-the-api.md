@@ -12,9 +12,9 @@ I will begin by saying that you do not need to know anything written here to uti
 
 ### Tick architecture
 
-As described in [Server ticks](../../release-candidates/tick-threads.md), ticks are separated in multiple batches. After those are created, every batch gets assigned to a thread from the ThreadProvider thread pool.
+Ticks are separated in multiple batches. After those are created, every batch gets assigned to a thread from the ThreadDispatcher thread pool.
 
-How are batches assigned? Well, each batch has a "cost" based on the number of entities/chunks/instances it contains. This is less efficient compared to the famous `ExecutorService` interface in the JDK, but it has a huge advantage in our case for acquisitions.
+Threads are assigned depending on the `ThreadProvider`, a single thread is used by default.
 
 After all this, threads start and the `UpdateManager` will wait until all of them are done. The cycle continues until the server stops.
 
