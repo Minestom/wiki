@@ -9,7 +9,7 @@ Adding Minestom to your java project is really simple, you only need to add a fe
 ## Repositories
 
 {% tabs %}
-{% tab title="Gradle \(Groovy\)" %}
+{% tab title="Gradle (Groovy)" %}
 ```groovy
 repositories {
     // ...
@@ -20,7 +20,7 @@ repositories {
 ```
 {% endtab %}
 
-{% tab title="Gradle \(Kotlin\)" %}
+{% tab title="Gradle (Kotlin)" %}
 ```groovy
 repositories {
     // ...
@@ -51,7 +51,7 @@ repositories {
 ## Dependencies
 
 {% tabs %}
-{% tab title="Gradle \(Groovy\)" %}
+{% tab title="Gradle (Groovy)" %}
 ```groovy
 dependencies {
     // ...
@@ -60,7 +60,7 @@ dependencies {
 ```
 {% endtab %}
 
-{% tab title="Gradle \(Kotlin\)" %}
+{% tab title="Gradle (Kotlin)" %}
 ```groovy
 dependencies {
     //...
@@ -91,9 +91,8 @@ When using Maven it is recommended to exclude the artifact `shrinkwrap-resolver-
 {% endtab %}
 {% endtabs %}
 
-A list of versions can be found at [https://jitpack.io/\#Minestom/Minestom](https://jitpack.io/#Minestom/Minestom).
+A list of versions can be found at [https://jitpack.io/#Minestom/Minestom](https://jitpack.io/#Minestom/Minestom).
 
 {% hint style="info" %}
 Minestom needs Java 11 or newer in order to run.
 {% endhint %}
-

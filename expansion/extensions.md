@@ -7,7 +7,7 @@ Summary:
 * [Dependencies](extensions.md#dependencies)
 * [Callback order](extensions.md#callback-order)
 * [Testing in a dev environment](extensions.md#testing-in-a-dev-environment)
-* [Dynamically unloading and \(re\)loading extensions](extensions.md#dynamically-unloading-and-re-loading-extensions)
+* [Dynamically unloading and (re)loading extensions](extensions.md#dynamically-unloading-and-re-loading-extensions)
 
 ## Writing your own extension for Minestom
 
@@ -33,7 +33,7 @@ public class TestExtension extends Extension {
 }
 ```
 
-Then, create a `extension.json` at the root of the resources folder \(`src/main/resources` for instance\) and fill it up:
+Then, create a `extension.json` at the root of the resources folder (`src/main/resources` for instance) and fill it up:
 
 ```javascript
 {
@@ -65,7 +65,7 @@ Then, create a `extension.json` at the root of the resources folder \(`src/main/
 * `codeModifiers (optional)`: List of code modifier fully qualified-named classes to modify Minestom classes at launch time
 * `mixinConfig (optional)`: Name of a JSON file for support of Mixin injection
 * `dependencies (optional)`: List of extension names required for this extension to work.
-* `externalDependencies (optional)`: List of external libraries used for this extension \(see Dependencies\)
+* `externalDependencies (optional)`: List of external libraries used for this extension (see Dependencies)
 
 ## How extensions are loaded
 
@@ -73,21 +73,21 @@ This section is purely informational and not required to work on extensions, but
 
 #### 1. Discovery
 
-At launch, Minestom inspects the `extensions` folder \(resolved from the current working folder\) for jar files. For each file found, it then checks if there is an `extension.json` file and attempts to parse it. If the file exists, and parsing succeeds, the extension is considered discovered.
+At launch, Minestom inspects the `extensions` folder (resolved from the current working folder) for jar files. For each file found, it then checks if there is an `extension.json` file and attempts to parse it. If the file exists, and parsing succeeds, the extension is considered discovered.
 
 Discovery can also be forced when using `ExtensionManager#loadDynamicExtension(File)` but works the same.
 
 #### 2. Load order generation / Dependency solving
 
-Then, Minestom ensures all required dependencies for the extension are found. For external dependencies, it will download them if necessary. For extension dependencies, it simply checks if they are already loaded, or about to be loaded \(because discovered in the current load-cycle\).
+Then, Minestom ensures all required dependencies for the extension are found. For external dependencies, it will download them if necessary. For extension dependencies, it simply checks if they are already loaded, or about to be loaded (because discovered in the current load-cycle).
 
 #### 3. Classloading and code modifiers setup
 
-If the extension survived dependency solving, a new classloader is created for the extension to load its classes, and any potential code modifiers declared inside `extension.json` \(including the Mixin config\) are loaded.
+If the extension survived dependency solving, a new classloader is created for the extension to load its classes, and any potential code modifiers declared inside `extension.json` (including the Mixin config) are loaded.
 
 #### 4. Instanciation and callbacks
 
-The extension is then instanciated from the class provided inside `entrypoint`, and the `preInitialize`, `initialize` and `postInitialize` callbacks are called. \(see [Callback order](extensions.md#callback-order) for more information\)
+The extension is then instanciated from the class provided inside `entrypoint`, and the `preInitialize`, `initialize` and `postInitialize` callbacks are called. (see [Callback order](extensions.md#callback-order) for more information)
 
 ## Dependencies
 
@@ -126,7 +126,7 @@ To declare external dependencies, use the `externalDependencies` object inside `
 
 Minestom will download and cache the libraries inside `extensions/.libs/`, so that it does not require to redownload them at each launch.
 
-Different extensions can depend on the same library \(with same coordinates\) and will share the code.
+Different extensions can depend on the same library (with same coordinates) and will share the code.
 
 ## Callback order
 
@@ -137,9 +137,9 @@ During `MinecraftServer#start`, Minestom calls `preInitialize` on all extensions
 The easiest option to ensure your extension is recognized, and that you can register code modifiers, is to wrap your main method inside a special launcher calling `Bootstrap#bootstrap`:
 
 * First argument: `mainClass` fully qualified name of your main class
-* Second argument: `args` program arguments
+*   Second argument: `args` program arguments
 
-  `Bootstrap` will then setup extensions, modifiable classloader and mixin support, then call your `main(String[] args)` method.
+    `Bootstrap` will then setup extensions, modifiable classloader and mixin support, then call your `main(String[] args)` method.
 
 Finally, when launching your wrapping launcher, add the following VM arguments:
 
@@ -165,7 +165,7 @@ public class TestExtensionLauncher {
 }
 ```
 
-## Dynamically unloading and \(re\)loading extensions
+## Dynamically unloading and (re)loading extensions
 
 * [Unloading](extensions.md#unloading)
 * [Reloading](extensions.md#reloading-an-extension)
@@ -178,7 +178,7 @@ Under the hood, Minestom registers each extension inside its own classloader. Th
 
 This feature comes at a cost: because we want to fully reload an extension, all its classes must be reloaded. To do so, their classloader must be garbage-collected. This requires all references to the classloader and its classes to be garbage-collected.
 
-This means that Minestom code _cannot_ have any reference to your extension when reloading/unloading. That includes event callbacks \(for ANY type of event\), custom biomes, custom blocks, commands, and so on.
+This means that Minestom code _cannot_ have any reference to your extension when reloading/unloading. That includes event callbacks (for ANY type of event), custom biomes, custom blocks, commands, and so on.
 
 To ensure your callbacks and code is unregistered from Minestom, override the `terminate` method of your extensions, and unregister everything there.
 
@@ -224,5 +224,4 @@ Now that you know how to dynamically unload and load an extension, the procedure
 
 1. Unload the extension via `ExtensionManager#unload(String)`
 2. Replace the jar
-3. \(Re-\)Load the extension via `ExtensionManager#loadDynamicExtension(File)`
-
+3. (Re-)Load the extension via `ExtensionManager#loadDynamicExtension(File)`

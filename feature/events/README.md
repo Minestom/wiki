@@ -4,7 +4,7 @@
 
 Event listening is a fairly hard part to keep easy while having a clear understanding of the execution flow. In Minestom, a tree is used to define inheritance for filtering and extensibility. Each node of the tree contains:
 
-* Event class, where only subclasses are allowed to enter \(`Event`/`PlayerEvent`/etc...\)
+* Event class, where only subclasses are allowed to enter (`Event`/`PlayerEvent`/etc...)
 * Condition for filtering
 * List of listeners
 * Name for identification
@@ -34,7 +34,7 @@ EventNode<PlayerEvent> playerNode = EventNode.type("player-listener", EventFilte
 EventNode<PlayerEvent> creativeNode = EventNode.value("creative-listener", EventFilter.PLAYER, Player::isCreative);
 ```
 
-Each node needs a name to be debuggable and be retrieved later on, an `EventFilter` containing the event type target and a way to retrieve its actor \(i.e. a `Player` from a `PlayerEvent`\). All factory methods accept a predicate to provide an additional condition for filtering purposes.
+Each node needs a name to be debuggable and be retrieved later on, an `EventFilter` containing the event type target and a way to retrieve its actor (i.e. a `Player` from a `PlayerEvent`). All factory methods accept a predicate to provide an additional condition for filtering purposes.
 
 ### Listener
 
@@ -128,5 +128,4 @@ Server/
 
 ### Custom event
 
-`Event` is an interface that you can freely implement, traits like `CancellableEvent` \(to stop the execution after a certain point\) and `EntityEvent` \(telling the dispatcher that the event contains an entity actor\) are also present to ensure your code will work with existing logic. You can then choose to run your custom event from an arbitrary node \(see [example](./#event-execution)\), or from the root with `EventDispatcher#call(Event)`.
-
+`Event` is an interface that you can freely implement, traits like `CancellableEvent` (to stop the execution after a certain point) and `EntityEvent` (telling the dispatcher that the event contains an entity actor) are also present to ensure your code will work with existing logic. You can then choose to run your custom event from an arbitrary node (see [example](./#event-execution)), or from the root with `EventDispatcher#call(Event)`.

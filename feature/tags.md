@@ -2,7 +2,7 @@
 
 ## Overview
 
-A `Tag` represents a key, and a way to read/write a specific type of data. Generally exposed as a constant, you can use it to apply or read data from any `TagReadable` \(e.g. `Entity`, `ItemStack`, and soon `Block`\). They are implemented using NBT, meaning that applying a tag to an `ItemStack` will modify its NBT, same for `Block`, and can therefore be sent to the client.
+A `Tag` represents a key, and a way to read/write a specific type of data. Generally exposed as a constant, you can use it to apply or read data from any `TagReadable` (e.g. `Entity`, `ItemStack`, and soon `Block`). They are implemented using NBT, meaning that applying a tag to an `ItemStack` will modify its NBT, same for `Block`, and can therefore be sent to the client.
 
 ```java
 Tag<String> myTag = Tag.String("key");
@@ -14,7 +14,7 @@ Tags benefit are:
 
 * Control writability and readability independently with `TagReadable`/`TagWritable`, ideal for immutable classes.
 * Hidden conversion complexity, your code should not have to worry about how a `List<ItemStack>` is serialized.
-* Automatic serialization support \(as backed by NBT\), easing data persistence and debuggability.
+* Automatic serialization support (as backed by NBT), easing data persistence and debuggability.
 
 ## API
 
@@ -46,9 +46,8 @@ instance.getTag(stringTag.defaultValue("default"))
 
 #### Structure
 
-A structure tag is a wrapper around an nbt compound \(map\) independent from all the other tags.
+A structure tag is a wrapper around an nbt compound (map) independent from all the other tags.
 
 #### View
 
 A view can access every tag and is therefore mostly unsafe, should only be used at last resort.
-

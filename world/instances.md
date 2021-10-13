@@ -2,7 +2,7 @@
 
 ## What is an instance
 
-Instances are what replace "worlds" from Minecraft vanilla, those are lightweight and should offer similar properties. There are multiple instances implementation, currently `InstanceContainer` and `SharedInstance` \(both are explained below\)
+Instances are what replace "worlds" from Minecraft vanilla, those are lightweight and should offer similar properties. There are multiple instances implementation, currently `InstanceContainer` and `SharedInstance` (both are explained below)
 
 All instances can be accessed by using the InstanceManager or by getting an entity instance
 
@@ -24,7 +24,7 @@ You can create an `InstanceContainer` by calling:
 InstanceContainer instanceContainer = instanceManager.createInstanceContainer();
 ```
 
-In order to have a valid world generation, you need to specify which `ChunkGenerator` the instance should use, without it no chunk can be generated. \(check [here](https://github.com/Minestom/Minestom/wiki/Chunk-generator) to make your own\)
+In order to have a valid world generation, you need to specify which `ChunkGenerator` the instance should use, without it no chunk can be generated. (check [here](https://github.com/Minestom/Minestom/wiki/Chunk-generator) to make your own)
 
 ```java
 instance.setChunkGenerator(YOUR_GENERATOR);
@@ -34,7 +34,7 @@ instance.setChunkGenerator(YOUR_GENERATOR);
 
 A `SharedInstance` needs to have an `InstanceContainer` linked to it. The "Shared" means that this is an instance that takes of all its chunks from its parent instance container
 
-What does it mean? That if you break or place a block to the instance container, the shared instance will also reflect the change \(same if you place a block using the shared instance methods, changes will be reflected in the instance container and all of its shared instances\)
+What does it mean? That if you break or place a block to the instance container, the shared instance will also reflect the change (same if you place a block using the shared instance methods, changes will be reflected in the instance container and all of its shared instances)
 
 You can create a `SharedInstance` using:
 
@@ -58,11 +58,10 @@ This method is ONLY required if you instantiate your instance object manually, `
 
 It is also essential to notice that, by default, the chunks of the instance are only stored in memory. In order to have them stored in a persistent way, you need to serialize and deserialize them. Please check the [Chunks management](chunk-management.md) page for further information.
 
-Minestom uses Anvil as its default world format, conveniently located in the `AnvilLoader` class. Just put your world in the `world` folder, and see it work :\)
+Minestom uses Anvil as its default world format, conveniently located in the `AnvilLoader` class. Just put your world in the `world` folder, and see it work :)
 
 ```java
 var instance = instanceManager.createInstanceContainer();
 // Save all currently loaded chunks to the IChunkLoader
 instanceContainer.saveChunksToStorage();
 ```
-

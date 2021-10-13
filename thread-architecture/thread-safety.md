@@ -25,7 +25,7 @@ A lot of tools/features exist to make developing thread-safe and efficient code 
 
 ### Fields
 
-Fields need to have some sort of synchronization mechanism. The JVM comes with the `volatile` access flag which forces the field to be always on the main memory instead of in the cache \(with some other details that I will not describe\) so every thread reads the value from the exact same place. Depending on your application, a `ThreadLocal<T>` object could be enough, you could think of it as a `Map<Thread, T>` where Thread is always the current thread. The easiest way to make a field thread-safe is to make it immutable with the `final` keyword, if you cannot change a field, you do not risk multiple threads to change it at the same time.
+Fields need to have some sort of synchronization mechanism. The JVM comes with the `volatile` access flag which forces the field to be always on the main memory instead of in the cache (with some other details that I will not describe) so every thread reads the value from the exact same place. Depending on your application, a `ThreadLocal<T>` object could be enough, you could think of it as a `Map<Thread, T>` where Thread is always the current thread. The easiest way to make a field thread-safe is to make it immutable with the `final` keyword, if you cannot change a field, you do not risk multiple threads to change it at the same time.
 
 {% hint style="warning" %}
 Making a field thread-safe does not mean that the object itself is. But only that accessing the field will always return you the correct instance.
@@ -33,7 +33,6 @@ Making a field thread-safe does not mean that the object itself is. But only tha
 
 ### Methods
 
-Additionally to the fields, you need to way to manage your flow control so two methods are not called at the exact time which is likely to break every non-thread-safe program \(race-condition\). Thread synchronization happens thanks to the help of locks, those are mechanisms that will make the current thread waits until someone tells him that he can now open the door and close behind him.
+Additionally to the fields, you need to way to manage your flow control so two methods are not called at the exact time which is likely to break every non-thread-safe program (race-condition). Thread synchronization happens thanks to the help of locks, those are mechanisms that will make the current thread waits until someone tells him that he can now open the door and close behind him.
 
 The JVM is again here to the rescue with the `synchronized` flag or the low-level `Object#wait/notify()` methods. There are also higher-level tools such as `CountDownLatch`, `Phaser`, and even some handy safe collections to replace your non-thread-safe ones! `ConcurrentHashMap`, `CopyOnWriteArrayList`, `ConcurrentLinkedQueue`, and a lot of other ones available in your [JDK](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/package-summary.html).
-

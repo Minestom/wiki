@@ -42,7 +42,7 @@ globalEventHandler.addEventCallback(EVENT_CLASS, event -> {
 });
 ```
 
-Another viable solution is to use `ConnectionManager#addPlayerInitialization` which is called just after the creation of the player object \(you SHOULDN'T do anything other than registering events\) and allow to have player-specific listeners.
+Another viable solution is to use `ConnectionManager#addPlayerInitialization` which is called just after the creation of the player object (you SHOULDN'T do anything other than registering events) and allow to have player-specific listeners.
 
 ```java
 ConnectionManager connectionManager = MinecraftServer.getConnectionManager();
@@ -66,4 +66,3 @@ player.callEvent(MyCustomEvent.class, customEvent);
 ```
 
 You can then retrieve data from your event object and do whatever you want with it.
-

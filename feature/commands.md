@@ -72,11 +72,11 @@ public class TestCommand extends Command {
 }
 ```
 
-![The command in action](../.gitbook/assets/screenshot-2021-02-12-at-04.57.33.png)
+![The command in action](<../.gitbook/assets/Screenshot 2021-02-12 at 04.57.33.png>)
 
 ## Argument callback
 
-Let's say you have the command "/set &lt;number&gt;" and the player types "/set text", you would probably like to warn the player that the argument requires a number and not text. This is where argument callbacks come in!
+Let's say you have the command "/set \<number>" and the player types "/set text", you would probably like to warn the player that the argument requires a number and not text. This is where argument callbacks come in!
 
 When the command parser detects a wrongly typed argument, it will first check if the given argument has an error callback to execute, if not, the default executor is used.
 
@@ -114,11 +114,11 @@ public class TestCommand extends Command {
 }
 ```
 
-![Argument callback detecting an invalid number](../.gitbook/assets/screenshot-2021-02-12-at-05.27.21.png)
+![Argument callback detecting an invalid number](<../.gitbook/assets/Screenshot 2021-02-12 at 05.27.21.png>)
 
 ## Command data
 
-One of the very important features of the command API is the fact that every syntax can return optional data. This data is presented in a structure similar to a Map \(in fact, it is only a small wrapper around it\).
+One of the very important features of the command API is the fact that every syntax can return optional data. This data is presented in a structure similar to a Map (in fact, it is only a small wrapper around it).
 
 ```java
 addSyntax((sender, context) -> {
@@ -130,7 +130,7 @@ addSyntax((sender, context) -> {
 }, Integer("number"));
 ```
 
-The data will be created and returned every time the syntax is called. It can then be retrieved from the `CommandResult`. `CommandManager#executeServerCommand(String)` allows you to execute a command as a `ServerSender` \(which has the benefit of not printing anything on `CommandSender#sendMessage(String)`, and permit to differentiate this sender from a player or the console\).
+The data will be created and returned every time the syntax is called. It can then be retrieved from the `CommandResult`. `CommandManager#executeServerCommand(String)` allows you to execute a command as a `ServerSender` (which has the benefit of not printing anything on `CommandSender#sendMessage(String)`, and permit to differentiate this sender from a player or the console).
 
 ```java
 CommandResult result = MinecraftServer.getCommandManager().executeServerCommand("command 5");
@@ -147,4 +147,3 @@ if (result.getType() == CommandResult.Type.SUCCESS) {
 ```
 
 This tool opens a lot of possibilities, including powerful scripts, remote calls, and an overall easy-to-use interface for all your APIs.
-

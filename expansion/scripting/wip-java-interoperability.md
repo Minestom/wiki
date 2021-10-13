@@ -17,5 +17,4 @@ ScriptManager.setCommandPermission(player -> player.getGameMode()==GameMode.CREA
 ScriptManager.API;
 ```
 
-`ScriptManager#API` gives you access to all the scripting components \(directly linked to commands, eg region\), and also `ScriptAPI#getExecutor` giving you the methods needed to run commands & signals.
-
+`ScriptManager#API` gives you access to all the scripting components (directly linked to commands, eg region), and also `ScriptAPI#getExecutor` giving you the methods needed to run commands & signals.

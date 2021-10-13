@@ -17,5 +17,4 @@ Examples of custom blocks can be found [here](https://github.com/Minestom/Minest
 
 Some things to point out are the `CustomBlock#getCustomBlockId` which should return a UNIQUE id independent from the vanilla block id and should never be changed after having chunks saved since it could lead to corruption.
 
-There is also a special `CustomBlock#getBreakDelay` which can be used to customize the breaking time of any custom block, can be disabled when &lt; 0
-
+There is also a special `CustomBlock#getBreakDelay` which can be used to customize the breaking time of any custom block, can be disabled when < 0

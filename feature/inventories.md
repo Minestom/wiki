@@ -1,6 +1,6 @@
 # Inventories
 
-Inventories take a large place in Minecraft, they are used both for items storage and client&lt;-&gt;server communication.
+Inventories take a large place in Minecraft, they are used both for items storage and client<->server communication.
 
 In order to create one, you can simply call its constructor by specifying an InventoryType and its name
 
@@ -16,11 +16,11 @@ player.openInventory(inventory);
 player.closeInventory();
 ```
 
-Sometimes you will want to add callbacks to your inventory actions \(clicks\). There are currently 3 ways of interacting with them.
+Sometimes you will want to add callbacks to your inventory actions (clicks). There are currently 3 ways of interacting with them.
 
 ### Adding an inventory condition
 
-Inventory conditions are specific to only one inventory. You are able to cancel the interaction by using InventoryConditionResult\#setCancel
+Inventory conditions are specific to only one inventory. You are able to cancel the interaction by using InventoryConditionResult#setCancel
 
 ```java
 inventory.addInventoryCondition((player, slot, clickType, inventoryConditionResult) -> {
@@ -30,11 +30,10 @@ inventory.addInventoryCondition((player, slot, clickType, inventoryConditionResu
 });
 ```
 
-### InventoryPreClickEvent \(see [the events page](../archive/events.md)\)
+### InventoryPreClickEvent (see [the events page](../archive/events.md))
 
-Really similar to inventory conditions except that it listens to every inventory \(you can obviously add checks when needed, but its goal is to be more "general"\)
+Really similar to inventory conditions except that it listens to every inventory (you can obviously add checks when needed, but its goal is to be more "general")
 
-### InventoryClickEvent \(see [the events page](../archive/events.md)\)
+### InventoryClickEvent (see [the events page](../archive/events.md))
 
-This event only listens to successful actions \(not canceled\) and is fired after setting the items in the inventory.
-
+This event only listens to successful actions (not canceled) and is fired after setting the items in the inventory.

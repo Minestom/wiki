@@ -1,6 +1,6 @@
 # Adventure
 
-Adventure is a library for server-controllable user interface elements in Minecraft. For a guide on how to use Adventure, check out the [Adventure documentation](https://docs.adventure.kyori.net/).
+Adventure is a library for server-controllable user interface elements in Minecraft. For a guide on how to use Adventure, check out the [Adventure documentation](https://docs.adventure.kyori.net).
 
 ## Audiences
 
@@ -8,7 +8,7 @@ Adventure is a library for server-controllable user interface elements in Minecr
 
 The following, taken from the Adventure documentation, describes the concept of an `Audience`:
 
-> As an API, `Audience` is designed to be a universal interface for any player, command sender, console, or otherwise who can receive text, titles, boss bars, and other Minecraft media. This allows extending audiences to cover more than one individual receiver - possible “audiences” could include a team, server, world, or all players that satisfy some predicate \(such as having a certain permission\). The universal interface also allows reducing boilerplate by gracefully degrading functionality if it is not applicable.
+> As an API, `Audience` is designed to be a universal interface for any player, command sender, console, or otherwise who can receive text, titles, boss bars, and other Minecraft media. This allows extending audiences to cover more than one individual receiver - possible “audiences” could include a team, server, world, or all players that satisfy some predicate (such as having a certain permission). The universal interface also allows reducing boilerplate by gracefully degrading functionality if it is not applicable.
 
 Put simply, every class that implements `Audience`, or one of the subtypes, provides access to the full Adventure API.
 
@@ -92,7 +92,7 @@ The added benefit of using the audience provided by the `Viewable` Class is that
 
 Alongside the deprecation of the Minestom `ChatColor` class, a new `color` package has been created to replace all existing usage of the `ChatColor` class. These new classes are an accurate representation of how Minecraft stores colors for certain objects and allows for proper validation, preventing developers from applying styles to colorable objects at compile-time.
 
-The base class is the `Color` class is a general purpose class for representing RGB colors, similar to `java.awt.Color`. As this class implements Adventure's `RGBLike` interface, it can be used anywhere in the Adventure API that requires coloring \(e.g. component text\). A new addition to this class is the `mixWith` method which mixes this color with a series of other `RGBLike` colors to create a new color using the same method that vanilla Minecraft uses to mix dyes and colors.
+The base class is the `Color` class is a general purpose class for representing RGB colors, similar to `java.awt.Color`. As this class implements Adventure's `RGBLike` interface, it can be used anywhere in the Adventure API that requires coloring (e.g. component text). A new addition to this class is the `mixWith` method which mixes this color with a series of other `RGBLike` colors to create a new color using the same method that vanilla Minecraft uses to mix dyes and colors.
 
 There is also one additional color class; `DyeColor`. This enum represents the different colors of the dyes within Minecraft and provides values for each of the different vanilla dye types. This class includes a method to get the RGB color of the dye and the equivalent firework color. As with the `Color` class, this class also implements `RGBLike` so it can also be used throughout the Adventure API.
 
@@ -212,4 +212,3 @@ However, with the Adventure API you would do:
 ```java
 player.showTitle(Title.title(title, subtitles, Times.of(100, 150, 25)));
 ```
-

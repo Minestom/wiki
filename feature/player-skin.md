@@ -2,7 +2,7 @@
 
 There are three ways of defining a player skin:
 
-* Setting your player UUID \(see [here](player-uuid.md)\) to their Mojang UUID, clients by default retrieve skin based on this value
+* Setting your player UUID (see [here](player-uuid.md)) to their Mojang UUID, clients by default retrieve skin based on this value
 * Changing it in the `PlayerSkinInitEvent` event
 * Using the method `Player#setSkin(PlayerSkin)`
 
@@ -24,17 +24,17 @@ Those methods make direct requests to the Mojang API, it is recommended to cache
 
 ### Retrieve texture value & signature manually
 
-Most of what I will say is described here: [https://wiki.vg/Mojang\_API\#Username\_-.3E\_UUID\_at\_time](https://wiki.vg/Mojang_API#Username_-.3E_UUID_at_time)
+Most of what I will say is described here: [https://wiki.vg/Mojang_API#Username\_-.3E_UUID_at_time](https://wiki.vg/Mojang_API#Username\_-.3E_UUID_at_time)
 
 You firstly need to get your Mojang UUID, which can be done by a request based on your username:
 
-```text
+```
  GET https://api.mojang.com/users/profiles/minecraft/<username>
 ```
 
 Then, after getting your UUID:
 
-```text
+```
  GET https://sessionserver.mojang.com/session/minecraft/profile/<uuid>?unsigned=false
 ```
 
@@ -51,7 +51,7 @@ player.addEventCallback(PlayerSkinInitEvent.class, event -> {
 });
 ```
 
-### Player\#setSkin
+### Player#setSkin
 
 Not much to say here
 
@@ -59,4 +59,3 @@ Not much to say here
 PlayerSkin skin = new PlayerSkin(textureValue, signature);
 player.setSkin(skin);
 ```
-

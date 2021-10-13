@@ -18,7 +18,7 @@ AdvancementManager#getTab(String /* namespaced id */);
 
 > Namespaced IDs follow the format of `namespace:id`, and may not have any upper case letters.
 
-An `AdvancementRoot` is the origin `Advancement` for a tab, and has the same creation method as a regular `Advancement` \(see below\) with the exception of the background. A background is a reference to a texture file on the client, for example `minecraft:textures/block/stone.png` for stone block.
+An `AdvancementRoot` is the origin `Advancement` for a tab, and has the same creation method as a regular `Advancement` (see below) with the exception of the background. A background is a reference to a texture file on the client, for example `minecraft:textures/block/stone.png` for stone block.
 
 ```java
 AdvancementRoot#<init>(JsonMessage, JsonMessage, Material, FrameType, int, int, String /* background */);
@@ -50,4 +50,3 @@ Advancement#setAchieved(Boolean);
 ```
 
 > To make an advancement show a toast, use `Advancement#showToast(Boolean)` before setting it to achieved.
-

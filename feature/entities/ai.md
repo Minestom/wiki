@@ -36,4 +36,3 @@ public class ZombieCreature extends EntityCreature {
     }
 }
 ```
-

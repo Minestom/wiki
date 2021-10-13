@@ -8,7 +8,7 @@ Some things are needed before being able to connect to your Minestom server.
 
 * Initialize the server
 * Registering events/commands
-* Optional: create a ResponseDataConsumer \(can be specified in the start\(\) method\)
+* Optional: create a ResponseDataConsumer (can be specified in the start() method)
 * Start the server at the specified port and address
 
 Here is a correct example:
@@ -25,7 +25,7 @@ Here is a correct example:
     }
 ```
 
-However even after those steps, you will not be able to connect, what we miss here is an instance \(the world\)
+However even after those steps, you will not be able to connect, what we miss here is an instance (the world)
 
 _Please check the_ [_instances_](../world/instances.md) _and_ [_events_](../archive/events.md) _pages if you have any question about how to create/listen to one_
 
@@ -163,4 +163,3 @@ jar {
     }
 }
 ```
-
