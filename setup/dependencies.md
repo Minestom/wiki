@@ -4,7 +4,7 @@ description: Describes how to add Minestom as a dependency in your project.
 
 # Dependencies
 
-Adding Minestom to your java project is really simple, you only need to add a few repositories:
+Adding Minestom to your Java project is really simple, you only need to add a few repositories:
 
 ## Repositories
 
