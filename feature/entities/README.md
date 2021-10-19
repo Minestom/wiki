@@ -8,7 +8,7 @@ In Minestom all entities must extend `Entity` directly or from their subclasses.
 
 Entity creation starts with an entity class selection. Regardless of the type of entity being created, you can instantiate it as any of the following classes:
 
-* `Entity` is the most barebones version of an entity. It provides you with a minimal API \(and minimal overhead\), including spawning packet handling, metadata support, default physics.
+* `Entity` is the most barebones version of an entity. It provides you with a minimal API (and minimal overhead), including spawning packet handling, metadata support, default physics.
 * `LivingEntity` extends `Entity` and also allows you to grant your entity liveliness. The type of entity doesn't matter, minestom doesn't restrict you to what Mojang intends. If you give it health, it will have health. This subclass also provides an API to modify the entity's equipment and attributes.
 * `EntityCreature` extends `LivingEntity` and also provides you with the navigation and AI API.
 
@@ -87,4 +87,3 @@ meta.setCustomNameVisible(true);
 meta.setCustomName(Component.text("Dangerous boat", NamedTextColor.RED));
 meta.setNotifyAboutChanges(true); // and this
 ```
-

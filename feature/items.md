@@ -7,7 +7,7 @@ Items in Minestom are **immutables**, meaning that an `ItemStack` cannot change 
 * Thread safety, as you cannot change the same object from multiple threads.
 * No side effects where a change to an item would modify all inventories where the same object is present.
 * Reuse `ItemStack` in multiple places. For example, if all your players start with the same set of items, you could just store those as constants and add them to each player inventory to avoid a lot of allocation.
-* Related to the second point, it allows us to internally cache items packet \(eg: window packet\) to keep improving performance
+* Related to the second point, it allows us to internally cache items packet (eg: window packet) to keep improving performance
 
 ## API
 
@@ -49,4 +49,3 @@ item = item.with(builder -> {
                 .displayName(Component.text("Again..."));
         });
 ```
-

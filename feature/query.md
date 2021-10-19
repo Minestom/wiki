@@ -6,7 +6,7 @@ description: Minestom's implementation of the GameSpy4 protocol.
 
 ## Overview
 
-Just like Vanilla servers, Minestom supports the GameSpy4 protocol server listener. This can be used to obtain information from the server using query software like [https://mcsrvstat.us/](https://mcsrvstat.us/) or Dinnerbone's [mcstatus](https://github.com/Dinnerbone/mcstatus) program.
+Just like Vanilla servers, Minestom supports the GameSpy4 protocol server listener. This can be used to obtain information from the server using query software like [https://mcsrvstat.us/](https://mcsrvstat.us) or Dinnerbone's [mcstatus](https://github.com/Dinnerbone/mcstatus) program.
 
 For more information about the query system, see [https://wiki.vg/Query](https://wiki.vg/Query).
 
@@ -29,4 +29,3 @@ The `BasicQueryEvent` is called when the requester is asking for basic informati
 ### Full queries
 
 The `FullQueryEvent` is called when the requester is asking for full information about the server. This event uses the `FullQueryResponse` class to write an arbitrary set of data in a key-value format in addition to a list of online players. There are some keys that should be filled in as standard. These are set by default and can be edited using the `put` method that accepts a `QueryKey`, this being an enum containing the default key-value mappings. Other arbitrary mappings can be inserted using the other `put` method.
-

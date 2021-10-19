@@ -4,7 +4,7 @@ Minestom features a number of interaction methods exist for players. Many of the
 
 It is worth reviewing the [Adventure API](adventure.md) before this, because these systems depend heavily on `Component`.
 
-## Sidebars \(Scoreboards\)
+## Sidebars (Scoreboards)
 
 `Sidebar`s can be used to display up to 16 lines on a scoreboard for the player. They are created given a title as follows:
 
@@ -23,7 +23,7 @@ Sidebar#removeViewer(Player);
 
 ### Sidebar Line
 
-Lines on a sidebar are made up of `ScoreboardLine`s. They render on the scoreboard in order of their line number \(score\), where the vertically highest line represents the highest line number \(score\). If two lines have the same line number \(score\), they will be sorted alphabetically.
+Lines on a sidebar are made up of `ScoreboardLine`s. They render on the scoreboard in order of their line number (score), where the vertically highest line represents the highest line number (score). If two lines have the same line number (score), they will be sorted alphabetically.
 
 `ScoreboardLine`s can be created using their constructor:
 
@@ -79,4 +79,3 @@ NotificationCenter.send(Notification, Collection<Player>);
 The example renders as the following:
 
 ![](../.gitbook/assets/notification.png)
-

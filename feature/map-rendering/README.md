@@ -8,9 +8,9 @@ The thing is... the server decides the contents, and there is no requirement to 
 
 ## Writing map data - Low level API
 
-Minestom does not save map data for you, but it will send it for you. At the most basic level, map framebuffers \(the 128x128 pixel area the server draws on\) hold the 1-byte indices of colors in a pre-determined color palette, but not RGB.
+Minestom does not save map data for you, but it will send it for you. At the most basic level, map framebuffers (the 128x128 pixel area the server draws on) hold the 1-byte indices of colors in a pre-determined color palette, but not RGB.
 
-Once you have selected a map ID to write to \(see [MapMeta](https://github.com/Minestom/Minestom/blob/master/src/main/java/net/minestom/server/item/metadata/MapMeta.java) for more information\), you can write its contents via a `MapDataPacket`:
+Once you have selected a map ID to write to (see [MapMeta](https://github.com/Minestom/Minestom/blob/master/src/main/java/net/minestom/server/item/metadata/MapMeta.java) for more information), you can write its contents via a `MapDataPacket`:
 
 ```java
 MapDataPacket mapData = new MapDataPacket();
@@ -24,12 +24,12 @@ mapData.columns = COLUMN_COUNT;
 
 * `mapId` is an `int` to be able to reference which map to change.
 * `data` is a `byte[]` array which holds the indices inside the color palette. Its size should be at least `rows*columns`.
-* `x` is an unsigned byte \(stored inside a `short`\) which represents the X coordinate of the left-most pixel to write. Ranges from 0 to 127 \(inclusive\).
-* `y` is an unsigned byte \(stored inside a `short`\) which represents the Y coordinate of the top-most pixel to write. Ranges from 0 to 127 \(inclusive\).
-* `rows` is an unsigned byte \(stored inside a `short`\) which represents the number of rows to update.
-* `columns` is an unsigned byte \(stored inside a `short`\) which represents the number of columns to update.
+* `x` is an unsigned byte (stored inside a `short`) which represents the X coordinate of the left-most pixel to write. Ranges from 0 to 127 (inclusive).
+* `y` is an unsigned byte (stored inside a `short`) which represents the Y coordinate of the top-most pixel to write. Ranges from 0 to 127 (inclusive).
+* `rows` is an unsigned byte (stored inside a `short`) which represents the number of rows to update.
+* `columns` is an unsigned byte (stored inside a `short`) which represents the number of columns to update.
 
-Pixels are stored in a row-major configuration \(ie index is defined by `x+width*y`\). Attempting to write pixels outside of the 128x128 area WILL crash and/or disconnect the client, so be careful. Minestom does not check which area you are writing to.
+Pixels are stored in a row-major configuration (ie index is defined by `x+width*y`). Attempting to write pixels outside of the 128x128 area WILL crash and/or disconnect the client, so be careful. Minestom does not check which area you are writing to.
 
 You can then send the packet to players through `PlayerConnection#sendPacket(ServerPacket)`
 
@@ -37,7 +37,7 @@ You can then send the packet to players through `PlayerConnection#sendPacket(Ser
 
 While directly writing to the pixel buffer is fast and easy for simple graphics, it is rapidly cumbersome to write each pixel individually. For this reason, Minestom provides framebuffers: a high-level API for rendering onto maps.
 
-Framebuffers are split into 2 categories: `Framebuffer` and `LargeFramebuffer`. The difference is that `Framebuffer` is meant to render to a single map \(so resolution limited to 128x128\), while `LargeFramebuffer` can render to any framebuffer size, by rendering over multiple maps. Large framebuffers offer a method to create `Framebuffer` views to help with rendering onto a map.
+Framebuffers are split into 2 categories: `Framebuffer` and `LargeFramebuffer`. The difference is that `Framebuffer` is meant to render to a single map (so resolution limited to 128x128), while `LargeFramebuffer` can render to any framebuffer size, by rendering over multiple maps. Large framebuffers offer a method to create `Framebuffer` views to help with rendering onto a map.
 
 Once you have finished rendering on your framebuffer, you can ask it to prepare the `MapDataPacket` for you.
 
@@ -53,7 +53,7 @@ Framebuffers have 3 default flavors provided by Minestom: Direct, Graphics2D and
 
 ### `DirectFramebuffer` / `LargeDirectFramebuffer`
 
-Direct framebuffers are very close to writing directly the pixel buffer inside `MapDataPacket`. They hold an internal `byte[]` representing the colors on the map, which can be accessed and modified through `get` and `set` respectively. The entire internal buffer is also exposed via `getColors()` \(you can modify it from the returned value\).
+Direct framebuffers are very close to writing directly the pixel buffer inside `MapDataPacket`. They hold an internal `byte[]` representing the colors on the map, which can be accessed and modified through `get` and `set` respectively. The entire internal buffer is also exposed via `getColors()` (you can modify it from the returned value).
 
 Example use:
 
@@ -88,4 +88,3 @@ Graphics2D framebuffers also support getting/setting pixels individually if nece
 ### GLFW-Capable buffers
 
 [This is an article all to itself.](glfwmaprendering.md)
-

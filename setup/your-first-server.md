@@ -8,7 +8,7 @@ Some things are needed before being able to connect to your Minestom server.
 
 * Initialize the server
 * Registering events/commands
-* Optional: create a ResponseDataConsumer \(can be specified in the start\(\) method\)
+* Optional: create a ResponseDataConsumer (can be specified in the start() method)
 * Start the server at the specified port and address
 
 Here is a correct example:
@@ -25,9 +25,9 @@ Here is a correct example:
     }
 ```
 
-However even after those steps, you will not be able to connect, what we miss here is an instance \(the world\)
+However even after those steps, you will not be able to connect, what we miss here is an instance (the world)
 
-_Please check the_ [_instances_](../world/instances.md) _and_ [_events_](../archive/events.md) _pages if you have any question about how to create/listen to one_
+_Please check the_ [_instances_](../world/instances.md) _and_ [_events_](../feature/events/) _pages if you have any question about how to create/listen to one_
 
 ```java
 player.addEventCallback(PlayerLoginEvent.class, event -> {
@@ -80,14 +80,15 @@ public class MainDemo {
     private static class GeneratorDemo implements ChunkGenerator {
 
         @Override
-        public void generateChunkData(ChunkBatch batch, int chunkX, int chunkZ) {
+        public void generateChunkData(@NotNull ChunkBatch batch, int chunkX, int chunkZ) {
             // Set chunk blocks
-            for (byte x = 0; x < Chunk.CHUNK_SIZE_X; x++)
+            for (byte x = 0; x < Chunk.CHUNK_SIZE_X; x++) {
                 for (byte z = 0; z < Chunk.CHUNK_SIZE_Z; z++) {
                     for (byte y = 0; y < 40; y++) {
                         batch.setBlock(x, y, z, Block.STONE);
                     }
                 }
+            }
         }
 
         @Override
@@ -163,4 +164,3 @@ jar {
     }
 }
 ```
-

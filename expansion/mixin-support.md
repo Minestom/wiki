@@ -4,15 +4,15 @@
 
 In your extension.json file, add this line:
 
-```text
+```
   "mixinConfig": "mixins.testextension.json"
 ```
 
 Replace `mixins.testextension.json` with the name of the JSON configuration file for Mixin.
 
-Example of Mixin configuration for Minestom \(`mixins.testextension.json`\):
+Example of Mixin configuration for Minestom (`mixins.testextension.json`):
 
-```text
+```
 {
   "required": true,
   "minVersion": "0.8",
@@ -27,4 +27,3 @@ Example of Mixin configuration for Minestom \(`mixins.testextension.json`\):
 ```
 
 For more information, check the Mixin wiki and documentation: [Wiki](https://github.com/SpongePowered/Mixin/wiki) and [Documentation](https://docs.spongepowered.org/stable/en/contributing/implementation/mixins.html)
-

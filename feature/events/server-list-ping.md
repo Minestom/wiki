@@ -67,4 +67,3 @@ event.noDelay();
 ```
 
 Finally, just as the `ServerListPingEvent`, the underlying `PlayerConnection` is accessible.
-

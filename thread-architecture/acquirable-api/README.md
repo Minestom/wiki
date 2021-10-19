@@ -41,7 +41,7 @@ The entity object from the consumer should however **only** be used inside of th
     }
 ```
 
-Now, if you do not need the acquisition to happen synchronously you have the choice to create the request and handle it later on \(at the end of the tick\), for this you simply need to "schedule" the acquisition.
+Now, if you do not need the acquisition to happen synchronously you have the choice to create the request and handle it later on (at the end of the tick), for this you simply need to "schedule" the acquisition.
 
 ```java
 Acquirable<Entity> acquirableEntity = getAcquiredElement();
@@ -54,7 +54,7 @@ System.out.println("Hey I scheduled the acquisition");
 
 Will print you:
 
-```text
+```
 Hey I am starting the acquisition
 Hey I scheduled the acquisition
 Hallo
@@ -100,7 +100,7 @@ for(Acquirable<Player> acquirablePlayer : acquirablePlayers){
 
 It does work, but not efficient at all since you have to acquire each element one by one.
 
-#### AcquirableCollection\#forEachSync
+#### AcquirableCollection#forEachSync
 
 It is the most efficient way to loop through a collection, the callback is executed for each individual element and stops only once all elements have been acquired.
 
@@ -148,5 +148,4 @@ Stream<Entity> entities = Acquirable.currentEntities();
 
 You have obviously the right to do what you prefer. But as a general rule, you should return `Acquirable<T>` objects and request for `T`.
 
-The reason behind this choice is that you are sure \(unless unsafe methods are used\) that you will have safe access to the given parameter, but that you do not know what the user will want to do with it once you return.
-
+The reason behind this choice is that you are sure (unless unsafe methods are used) that you will have safe access to the given parameter, but that you do not know what the user will want to do with it once you return.

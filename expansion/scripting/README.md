@@ -77,4 +77,3 @@ ScriptManager.load();
 ```
 
 `ScriptManager` contains everything you would need to interacts with scripts, learn more about it [here](wip-java-interoperability.md).
-

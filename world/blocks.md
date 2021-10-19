@@ -5,7 +5,7 @@
 A `Block` is an **immutable** object containing:
 
 * Namespace & protocol id
-* `Map<String, String>` containing properties \(e.g. waterlogged\)
+* `Map<String, String>` containing properties (e.g. waterlogged)
 * State id which is the numerical id defining the block visual used in chunk packets and a few others
 * Optional nbt
 * A `BlockHandler`
@@ -41,7 +41,7 @@ hardness = block.registry().hardness();
 
 ## Tags
 
-`Block` implements `TagReadable` meaning that they can contain all kinds of data. \(see [Tags](../feature/tags.md)\)
+`Block` implements `TagReadable` meaning that they can contain all kinds of data. (see [Tags](../feature/tags.md))
 
 ```java
 Tag<String> tag = Tag.String("my-key");
@@ -58,7 +58,7 @@ NBTCompound nbt = tnt.nbt();
 Tags data can be serialized and will be saved on disk automatically.
 
 {% hint style="warning" %}
-Tags `id`, `x`, `y`, `z` and `keepPacked`are used by the anvil loader and may cause unexpected behavior when added to blocks.
+Tags `id`, `x`, `y`, `z `and `keepPacked`are used by the anvil loader and may cause unexpected behavior when added to blocks.
 {% endhint %}
 
 ## Handlers
@@ -98,4 +98,3 @@ BlockHandler handler = new DemoHandler();
 Block stone = Block.STONE.withHandler(handler);
 Block grass = Block.GRASS.withHandler(handler);
 ```
-

@@ -4,7 +4,7 @@ Permissions are the feature allowing you to determine if a player is able to per
 
 [`Permission`](https://minestom.github.io/Minestom/net/minestom/server/permission/Permission.html) is an immutable class that can be added to any [`PermissionHandler`](https://minestom.github.io/Minestom/net/minestom/server/permission/PermissionHandler.html).
 
-A permission contains 2 things, a unique name \(same as with Bukkit if you are familiar with it\), and an optional `NBTCompound` which can be used to add additional data to the permission \(no more "my.permission.X" where X represents a number\).
+A permission contains 2 things, a unique name (same as with Bukkit if you are familiar with it), and an optional `NBTCompound` which can be used to add additional data to the permission (no more "my.permission.X" where X represents a number).
 
 ## Handling permission access
 
@@ -26,5 +26,4 @@ Alternatively, `PermissionHandler#hasPermission(Permission)` can be used. It doe
 
 Nothing is automatically saved persistently in Minestom, permissions are not an exception.
 
-Permissions must be serialized and deserialized back manually if you want such a feature. You are lucky since the `Permission` class can easily be interpreted as 2 strings, one being the permission name, and the second representing the optional data using `NBTCompound#toSNBT()` \(and deserialized with `SNBTParser#parse()`\).
-
+Permissions must be serialized and deserialized back manually if you want such a feature. You are lucky since the `Permission` class can easily be interpreted as 2 strings, one being the permission name, and the second representing the optional data using `NBTCompound#toSNBT()` (and deserialized with `SNBTParser#parse()`).

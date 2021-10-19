@@ -2,7 +2,7 @@
 
 ## Overview
 
-All coordinates classes in Minestom are immutables \(like a lot of others\), `Point` being the common interface, and the implementations `Pos` and `Vec`.
+All coordinates classes in Minestom are immutables (like a lot of others), `Point` being the common interface, and the implementations `Pos` and `Vec`.
 
 `Vec` is a containing for the x, y & z coordinates, adding a few vector methods. `Pos` contains the 3 coordinates + yaw/pitch for the view. `Point` should be used when the type does not matter.
 
@@ -11,7 +11,7 @@ All coordinates classes in Minestom are immutables \(like a lot of others\), `Po
 Some may express concern about the performance penalty of using immutable classes for math. Here is our reasoning:
 
 * Immutability give us the guarantee that coordinate objects can be reused, reducing allocation
-* [Scalar replacement](https://shipilev.net/jvm/anatomy-quarks/18-scalar-replacement/) may happen in some specific situation \(builder mode\)
+* [Scalar replacement](https://shipilev.net/jvm/anatomy-quarks/18-scalar-replacement/) may happen in some specific situation (builder mode)
 * [Primitive objects](https://openjdk.java.net/jeps/401) will ultimately arrive, removing the concern altogether and improving performance compared to the mutable equivalent
 
 ## API
@@ -60,4 +60,3 @@ final int blockX = point.blockX();
 final int blockY = point.blockY();
 final int blockZ = point.blockZ();
 ```
-

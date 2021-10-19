@@ -57,14 +57,3 @@
 
 * [Data](storage/data.md)
 * [Persistent data](storage/persistent-data.md)
-
-## Release Candidates
-
-* [Server ticks](release-candidates/tick-threads.md)
-
-## Archive
-
-* [Events](archive/events.md)
-* [Blocks](archive/blocks.md)
-* [Block States](archive/block-states.md)
-

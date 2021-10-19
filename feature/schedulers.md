@@ -42,4 +42,3 @@ schedulerManager.buildShutdownTask(new Runnable() {
     }
 }).schedule();
 ```
-
