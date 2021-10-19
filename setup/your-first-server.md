@@ -109,15 +109,15 @@ public class MainDemo {
 
 After being able to launch the program you will probably want to build it and distribute it to a host or even a friend.
 
-Minestom does not provide a jar of itself for the simple reason that this is your job. You will need to build your server and include all the Minestom dependencies.
+Minestom does not provide a JAR of itself for the simple reason that this is your job. You will need to build your server and include all the Minestom dependencies.
 
-First of all, the fat jar can be built using the Gradle shadow plugin as simple as adding
+First of all, the fat JAR can be built using the Gradle shadow plugin as simple as adding
 
 ```groovy
 id "com.github.johnrengelman.shadow" version "6.1.0"
 ```
 
-If the jar is meant to be run, you also need to specify the class containing the main method.
+If the JAR is meant to be run, you also need to specify the class containing the main method.
 
 ```groovy
 // Code sample, be sure to modify the 'Main-Class' value
@@ -130,7 +130,7 @@ jar {
 }
 ```
 
-With all of this set, all that is remaining is the build command, shadow provides the handy `shadowJar` task that you need to run and a working jar will magically appear!
+With all of this set, all that is remaining is the build command, shadow provides the handy `shadowJar` task that you need to run and a working JAR will magically appear!
 
 Now, just to be sure that you understood everything, here is the complete `build.gradle` file that I have used to demonstrate it.
 
