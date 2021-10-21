@@ -94,5 +94,5 @@ When using Maven it is recommended to exclude the artifact `shrinkwrap-resolver-
 A list of versions can be found at [https://jitpack.io/#Minestom/Minestom](https://jitpack.io/#Minestom/Minestom).
 
 {% hint style="info" %}
-Minestom needs Java 11 or newer in order to run.
+Minestom needs Java 17 or newer in order to run.
 {% endhint %}
