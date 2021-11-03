@@ -1,6 +1,6 @@
 # Player capabilities
 
-Minestom features a number of interaction methods exist for players. Many of them are described below, however this list is not exhaustive.
+Minestom features a number of interaction methods for players. Many of them are described below, however this list is not exhaustive.
 
 It is worth reviewing the [Adventure API](adventure.md) before this, because these systems depend heavily on `Component`.
 
@@ -8,7 +8,7 @@ It is worth reviewing the [Adventure API](adventure.md) before this, because the
 
 `Sidebar`s can be used to display up to 16 lines on a scoreboard for the player. They are created given a title as follows:
 
-```javascript
+```java
 Sidebar#<init>(Component /* title */)
 ```
 
@@ -28,7 +28,7 @@ Lines on a sidebar are made up of `ScoreboardLine`s. They render on the scoreboa
 `ScoreboardLine`s can be created using their constructor:
 
 ```java
-Sidebar.ScoreboardLine#<init>(String /* unique id*/, Component /* content */, Int /* line */);
+Sidebar.ScoreboardLine#<init>(String /* unique id*/, Component /* content */, int /* line */);
 
 // For example
 Sidebar.ScoreboardLine line = new Sidebar.ScoreboardLine(
@@ -46,7 +46,7 @@ Sidebar#createLine(Sidebar.ScoreboardLine);
 
 Lines are indexed by their unique id, and can be modified with it:
 
-```javascript
+```java
 Sidebar#getLine(String /* unique id */);
 Sidebar#updateLineContent(String /* unique id */, Component /* new content */);
 Sidebar#updateLineScore(String /* unique id */, Int /* new score */);

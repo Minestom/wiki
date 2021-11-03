@@ -21,7 +21,7 @@ AdvancementManager#getTab(String /* namespaced id */);
 An `AdvancementRoot` is the origin `Advancement` for a tab, and has the same creation method as a regular `Advancement` (see below) with the exception of the background. A background is a reference to a texture file on the client, for example `minecraft:textures/block/stone.png` for stone block.
 
 ```java
-AdvancementRoot#<init>(JsonMessage, JsonMessage, Material, FrameType, int, int, String /* background */);
+AdvancementRoot#<init>(Component, Component, Material, FrameType, int, int, String /* background */);
 ```
 
 Once created, an `AdvancementTab` may be added and removed from players as follows:
@@ -36,7 +36,7 @@ AdvancementTab#removeViewer(Player);
 `Advancement`s can be created with their constructor and added to an `AdvancementTab` with an associated parent.
 
 ```java
-Advancement#<init>(JsonMessage /* title */, JsonMessage /* description */, Material, FrameType, int /* x */, int /* y */);
+Advancement#<init>(Component /* title */, Component /* description */, Material, FrameType, int /* x */, int /* y */);
 
 AdvancementTab#createAdvancement(String /* namespaced id */, Advancement /* to add */, Advancement /* parent */);
 ```

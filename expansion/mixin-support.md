@@ -15,10 +15,10 @@ Example of Mixin configuration for Minestom (`mixins.testextension.json`):
 ```
 {
   "required": true,
-  "minVersion": "0.8",
+  "minVersion": "0.8.4",
   "package": "testextension.mixins",
   "target": "@env(DEFAULT)",
-  "compatibilityLevel": "JAVA_11",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
     "InstanceContainerMixin",
     "DynamicChunkMixin"

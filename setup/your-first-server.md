@@ -8,7 +8,6 @@ Some things are needed before being able to connect to your Minestom server.
 
 * Initialize the server
 * Registering events/commands
-* Optional: create a ResponseDataConsumer (can be specified in the start() method)
 * Start the server at the specified port and address
 
 Here is a correct example:
@@ -21,7 +20,7 @@ Here is a correct example:
         // REGISTER EVENTS (set spawn instance, teleport player at spawn)
 
         // Start the server
-        minecraftServer.start("0.0.0.0", 55555);
+        minecraftServer.start("0.0.0.0", 25565);
     }
 ```
 
@@ -30,7 +29,8 @@ However even after those steps, you will not be able to connect, what we miss he
 _Please check the_ [_instances_](../world/instances.md) _and_ [_events_](../feature/events/) _pages if you have any question about how to create/listen to one_
 
 ```java
-player.addEventCallback(PlayerLoginEvent.class, event -> {
+GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
+globalEventHandler.addListener(PlayerLoginEvent.class, event -> {
    event.setSpawningInstance(YOUR_SPAWNING_INSTANCE);
 });
 ```
@@ -114,7 +114,7 @@ Minestom does not provide a JAR of itself for the simple reason that this is you
 First of all, the fat JAR can be built using the Gradle shadow plugin as simple as adding
 
 ```groovy
-id "com.github.johnrengelman.shadow" version "6.1.0"
+id "com.github.johnrengelman.shadow" version "7.1.0"
 ```
 
 If the JAR is meant to be run, you also need to specify the class containing the main method.

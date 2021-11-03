@@ -1,7 +1,7 @@
 # Data
 
 {% hint style="warning" %}
-Consider using the [Tag API](../feature/tags.md) instead
+The [Tag API](../feature/tags.md) should be used instead. These features will be removed in a future release.
 {% endhint %}
 
 A data object is basically a Map wrapper. A [DataContainer](https://minestom.github.io/Minestom/net/minestom/server/data/DataContainer.html) is an object which contains a Data object, there are multiple containers such as Instance, ItemStack, Entity, Block (in a particular way, the data object is specified when setting a block).

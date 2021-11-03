@@ -4,6 +4,10 @@ description: Describes how to add Minestom as a dependency in your project.
 
 # Dependencies
 
+{% hint style="info" %}
+Minestom needs Java 17 or newer in order to run. If you are using Gradle, you mus use version 7.2 or higher.
+{% endhint %}
+
 Adding Minestom to your Java project is really simple, you only need to add a few repositories:
 
 ## Repositories
@@ -92,7 +96,3 @@ When using Maven it is recommended to exclude the artifact `shrinkwrap-resolver-
 {% endtabs %}
 
 A list of versions can be found at [https://jitpack.io/#Minestom/Minestom](https://jitpack.io/#Minestom/Minestom).
-
-{% hint style="info" %}
-Minestom needs Java 17 or newer in order to run.
-{% endhint %}

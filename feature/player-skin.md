@@ -53,8 +53,6 @@ player.addEventCallback(PlayerSkinInitEvent.class, event -> {
 
 ### Player#setSkin
 
-Not much to say here
-
 ```java
 PlayerSkin skin = new PlayerSkin(textureValue, signature);
 player.setSkin(skin);

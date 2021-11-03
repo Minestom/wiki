@@ -1,7 +1,7 @@
 # Persistent data
 
 {% hint style="warning" %}
-Consider using the [Tag API](../feature/tags.md) instead
+The [Tag API](../feature/tags.md) should be used instead. These features will be removed in a future release.
 {% endhint %}
 
 Minestom allows you to specify your own way of managing/creating/removing persistent data. The storage manager can be accessed as such:
