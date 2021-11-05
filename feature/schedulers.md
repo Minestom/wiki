@@ -15,7 +15,7 @@ schedulerManager.buildTask(new Runnable() {
             public void run() {
                 // This method is gonna be called every 5 ticks
             }
-}).repeat(5 /*Time in tick*/, TimeUnit.TICK).schedule();
+}).repeat(5 /*Time in tick*/, TimeUnit.SERVER_TICK).schedule();
 
 // Second scheduler that delays a task for a certain time
 schedulerManager.buildTask(new Runnable() {
@@ -23,7 +23,7 @@ schedulerManager.buildTask(new Runnable() {
             public void run() {
                 // This method is gonna be called after 1 tick
             }
-}).delay(1 /*Time in tick*/, TimeUnit.TICK).schedule();
+}).delay(1 /*Time in tick*/, TimeUnit.SERVER_TICK).schedule();
 
 // Third scheduler, is a combination of a delayed task and a repeated task
 schedulerManager.buildTask(new Runnable() {
