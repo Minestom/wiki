@@ -1,44 +1,24 @@
 # Schedulers
 
-Schedulers are fairly straightforward, they allow you to perform an action based on time.
+A `Scheduler` is an object able to schedule tasks based on a condition (time, tick rate, future, etc...) with a precision linked to its ticking rate. It is therefore important to remember that Minestom scheduling API does not aim to replace JDK's executor services which should still be used if you do not need our scheduling guarantee (execution in the caller thread, execution based on tick, less overhead).
 
-Be aware that scheduled tasks are executed in their own thread pool, synchronization can be required depending on what you do.
-
-There are 4 types of schedulers, each one of them can be accessed by calling the `SchedulerManager`.
+Those tasks scheduling can be configured using a `TaskSchedule` object, defining when the task is supposed to execute.
 
 ```java
-SchedulerManager schedulerManager = MinecraftServer.getSchedulerManager();
+Scheduler scheduler = MinecraftServer.getSchedulerManager();
+scheduler.scheduleNextTick(() -> System.out.println("Hey!"));
+scheduler.submitTask(() -> {
+    System.out.println("Running directly and then every second!");
+    return TaskSchedule.seconds(1);
+});
+```
 
-// First scheduler to repeat the task each time
-schedulerManager.buildTask(new Runnable() {
-            @Override
-            public void run() {
-                // This method is gonna be called every 5 ticks
-            }
-}).repeat(5 /*Time in tick*/, TimeUnit.SERVER_TICK).schedule();
+Tasks are by default executed synchronously (in the object ticking thread). Async execution is possible, but you may consider using a third party solution.
 
-// Second scheduler that delays a task for a certain time
-schedulerManager.buildTask(new Runnable() {
-            @Override
-            public void run() {
-                // This method is gonna be called after 1 tick
-            }
-}).delay(1 /*Time in tick*/, TimeUnit.SERVER_TICK).schedule();
+Scheduling will give you a `Task` object, giving you an overview of the task state, and allow some modification such as cancelling.
 
-// Third scheduler, is a combination of a delayed task and a repeated task
-schedulerManager.buildTask(new Runnable() {
-            @Override
-            public void run() {
-                // This method is called with a 5 second delay and then called every 1 second.
-            }
-}).delay( 5/*Time in seconds*/, TimeUnit.SECOND).repeat(1 /*Time in seconds*/, TimeUnit.SECOND).schedule();
-
-// The fourth and last task is the shutdown task
-schedulerManager.buildShutdownTask(new Runnable() {
-    @Override
-    public void run() {
-        // This method is called when the server is shut down
-        // Can be used to save cached data, for example
-    }
-}).schedule();
+```java
+Scheduler scheduler = player.scheduler();
+Task task = scheduler.scheduleNextTick(() -> System.out.println("Hey!"));
+task.cancel();
 ```
