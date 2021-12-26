@@ -68,7 +68,7 @@ dependencies {
 ```groovy
 dependencies {
     //...
-    implementation("com.github.Minestom:Minestom:-SNAPSHOT")
+    implementation("com.github.Minestom:Minestom:VERSION")
 }
 ```
 {% endtab %}
