@@ -32,7 +32,7 @@ instance.setChunkGenerator(YOUR_GENERATOR);
 
 ## SharedInstance
 
-A `SharedInstance` needs to have an `InstanceContainer` linked to it. The "Shared" means that this is an instance that takes of all its chunks from its parent instance container
+A `SharedInstance` needs to have an `InstanceContainer` linked to it. The "Shared" means that this is an instance that takes all of its chunks from its parent instance container
 
 What does it mean? That if you break or place a block to the instance container, the shared instance will also reflect the change (same if you place a block using the shared instance methods, changes will be reflected in the instance container and all of its shared instances)
 
