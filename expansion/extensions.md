@@ -6,8 +6,8 @@ Summary:
 * [How extensions are loaded](extensions.md#how-extensions-are-loaded)
 * [Dependencies](extensions.md#dependencies)
 * [Callback order](extensions.md#callback-order)
+* [Extension Isolation](extensions.md#extension-isolation)
 * [Testing in a dev environment](extensions.md#testing-in-a-dev-environment)
-* [Dynamically unloading and (re)loading extensions](extensions.md#dynamically-unloading-and-re-loading-extensions)
 
 ## Writing your own extension for Minestom
 
@@ -40,10 +40,6 @@ Then, create a `extension.json` at the root of the resources folder (`src/main/r
   "entrypoint": "testextension.TestExtension",
   "name": "TestExtension",
   "version": "1.0.0",
-  "codeModifiers": [
-    "testextension.TestModifier"
-  ],
-  "mixinConfig": "mixins.testextension.json",
   "dependencies": [
     "DependentExtension",
     "Extension2"
@@ -62,8 +58,6 @@ Then, create a `extension.json` at the root of the resources folder (`src/main/r
 * `entrypoint`: Fully qualified name of your extension class
 * `name`: Name to use to represent the extension to users. Must match regex `[A-Za-z][_A-Za-z0-9]+`
 * `version`: Version of your extension
-* `codeModifiers (optional)`: List of code modifier fully qualified-named classes to modify Minestom classes at launch time
-* `mixinConfig (optional)`: Name of a JSON file for support of Mixin injection
 * `dependencies (optional)`: List of extension names required for this extension to work.
 * `externalDependencies (optional)`: List of external libraries used for this extension (see Dependencies)
 
@@ -80,10 +74,6 @@ Discovery can also be forced when using `ExtensionManager#loadDynamicExtension(F
 #### 2. Load order generation / Dependency solving
 
 Then, Minestom ensures all required dependencies for the extension are found. For external dependencies, it will download them if necessary. For extension dependencies, it simply checks if they are already loaded, or about to be loaded (because discovered in the current load-cycle).
-
-#### 3. Classloading and code modifiers setup
-
-If the extension survived dependency solving, a new classloader is created for the extension to load its classes, and any potential code modifiers declared inside `extension.json` (including the Mixin config) are loaded.
 
 #### 4. Instanciation and callbacks
 
@@ -126,102 +116,19 @@ To declare external dependencies, use the `externalDependencies` object inside `
 
 Minestom will download and cache the libraries inside `extensions/.libs/`, so that it does not require to redownload them at each launch.
 
-Different extensions can depend on the same library (with same coordinates) and will share the code.
-
 ## Callback order
 
 During `MinecraftServer#start`, Minestom calls `preInitialize` on all extensions, then `initialize` on all extensions, and finally `postInitialize` on all extensions. Minestom does **NOT** guarantee the loading order of extensions, but it should be deterministic.
 
+## Extension Isolation
+
+All extensions are completely isolated from each other by default, this means that you may not load a class from another dependency (without shading it, which has other concerns). If your extension depends on another, it must be specified in the `extension.json`, and then it will have access to the relevant classes.
+
+Currently, if two extensions depend on the same library they will not share the same instance.
+
 ## Testing in a dev environment
 
-The easiest option to ensure your extension is recognized, and that you can register code modifiers, is to wrap your main method inside a special launcher calling `Bootstrap#bootstrap`:
+You may set the following vm arguments to load an extension from the classes and resources on disk (eg in your build directory), as opposed to a packaged jar file.
 
-* First argument: `mainClass` fully qualified name of your main class
-*   Second argument: `args` program arguments
-
-    `Bootstrap` will then setup extensions, modifiable classloader and mixin support, then call your `main(String[] args)` method.
-
-Finally, when launching your wrapping launcher, add the following VM arguments:
-
-* `-Dminestom.extension.indevfolder.classes=<folder to compiled classes of your extension>` Specifies the folder in which compiled classes of your extension are. With a default Gradle setup, `build/classes/java/main/` _should_ work.
-* `-Dminestom.extension.indevfolder.resources=<folder to resources of your extension>` Specifies the folder in which resources of your extension are. With a default Gradle setup, `build/resources/main/` _should_ work.
-
-Launcher example:
-
-```java
-package testextension;
-
-import net.minestom.server.Bootstrap;
-import org.spongepowered.asm.launch.MixinBootstrap;
-import org.spongepowered.asm.mixin.Mixins;
-
-// To launch with VM arguments:
-// -Dminestom.extension.indevfolder.classes=build/classes/java/main/ -Dminestom.extension.indevfolder.resources=build/resources/main/
-public class TestExtensionLauncher {
-
-    public static void main(String[] args) {
-        Bootstrap.bootstrap("YOUR_MAIN_CLASS", args);
-    }
-}
-```
-
-## Dynamically unloading and (re)loading extensions
-
-* [Unloading](extensions.md#unloading)
-* [Reloading](extensions.md#reloading-an-extension)
-* [Dynamic load](extensions.md#dynamic-load)
-* [Swapping extension jar at runtime](extensions.md#swapping-extension-jar-at-runtime)
-
-### Unloading
-
-Under the hood, Minestom registers each extension inside its own classloader. This allows extensions to be reloaded from disk without having to reboot the server.
-
-This feature comes at a cost: because we want to fully reload an extension, all its classes must be reloaded. To do so, their classloader must be garbage-collected. This requires all references to the classloader and its classes to be garbage-collected.
-
-This means that Minestom code _cannot_ have any reference to your extension when reloading/unloading. That includes event callbacks (for ANY type of event), custom biomes, custom blocks, commands, and so on.
-
-To ensure your callbacks and code is unregistered from Minestom, override the `terminate` method of your extensions, and unregister everything there.
-
-**If your extension is depended upon by other extensions, this will unload the dependent extensions too.**
-
-Now that you are aware of the requirements, let's see how to unload an extension:
-
-```java
-// get an ExtensionManager, for instance via MinecraftServer.getExtensionManager();
-extensionManager.unloadExtension("MyExtensionName"); // MyExtensionName must match the name given inside the extension.json file
-```
-
-That's it, this line will unload the extension and all its dependents.
-
-### Reloading an extension
-
-_See Unloading for more information_
-
-**If your extension is depended upon by other extensions, this will reload the dependent extensions too.**
-
-This allows to reload an extension from the same jar file that it was loaded before.
-
-```java
-// get an ExtensionManager, for instance via MinecraftServer.getExtensionManager();
-extensionManager.reload("MyExtensionName"); // MyExtensionName must match the name given inside the extension.json file
-```
-
-### Dynamic load
-
-Minestom allows dynamic loading of extensions. You do have to be aware that the extension will have its `preInitialize`, `initialize` and `postInitialize` callbacks called immediatly upon load.
-
-This dynamic loading goes through the exact same phases as an extension loaded during server startup.
-
-```java
-// get an ExtensionManager, for instance via MinecraftServer.getExtensionManager();
-File extensionJar = ...; // the location of the extension jar to dynamically load
-extensionManager.loadDynamicExtension(extensionJar);
-```
-
-### Swapping extension jar at runtime
-
-Now that you know how to dynamically unload and load an extension, the procedure is rather simple:
-
-1. Unload the extension via `ExtensionManager#unload(String)`
-2. Replace the jar
-3. (Re-)Load the extension via `ExtensionManager#loadDynamicExtension(File)`
+* `-Dminestom.extension.indevfolder.classes=<folder to compiled classes of your extension>` Specifies the folder in which compiled classes of your extension are. With a default Gradle setup, `build/classes/java/main/` should work.
+* `-Dminestom.extension.indevfolder.resources=<folder to resources of your extension>` Specifies the folder in which resources of your extension are. With a default Gradle setup, `build/resources/main/` should work.
