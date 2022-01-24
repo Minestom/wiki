@@ -4,7 +4,7 @@
 
 `Acquirable<T>` represents an object of type `T` that you can retrieve but where its thread-safe access is not certain.
 
-To give an example, imagine two entities very far from each other and therefore ticked in different threads. Let's imagine that entity A wants to trade items with entity B, it is something that would require synchronization to ensure that the trade happens successfully. From entity A's thread, you can retrieve a `Acquirable<Entity>` containing entity B, and from there acquire it to have safe access to the entity in a different thread.
+To give an example, imagine two entities very far from each other and therefore ticked in different threads. Let's imagine that entity A wants to trade items with entity B. It is something that would require synchronization to ensure that the trade happens successfully. From entity A's thread, you can retrieve a `Acquirable<Entity>` containing entity B, and from there acquire it to have safe access to the entity in a different thread.
 
 The API provides multiple benefits:
 
