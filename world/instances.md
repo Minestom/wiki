@@ -2,9 +2,9 @@
 
 ## What is an instance
 
-Instances are what replace "worlds" from Minecraft vanilla, those are lightweight and should offer similar properties. There are multiple instances implementation, currently `InstanceContainer` and `SharedInstance` (both are explained below)
+Instances are what replace "worlds" from Minecraft vanilla; they are lightweight and should offer similar properties. There are multiple instances implementations, currently `InstanceContainer` and `SharedInstance` (both are explained below).
 
-All instances can be accessed by using the InstanceManager or by getting an entity instance
+All instances can be accessed by using the InstanceManager or by getting an entity instance.
 
 ```java
 InstanceManager instanceManager = MinecraftServer.getInstanceManager()
@@ -12,11 +12,11 @@ InstanceManager instanceManager = MinecraftServer.getInstanceManager()
 Entity#getInstance
 ```
 
-Internally, the default Instance class have its own sets to store the entities in it, but all chunk based methods are abstract and meant to be implemented by a sub-class
+Internally, the default Instance class has its own sets to store the entities in it, but all chunk based methods are abstract and meant to be implemented by a sub-class
 
 ## InstanceContainer
 
-"Container" here means that this is an instance that can store chunks. And as every instance, have its own sets of entities
+"Container" here means that this is an instance that can store chunks. And as every instance, it havs its own sets of entities.
 
 You can create an `InstanceContainer` by calling:
 
@@ -24,7 +24,7 @@ You can create an `InstanceContainer` by calling:
 InstanceContainer instanceContainer = instanceManager.createInstanceContainer();
 ```
 
-In order to have a valid world generation, you need to specify which `ChunkGenerator` the instance should use, without it no chunk can be generated. (check [here](https://github.com/Minestom/Minestom/wiki/Chunk-generator) to make your own)
+In order to have a valid world generation, you need to specify which `ChunkGenerator` the instance should use; without it no chunk can be generated. (check [here](https://github.com/Minestom/Minestom/wiki/Chunk-generator) to make your own).
 
 ```java
 instance.setChunkGenerator(YOUR_GENERATOR);
@@ -32,9 +32,9 @@ instance.setChunkGenerator(YOUR_GENERATOR);
 
 ## SharedInstance
 
-A `SharedInstance` needs to have an `InstanceContainer` linked to it. The "Shared" means that this is an instance that takes all of its chunks from its parent instance container
+A `SharedInstance` needs to have an `InstanceContainer` linked to it. The "Shared" means that this is an instance that takes all of its chunks from its parent instance container.
 
-What does it mean? That if you break or place a block to the instance container, the shared instance will also reflect the change (same if you place a block using the shared instance methods, changes will be reflected in the instance container and all of its shared instances)
+What does it mean? That if you break or place a block to the instance container, the shared instance will also reflect the change (same if you place a block using the shared instance methods, changes will be reflected in the instance container and all of its shared instances).
 
 You can create a `SharedInstance` using:
 
@@ -56,7 +56,7 @@ This method is ONLY required if you instantiate your instance object manually, `
 
 ## Save your instances/chunks
 
-It is also essential to notice that, by default, the chunks of the instance are only stored in memory. In order to have them stored in a persistent way, you need to serialize and deserialize them. Please check the [Chunks management](chunk-management.md) page for further information.
+It is also essential to notice that, by default, the chunks of the instance are only stored in memory. In order to have them stored in a persistent way, you need to serialize and deserialize them. Please check the [Chunk management](chunk-management.md) page for further information.
 
 Minestom uses Anvil as its default world format, conveniently located in the `AnvilLoader` class. Just put your world in the `world` folder, and see it work :)
 
