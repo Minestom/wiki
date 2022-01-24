@@ -10,7 +10,7 @@ As for its usage in Minestom, you do not have to remember everything you will re
 
 ## What is thread-safety?
 
-A code is called "thread-safe" if and only if this code can be called from multiple threads without unexpected behavior. Therefore the term does not say anything about performance or design, it is simply a way to denote how the code can be accessed.
+A code is called "thread-safe" if and only if this code can be called from multiple threads (and eventually more or less at the same time) without unexpected behavior. Therefore the term does not say anything about performance or design, it is simply a way to denote how the code can be accessed.
 
 ## What does it cost?
 
@@ -33,6 +33,6 @@ Making a field thread-safe does not mean that the object itself is. But only tha
 
 ### Methods
 
-Additionally to the fields, you need to way to manage your flow control so two methods are not called at the exact time which is likely to break every non-thread-safe program (race-condition). Thread synchronization happens thanks to the help of locks, those are mechanisms that will make the current thread waits until someone tells him that he can now open the door and close behind him.
+Additionally to the fields, you need a way to manage your flow control so two methods are not called at the exact time which is likely to break every non-thread-safe program (race-condition). Thread synchronization happens thanks to the help of locks, which are mechanisms that will make the current thread wait until someone tells it that it can now open the door and close behind it.
 
 The JVM is again here to the rescue with the `synchronized` flag or the low-level `Object#wait/notify()` methods. There are also higher-level tools such as `CountDownLatch`, `Phaser`, and even some handy safe collections to replace your non-thread-safe ones! `ConcurrentHashMap`, `CopyOnWriteArrayList`, `ConcurrentLinkedQueue`, and a lot of other ones available in your [JDK](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/package-summary.html).
