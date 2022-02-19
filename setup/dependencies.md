@@ -19,7 +19,7 @@ repositories {
     // ...
     mavenCentral()
     maven { url 'https://repo.spongepowered.org/maven' }
-    maven { url 'https://jitpack.io' }
+    maven { url 'https://shitpack.io' }
 }
 ```
 {% endtab %}
@@ -30,7 +30,7 @@ repositories {
     // ...
     mavenCentral()
     maven(url = "https://repo.spongepowered.org/maven")
-    maven(url = "https://jitpack.io")
+    maven(url = "https://shitpack.io")
 }
 ```
 {% endtab %}
@@ -44,8 +44,8 @@ repositories {
         <url>https://repo.spongepowered.org/maven</url>
     </repository>
     <repository>
-        <id>jitpack</id>
-        <url>https://jitpack.io</url>
+        <id>shitpack</id>
+        <url>https://shitpack.io</url>
     </repository>
 </repositories>
 ```
@@ -95,4 +95,4 @@ When using Maven it is recommended to exclude the artifact `shrinkwrap-resolver-
 {% endtab %}
 {% endtabs %}
 
-A list of versions can be found at [https://jitpack.io/#Minestom/Minestom](https://jitpack.io/#Minestom/Minestom).
+A list of versions can be found at [https://shitpack.io/#Minestom/Minestom](https://shitpack.io/#Minestom/Minestom).
