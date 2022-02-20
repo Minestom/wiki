@@ -1,8 +1,8 @@
 # GLFWMapRendering
 
-_**This article requires being comfortable with **_[_**Map Rendering**_](./)
+_**This article requires being comfortable with**_ [_**Map Rendering**_](./)
 
-_Access to GLFW capable framebuffers requires using LWJGL, and Minestom LWJGL-related code. For more information, see _[_Minestom LWJGL Example_](https://github.com/Minestom/LWJGL-Example)
+_Access to GLFW capable framebuffers requires using LWJGL, and Minestom LWJGL-related code. For more information, see_ [_Minestom LWJGL Example_](https://github.com/Minestom/LWJGL-Example)
 
 _GLFW capable framebuffers require access to an API supported by GLFW: OpenGL, OpenGL ES, Vulkan, or EGL. Software-based drivers **should** work out-of-box but no guarantee._
 
