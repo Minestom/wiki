@@ -19,7 +19,7 @@
 * [Chunk management](world/chunk-management.md)
 * [Blocks](world/blocks.md)
 * [Coordinates](world/coordinates.md)
-* [Generation](world/chunk-generator.md)
+* [Generation](world/generation.md)
 * [Batch](world/batch.md)
 
 ## Feature

@@ -72,7 +72,7 @@ public class TestCommand extends Command {
 }
 ```
 
-![The command in action](<../.gitbook/assets/Screenshot 2021-02-12 at 04.57.33.png>)
+![The command in action](../.gitbook/assets/screenshot-2021-02-12-at-04.57.33.png)
 
 ## Argument callback
 
@@ -114,7 +114,7 @@ public class TestCommand extends Command {
 }
 ```
 
-![Argument callback detecting an invalid number](<../.gitbook/assets/Screenshot 2021-02-12 at 05.27.21.png>)
+![Argument callback detecting an invalid number](../.gitbook/assets/screenshot-2021-02-12-at-05.27.21.png)
 
 ## Command data
 
