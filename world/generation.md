@@ -20,9 +20,10 @@ Here is the naive way of generating a flat world from y=0 to y=40
 Instance instance = ...;
 instance.setGenerator(unit -> {
     final Point start = unit.absoluteStart();
-    for (int x = 0; x < 16; x++) {
-        for (int z = 0; z < 16; z++) {
-            for (int y = 0; y < 40; y++) {
+    final Point size = unit.size();
+    for (int x = 0; x < size.blockX(); x++) {
+        for (int z = 0; z < size.blockZ(); z++) {
+            for (int y = 0; y < Math.min(40 - start.blockY(), size.blockY()); y++) {
                 unit.modifier().setBlock(start.add(x, y, z), Block.STONE);
             }
         }
