@@ -49,25 +49,27 @@ There are two fork methods, both useful in their own ways. Here is a simple exam
 
 
 ```java
-GenerationUnit unit = ...;
-Random random = ...;
-Point start = unit.absoluteStart();
+Instance instance = ...;
+instance.setGenerator(unit -> {
+    Random random = ...;
+    Point start = unit.absoluteStart();
 
-// Create a snow carpet for the snowmen
-unit.modifier().fillHeight(-64, -60, Block.SNOW);
+    // Create a snow carpet for the snowmen
+    unit.modifier().fillHeight(-64, -60, Block.SNOW);
 
-// Exit out if unit is not the bottom unit, and exit 5 in 6 times otherwise
-if (start.y() > -64 || random.nextInt(6) != 0) {
-    return;
-}
+    // Exit out if unit is not the bottom unit, and exit 5 in 6 times otherwise
+    if (start.y() > -64 || random.nextInt(6) != 0) {
+        return;
+    }
 
-// Lets fork this section to add our tall snowman.
-// We add two extra sections worth of space to this fork to fit the snowman.
-GenerationUnit fork = unit.fork(start, start.add(16, 32, 16));
+    // Lets fork this section to add our tall snowman.
+    // We add two extra sections worth of space to this fork to fit the snowman.
+    GenerationUnit fork = unit.fork(start, start.add(16, 32, 16));
 
-// Now we add the snowman to the fork
-fork.modifier().fill(start, start.add(3, 19, 3), Block.POWDER_SNOW);
-fork.modifier().setBlock(start.add(1, 19, 1), Block.JACK_O_LANTERN);
+    // Now we add the snowman to the fork
+    fork.modifier().fill(start, start.add(3, 19, 3), Block.POWDER_SNOW);
+    fork.modifier().setBlock(start.add(1, 19, 1), Block.JACK_O_LANTERN);
+});
 ```
 
 Adding structures using forks is trivial.\
@@ -76,28 +78,30 @@ However, for this `GenerationUnit#fork` method, you must know how large these st
 Here is the same example written with the `Block.Setter` utility:
 
 ```java
-GenerationUnit unit = ...;
-Random random = ...;
-Point start = unit.absoluteStart();
+Instance instance = ...;
+instance.setGenerator(unit -> {
+    Random random = ...;
+    Point start = unit.absoluteStart();
 
-// Create a snow carpet for the snowmen
-unit.modifier().fillHeight(-64, -60, Block.SNOW);
+    // Create a snow carpet for the snowmen
+    unit.modifier().fillHeight(-64, -60, Block.SNOW);
 
-// Exit out if unit is not the bottom unit or 5 in 6 times
-if (start.y() > -64 || random.nextInt(6) != 0) {
-    return;
-}
+    // Exit out if unit is not the bottom unit or 5 in 6 times
+    if (start.y() > -64 || random.nextInt(6) != 0) {
+        return;
+    }
 
-// Add the snowman
-unit.fork(setter -> {
-    for (int x = 0; x < 3; x++) {
-        for (int y = 0; y < 19; y++) {
-            for (int z = 0; z < 3; z++) {
-                setter.setBlock(start.add(x, y, z), Block.POWDER_SNOW);
+    // Add the snowman
+    unit.fork(setter -> {
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 19; y++) {
+                for (int z = 0; z < 3; z++) {
+                    setter.setBlock(start.add(x, y, z), Block.POWDER_SNOW);
+                }
             }
         }
-    }
-    setter.setBlock(start.add(1, 19, 1), Block.JACK_O_LANTERN);
+        setter.setBlock(start.add(1, 19, 1), Block.JACK_O_LANTERN);
+    });
 });
 ```
 
