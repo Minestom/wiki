@@ -106,3 +106,37 @@ instance.setGenerator(unit -> {
 ```
 
 These examples will generate a flat snow world with chunky snowmen scattered throughout, cleanly applying the snowmen whenever it is possible to do so.
+
+![](../.gitbook/assets/image.png)
+
+Example with missing terrain for clarity:
+
+![](<../.gitbook/assets/image (3).png>)
+
+## Heightmaps with JNoise
+
+This example shows a simply approach to building heightmaps using JNoise, this can be expanded to other noise implementations as well.
+
+```java
+// Noise used for the height
+JNoise noise = JNoise.newBuilder()
+        .fastSimplex()
+        .setFrequency(0.005) // Low frequency for smooth terrain
+        .build();
+
+// Set the Generator
+instance.setGenerator(unit -> {
+    Point start = unit.absoluteStart();
+    for (int x = 0; x < unit.size().x(); x++) {
+        for (int z = 0; z < unit.size().z(); z++) {
+            Point bottom = start.add(x, 0, z);
+
+            synchronized (noise) { // Synchronization is necessary for JNoise
+                double height = noise.getNoise(bottom.x(), bottom.z()) * 16;
+                // * 16 means the height will be between -16 and +16
+                unit.modifier().fill(bottom, bottom.add(1, 0, 1).withY(height), Block.STONE);
+            }
+        }
+    }
+});
+```
