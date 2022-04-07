@@ -140,3 +140,7 @@ instance.setGenerator(unit -> {
     }
 });
 ```
+
+Here's and example of what that looks like:
+
+![](<../.gitbook/assets/image (4).png>)
