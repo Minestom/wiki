@@ -1,9 +1,5 @@
 # Generation
 
-{% hint style="warning" %}
-The new generation API is in progress, below here is a draft
-{% endhint %}
-
 ## Basics
 
 Each `Instance` has an optional `Generator` that is responsible for generating areas of various sizes.
