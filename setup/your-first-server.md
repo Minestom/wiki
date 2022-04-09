@@ -58,13 +58,12 @@ public class MainDemo {
     public static void main(String[] args) {
         // Initialization
         MinecraftServer minecraftServer = MinecraftServer.init();
-
         InstanceManager instanceManager = MinecraftServer.getInstanceManager();
         // Create the instance
         InstanceContainer instanceContainer = instanceManager.createInstanceContainer();
         // Set the ChunkGenerator
-        instanceContainer.setChunkGenerator(new GeneratorDemo());
-
+        instanceContainer.setGenerator(unit -> 
+                        unit.modifier().fillHeight(0, 40, Block.GRASS_BLOCK));
         // Add an event callback to specify the spawning instance (and the spawn position)
         GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
         globalEventHandler.addListener(PlayerLoginEvent.class, event -> {
@@ -72,31 +71,9 @@ public class MainDemo {
             event.setSpawningInstance(instanceContainer);
             player.setRespawnPoint(new Pos(0, 42, 0));
         });
-
         // Start the server on port 25565
         minecraftServer.start("0.0.0.0", 25565);
     }
-
-    private static class GeneratorDemo implements ChunkGenerator {
-
-        @Override
-        public void generateChunkData(@NotNull ChunkBatch batch, int chunkX, int chunkZ) {
-            // Set chunk blocks
-            for (byte x = 0; x < Chunk.CHUNK_SIZE_X; x++) {
-                for (byte z = 0; z < Chunk.CHUNK_SIZE_Z; z++) {
-                    for (byte y = 0; y < 40; y++) {
-                        batch.setBlock(x, y, z, Block.STONE);
-                    }
-                }
-            }
-        }
-
-        @Override
-        public List<ChunkPopulator> getPopulators() {
-            return null;
-        }
-    }
-
 }
 ```
 
