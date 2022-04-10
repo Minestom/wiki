@@ -117,8 +117,6 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-
-    maven { url 'https://repo.spongepowered.org/maven' }
     maven { url 'https://jitpack.io' }
 }
 

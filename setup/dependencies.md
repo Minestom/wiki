@@ -18,7 +18,6 @@ Adding Minestom to your Java project is really simple, you only need to add a fe
 repositories {
     // ...
     mavenCentral()
-    maven { url 'https://repo.spongepowered.org/maven' }
     maven { url 'https://jitpack.io' }
 }
 ```
@@ -29,7 +28,6 @@ repositories {
 repositories {
     // ...
     mavenCentral()
-    maven(url = "https://repo.spongepowered.org/maven")
     maven(url = "https://jitpack.io")
 }
 ```
@@ -39,10 +37,6 @@ repositories {
 ```markup
 <repositories>
     <!-- ... -->
-    <repository>
-        <id>spongepowered</id>
-        <url>https://repo.spongepowered.org/maven</url>
-    </repository>
     <repository>
         <id>jitpack</id>
         <url>https://jitpack.io</url>
