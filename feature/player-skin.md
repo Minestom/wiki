@@ -45,7 +45,8 @@ You'll get here both the texture value and the signature. Those values are used 
 The event is called at the player connection and is used to define the skin to send to the player the first time. It is as simple as
 
 ```java
-player.addEventCallback(PlayerSkinInitEvent.class, event -> {
+GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
+globalEventHandler.addListener(PlayerSkinInitEvent.class, event -> {
    PlayerSkin skin = new PlayerSkin(textureValue, signature);
    event.setSkin(skin);
 });
