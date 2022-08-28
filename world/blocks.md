@@ -32,9 +32,9 @@ Each block is associated with a `BlockEntry`,which store some **unmodifiable **(
 
 For example, `BlockEntry#explosionResistance()` return the explosion resistance in vanilla,and it's unmodifiable.However,it is just a value and will not really affect the explosion.
 
-`BlockEntry` is unmodifiable by now, though we have the plan to make it modifiable in the future.
+`BlockEntry` is unmodifiable for now, though we plan to make it modifiable in the future.
 
-`BlockEntry` could be retrieved with `Block#registry()`.
+`BlockEntry` can be retrieved with `Block#registry()`.
 
 ```java
 Block block = Block.GRASS;
