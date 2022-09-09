@@ -20,7 +20,7 @@ Barebones horse creation and spawn:
 
 ```java
 Instance instance = ...; // instance to spawn a horse in
-Position spawnPosition = new Pos(0D, 42D, 0D);
+Pos spawnPosition = new Pos(0D, 42D, 0D);
 Entity horse = new Entity(EntityType.HORSE);
 horse.setInstance(instance, spawnPosition); // actually spawning a horse
 ```
@@ -29,7 +29,7 @@ Creating a boat with liveness and the possibility to manipulate the AI and navig
 
 ```java
 Instance instance = ...; // instance to spawn a boat in
-Position spawnPosition = new Pos(0D, 42D, 0D);
+Pos spawnPosition = new Pos(0D, 42D, 0D);
 EntityCreature boat = new EntityCreature(EntityType.BOAT);
 // modify AI so that the boat is aggressive
 boat.setInstance(instance, spawnPosition); // actually spawning a boat
