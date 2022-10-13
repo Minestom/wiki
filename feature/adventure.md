@@ -1,6 +1,6 @@
 # Adventure
 
-Adventure is a library for server-controllable user interface elements in Minecraft. For a guide on how to use Adventure, check out the [Adventure documentation](https://docs.adventure.kyori.net).
+Adventure is a library for server-controllable user interface elements in Minecraft. For a guide on how to use Adventure, check out the [Adventure documentation](https://docs.adventure.kyori.net/).
 
 ## Audiences
 
@@ -153,7 +153,7 @@ With the old API you would display a `WrittenBookMeta` to a player using `Player
 
 ### Sound
 
-In order to prevent name clashes and to more accurately represent the contents of the enum, the generated `Sound` enum has been renamed to `SoundEvent`. This is because the values for the enum do not represent specific sounds, rather representing events that are linked to one or more specific sounds. For more information about sound events, see the Minecraft Wiki page on [sound events](https://minecraft.fandom.com/wiki/Sounds.json#Sound_events).
+In order to prevent name clashes and to more accurately represent the contents of the enum, the generated `Sound` enum has been renamed to `SoundEvent`. This is because the values for the enum do not represent specific sounds, rather representing events that are linked to one or more specific sounds. For more information about sound events, see the Minecraft Wiki page on [sound events](https://minecraft.fandom.com/wiki/Sounds.json#Sound\_events).
 
 The Minestom `SoundCategory` has been deprecated in favor of Adventure's `Sound.Source` enum. To play a sound, you need to construct a `Sound` object. This can be done using the methods described in the [documentation](https://docs.adventure.kyori.net/sound.html). In addition, instead of using an Adventure `Key` you can instead pass a `SoundEvent` into any places in the Adventure sound API that accept a supplier of `Sound.Type`. Sound objects can also be stored and used multiple times.
 

@@ -51,8 +51,3 @@
 * [Scripting](expansion/scripting/README.md)
   * [WIP Commands](expansion/scripting/wip-commands.md)
   * [WIP Java Interoperability](expansion/scripting/wip-java-interoperability.md)
-
-## Storage
-
-* [Data](storage/data.md)
-* [Persistent data](storage/persistent-data.md)
