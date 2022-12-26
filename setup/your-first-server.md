@@ -69,7 +69,7 @@ public class MainDemo {
         globalEventHandler.addListener(PlayerLoginEvent.class, event -> {
             final Player player = event.getPlayer();
             event.setSpawningInstance(instanceContainer);
-            player.setRespawnPoint(new Pos(0, 42, 0));
+            player.setRespawnPoint(new Pos(0.0, 42.0, 0.0));
         });
         // Start the server on port 25565
         minecraftServer.start("0.0.0.0", 25565);
