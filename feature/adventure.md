@@ -114,7 +114,7 @@ Function<Component, String> oldSerializer = manager.getSerializer();
 // create a text replacement config and turn this into a function
 TextReplacementConfig config = TextReplacementConfig.builder()
         .matchLiteral("dog")
-        .replcement("cat")
+        .replacement("cat")
         .build();
 Function<Component, Component> dogRemover = component -> component.replaceText(config);
 
