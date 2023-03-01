@@ -2,44 +2,65 @@
 
 ## What is an instance
 
-Instances are what replace "worlds" from Minecraft vanilla, those are lightweight and should offer similar properties. There are multiple instances implementation, currently `InstanceContainer` and `SharedInstance` (both are explained below)
+Instances are what replace "worlds" from Minecraft vanilla, those are lightweight and should offer similar properties. 
+Imagine that you wanted to implement two worlds/dimensions: the overworld and the nether, each with their own block data, spawn points and so on. In practice, this would be two separate InstanceContainers (a type of instance), one for each of the two worlds/dimensions. They can then be used to make players go to them through actions like going through a portal, clicking a button and so on.
 
-All instances can be accessed by using the InstanceManager or by getting an entity instance
+Each instance contains the following data
+- Blocks, whether generated or modified by players / entities / whatever is capable of modifying blocks
+- The generator (More on this later, but essentially the "rules" that are used to generate a new chunk (section of the world) whenever a player attempts to load a non existing chunk)
+- Entities, like boats, mobs, dropped items etc.
 
+There are two different types of instances, currently `InstanceContainer` and `SharedInstance` which offer similar functionality, they're explained in sections below.
+
+## Example Usage
+In order to create an instance, you need use what's called the "InstanceManager". 
+Here is a practical example of how you could create a nether and overworld dimension using an InstanceContainer:
 ```java
-InstanceManager instanceManager = MinecraftServer.getInstanceManager()
-// Or
-Entity#getInstance
+InstanceManager instanceManager = MinecraftServer.getInstanceManager();
+InstanceContainer overworld     = instanceManager.createInstanceContainer();
+InstanceContainer nether        = instanceManager.createInstanceContainer();
 ```
-
-Internally, the default Instance class have its own sets to store the entities in it, but all chunk based methods are abstract and meant to be implemented by a sub-class
-
-## InstanceContainer
-
-"Container" here means that this is an instance that can store chunks. And as every instance, have its own sets of entities
-
-You can create an `InstanceContainer` by calling:
-
+or
 ```java
-InstanceContainer instanceContainer = instanceManager.createInstanceContainer();
+InstanceContainer overworld     = MinecraftServer.getInstanceManager().createInstanceContainer();
+InstanceContainer nether        = MinecraftServer.getInstanceManager().createInstanceContainer();
 ```
+Both are essentially the same, there are some performance differences between them but they're so miniscule it essentially doesn't matter. This function returns the world/dimension's InstanceContainer (in this case `overworld` and `nether`) which can then be used to for example teleport a player to that dimension.
 
-In order to have a valid world generation, you need to specify which `ChunkGenerator` the instance should use, without it no chunk can be generated. (check [here](https://github.com/Minestom/Minestom/wiki/Chunk-generator) to make your own)
-
-```java
-instance.setChunkGenerator(YOUR_GENERATOR);
-```
+## Getting an entity's dimension
+Getting the instance of an entity (like a Player), as in in which dimension they are located is as easy as doing
+Entity.getInstance()
 
 ## SharedInstance
 
-A `SharedInstance` needs to have an `InstanceContainer` linked to it. The "Shared" means that this is an instance that takes all of its chunks from its parent instance container
+Knowing that an InstanceContainer is essentially a world/dimension, what's the difference between that and a `SharedInstance`?
+Imagine you want to run three different minigames using the same map. It would be possible to create three separate `InstanceContainers` for all three minigames using the same map, but this would mean that three "copies" of the same map now exist which, in some cases, could take up a lot of RAM (as an InstanceContainer loads the world data into memory). In order to prevent this, it's possible to create a `SharedInstance` which allows the same map to exist multiple times as if there were multiple InstanceContainers while only allocating one of them into memory. For example:
 
-What does it mean? That if you break or place a block to the instance container, the shared instance will also reflect the change (same if you place a block using the shared instance methods, changes will be reflected in the instance container and all of its shared instances)
+```
+Minigame_1 <- InstanceContainer
+Minigame_2 <- SharedInstance of Minigame_1
+Minigame_3 <- SharedInstance of Minigame_1
+```
+Here there's only one InstanceContainer which is the world used for the minigame; it gets allocated into memory once. Minigame_2 is a `SharedInstance` of Minigame_1, meaning that it copies the data from memory of Minigame_1 without allocating it again, effectively making "a copy" (it's not really a copy, it's just being accessed) of Minigame_1, the same being the case with Minigame_3
+
+### But if Minigame_1's data is being "copied", what if I want the maps to have different mobs / entities?
+A `SharedInstance` only copies over block data. Entities like players, mobs, item drops, arrows etc will not be "copied".
+
+As all minigames are accessing the same data, if a block is broken or placed in any of those 3 worlds, that same change will be reflected on the others. This could, in theory, be problematic if players were to modify a block from two different "copies" of the world at the exact same time, so just keep that in mind.
 
 You can create a `SharedInstance` using:
 
 ```java
 SharedInstance sharedInstance = instanceManager.createSharedInstance(instanceContainer);
+```
+
+## ChunkGenerator
+
+
+In order to have a valid world generation, you need to specify which `ChunkGenerator` the instance should use, without it no chunk can be generated. (check [here](https://github.com/Minestom/Minestom/wiki/Chunk-generator) to make your own)
+
+```java
+instance.setChunkGenerator(YOUR_GENERATOR);
 ```
 
 ## Create your own Instance type
