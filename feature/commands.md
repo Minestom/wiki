@@ -72,6 +72,34 @@ public class TestCommand extends Command {
 }
 ```
 
+## Special Arguments
+
+There are many more possible options for defining command arguments. Here is an example of how to specify a restricted set of possible arguments:
+
+```var stringArgument = ArgumentType.Word("type");
+stringArgument.from("raycast");
+```
+
+For more information, check out the Javadoc [here](https://javadoc.minestom.net/net/minestom/server/command/builder/arguments/ArgumentType.html)
+
+Additionally multiple arguments can be specified from within one command as demonstrated below:
+
+```
+var stringArgument = ArgumentType.String("string");
+var numberArgument = ArgumentType.Integer("number");
+
+addSyntax(( source, args )-> {
+        final String string = context.get(stringArgument);
+        final int number = context.get(numberArgument);
+
+        source.sendMessage(
+                Component.text("You don't have permission to add an op at level $targetLevel!", NamedTextColor.RED)
+        );
+        }, stringArgument, numberArgument);
+```
+
+
+
 ![The command in action](../.gitbook/assets/screenshot-2021-02-12-at-04.57.33.png)
 
 ## Argument callback
