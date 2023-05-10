@@ -18,4 +18,6 @@ In order to load a world, the world folder will only need the `/region` folder, 
 
 ## Saving a world
 
-Article WIP
+In order to save a world, you will have to use the `InstanceContainer#saveChunksToStorage()` function, 
+this will only work if you have previously loaded a world into the instance using AnvilLoader.
+
