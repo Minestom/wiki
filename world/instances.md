@@ -54,14 +54,3 @@ instanceManager.registerInstance(YOUR_CUSTOM_INSTANCE);
 
 This method is ONLY required if you instantiate your instance object manually, `InstanceManager#createInstanceContainer` and `InstanceManager#createSharedInstance` already register the instance internally.
 
-## Save your instances/chunks
-
-It is also essential to notice that, by default, the chunks of the instance are only stored in memory. In order to have them stored in a persistent way, you need to serialize and deserialize them. Please check the [Chunks management](chunk-management.md) page for further information.
-
-Minestom uses Anvil as its default world format, conveniently located in the `AnvilLoader` class. Just put your world in the `world` folder, and see it work :)
-
-```java
-var instance = instanceManager.createInstanceContainer();
-// Save all currently loaded chunks to the IChunkLoader
-instanceContainer.saveChunksToStorage();
-```
