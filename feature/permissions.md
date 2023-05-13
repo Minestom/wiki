@@ -42,6 +42,24 @@ public class StopCommand extends Command {
 }
 ```
 
+## Permission wildcard matching
+
+Minestom supports wildcard matching for permissions.
+This means that if a player has a permission like `admin.*`, this will satisfy any checks for permissions that have the same format, with differing contents for the wildcard. e.g. `admin.tp` will return true.
+
+Example:
+```java
+player.addPermission(new Permission("command.*")); // Gives the player every permission with the 'command.' prefix
+
+player.hasPermission(new Permission("command.gamemode")); // This returns true
+
+// Same thing goes for
+player.addPermission(new Permission("*")); // Gives the player every permission
+
+player.hasPermission(new Permission("user.chat")); // returns true
+player.hasPermission(new Permission("3i359cvjm.sdfk239c")); // returns true
+```
+
 ## Permission serialisation
 
 Nothing is automatically saved persistently in Minestom, permissions are not an exception.
