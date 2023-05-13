@@ -14,7 +14,7 @@
   * [The inside](thread-architecture/acquirable-api/inside-the-api.md)
 
 ## World
-
+* [Anvil Loader](world/anvilloader.md)
 * [Instances](world/instances.md)
 * [Chunk management](world/chunk-management.md)
 * [Blocks](world/blocks.md)
