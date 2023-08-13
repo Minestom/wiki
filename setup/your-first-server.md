@@ -83,7 +83,7 @@ Once you have created your Minestom server, you will probably want to build it a
 To do so we will set up the Shadow plugin so that we can make a final working uber (fat) jar.
 
 Side note: For Maven users, you will need the "Shade" plugin. If you use Maven and would like to contribute an example
-it would be appriciated :)
+it would be appreciated :)
 
 You can find the full documentation for the Shadow plugin [here](https://imperceptiblethoughts.com/shadow/introduction/).
 
@@ -115,7 +115,7 @@ If the JAR is meant to be run, which it probably is, you also need to specify th
 jar {
     manifest {
         // Change this to your main class
-        attributes 'Main-Class': 'com.example.Main'
+        attributes 'Main-Class': 'org.example.Main'
     }
 }
 ```
@@ -126,7 +126,7 @@ jar {
 tasks.withType<Jar> {
     manifest {
         // Change this to your main class
-        attributes["Main-Class"] = "com.example.Main"
+        attributes["Main-Class"] = "org.example.Main"
     }
 }
 ```
@@ -145,7 +145,7 @@ plugins {
     id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
-group 'com.example'
+group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -161,7 +161,7 @@ dependencies {
 jar {
     manifest {
         // Change this to your main class
-        attributes 'Main-Class': 'com.example.Main'
+        attributes 'Main-Class': 'org.example.Main'
     }
 }
 ```
@@ -174,7 +174,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "com.example"
+group = "org.example"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -190,7 +190,7 @@ dependencies {
 tasks.withType<Jar> {
     manifest {
         // Change this to your main class
-        attributes["Main-Class"] = "com.example.Main"
+        attributes["Main-Class"] = "org.example.Main"
     }
 }
 ```
