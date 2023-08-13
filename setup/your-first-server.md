@@ -77,39 +77,72 @@ public class MainDemo {
 }
 ```
 
-## Build the server JAR
+## Building the server JAR
 
-After being able to launch the program you will probably want to build it and distribute it to a host or even a friend.
+Once you have created your Minestom server, you will probably want to build it and distribute it to a host or friend.
+To do so we will set up the Shadow plugin so that we can make a final working uber (fat) jar.
 
-Minestom does not provide a JAR of itself for the simple reason that this is your job. You will need to build your server and include all the Minestom dependencies.
+Side note: For Maven users, you will need the "Shade" plugin. If you use Maven and would like to contribute an example
+it would be appreciated :)
 
-First of all, the fat JAR can be built using the Gradle shadow plugin as simple as adding
+You can find the full documentation for the Shadow plugin [here](https://imperceptiblethoughts.com/shadow/introduction/).
 
+First, let's add the Shadow plugin to our project.
+
+{% tabs %}
+{% tab title="Gradle (Groovy)" %}
 ```groovy
-id "com.github.johnrengelman.shadow" version "7.1.0"
+plugins {
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
 ```
+{% endtab %}
 
-If the JAR is meant to be run, you also need to specify the class containing the main method.
+{% tab title="Gradle (Kotlin)" %}
+```kts
+plugins {
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+}
+```
+{% endtab %}
+{% endtabs %}
 
+If the JAR is meant to be run, which it probably is, you also need to specify the class containing the main method like so,
+
+{% tabs %}
+{% tab title="Gradle (Groovy)" %}
 ```groovy
-// Code sample, be sure to modify the 'Main-Class' value
-// based on your application
 jar {
     manifest {
-        attributes 'Main-Class': 'fr.themode.minestom.MinestomTest',
-                "Multi-Release": true
+        // Change this to your main class
+        attributes 'Main-Class': 'org.example.Main'
     }
 }
 ```
+{% endtab %}
 
-With all of this set, all that is remaining is the build command, shadow provides the handy `shadowJar` task that you need to run and a working JAR will magically appear!
+{% tab title="Gradle (Kotlin)" %}
+```kts
+tasks.withType<Jar> {
+    manifest {
+        // Change this to your main class
+        attributes["Main-Class"] = "org.example.Main"
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
 
-Now, just to be sure that you understood everything, here is the complete `build.gradle` file that I have used to demonstrate it.
+With all of this done, all we need to do is run the `shadowJar` task to create a working uber (fat) jar! (The jar will be put in `/build/libs/` by defualt)
 
+Now, just to be sure that you understood everything, here is a complete `build.gradle`/`build.gradle.kts` file.
+
+{% tabs %}
+{% tab title="Gradle (Groovy)" %}
 ```groovy
 plugins {
     id 'java'
-    id "com.github.johnrengelman.shadow" version "6.1.0"
+    id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
 group 'org.example'
@@ -121,16 +154,45 @@ repositories {
 }
 
 dependencies {
-    // WARNING: outdated version, replace it to the latest
-    // Reminder: can be found at https://jitpack.io/#Minestom/Minestom
-    implementation 'com.github.Minestom:Minestom:1eea505da0'
+    // Change this to the latest version
+    implementation 'com.github.Minestom:Minestom:VERSION'
 }
 
 jar {
     manifest {
-        // WARNING: change the 'Main-Class' value
-        attributes 'Main-Class': 'fr.themode.minestom.MinestomTest',
-                "Multi-Release": true
+        // Change this to your main class
+        attributes 'Main-Class': 'org.example.Main'
     }
 }
 ```
+{% endtab %}
+
+{% tab title="Gradle (Kotlin)" %}
+```kts
+plugins {
+    id("java")
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+    maven(url = "https://jitpack.io")
+}
+
+dependencies {
+    // Change this to the latest version
+    implementation("com.github.Minestom.Minestom:Minestom:VERSION")
+}
+
+tasks.withType<Jar> {
+    manifest {
+        // Change this to your main class
+        attributes["Main-Class"] = "org.example.Main"
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
