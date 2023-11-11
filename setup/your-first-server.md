@@ -133,7 +133,7 @@ tasks.withType<Jar> {
 {% endtab %}
 {% endtabs %}
 
-With all of this done, all we need to do is run the `shadowJar` task to create a working uber (fat) jar! (The jar will be put in `/build/libs/` by defualt)
+With all of this done, all we need to do is run the `shadowJar` task to create a working uber (fat) jar! (The jar will be put in `/build/libs/` by default)
 
 Now, just to be sure that you understood everything, here is a complete `build.gradle`/`build.gradle.kts` file.
 
