@@ -38,7 +38,6 @@ function document(path, props={}) {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://wiki.minestom.net",
   integrations: [
     starlight({
       title: "Minestom Wiki",
