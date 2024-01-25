@@ -15,5 +15,8 @@
     "astro": "^4.2.1",
     "sharp": "^0.32.5",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "yaml": "^2.3.4"
   }
 }

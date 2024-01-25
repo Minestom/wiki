@@ -2,6 +2,7 @@
 title: Your first server
 description: Includes everything you need to have your first server running.
 ---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 Some things are needed before being able to connect to your Minestom server.
 
@@ -88,28 +89,28 @@ You can find the full documentation for the Shadow plugin [here](https://imperce
 
 First, let's add the Shadow plugin to our project.
 
-{% tabs %}
-{% tab title="Gradle (Groovy)" %}
+<Tabs>
+<TabItem label="Gradle (Groovy)" >
 ```groovy
 plugins {
     id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 ```
-{% endtab %}
+</TabItem>
 
-{% tab title="Gradle (Kotlin)" %}
+<TabItem label="Gradle (Kotlin)" >
 ```kts
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 ```
-{% endtab %}
-{% endtabs %}
+</TabItem>
+</Tabs>
 
 If the JAR is meant to be run, which it probably is, you also need to specify the class containing the main method like so,
 
-{% tabs %}
-{% tab title="Gradle (Groovy)" %}
+<Tabs>
+<TabItem label="Gradle (Groovy)" >
 ```groovy
 jar {
     manifest {
@@ -118,9 +119,9 @@ jar {
     }
 }
 ```
-{% endtab %}
+</TabItem>
 
-{% tab title="Gradle (Kotlin)" %}
+<TabItem label="Gradle (Kotlin)" >
 ```kts
 tasks.withType<Jar> {
     manifest {
@@ -129,15 +130,15 @@ tasks.withType<Jar> {
     }
 }
 ```
-{% endtab %}
-{% endtabs %}
+</TabItem>
+</Tabs>
 
 With all of this done, all we need to do is run the `shadowJar` task to create a working uber (fat) jar! (The jar will be put in `/build/libs/` by default)
 
 Now, just to be sure that you understood everything, here is a complete `build.gradle`/`build.gradle.kts` file.
 
-{% tabs %}
-{% tab title="Gradle (Groovy)" %}
+<Tabs>
+<TabItem label="Gradle (Groovy)" >
 ```groovy
 plugins {
     id 'java'
@@ -164,9 +165,9 @@ jar {
     }
 }
 ```
-{% endtab %}
+</TabItem>
 
-{% tab title="Gradle (Kotlin)" %}
+<TabItem label="Gradle (Kotlin)" >
 ```kts
 plugins {
     id("java")
@@ -193,5 +194,5 @@ tasks.withType<Jar> {
     }
 }
 ```
-{% endtab %}
-{% endtabs %}
+</TabItem>
+</Tabs>

@@ -5,7 +5,7 @@ description: Scripting is the alternative to Extensions
 
 ## Project
 
-Scripts are an alternative to [Extensions](../extensions.md), powerful and short but still with fewer features.
+Scripts are an alternative to [Extensions](extensions), powerful and short but still with fewer features.
 
 The scripting engine is open-source available [here](https://github.com/ReWrite-Media/MineScript), built on top of [GraalVM Polyglot API](https://www.graalvm.org/reference-manual/embed-languages/), there are multiple supported languages, for now, Javascript & Python.
 
@@ -79,4 +79,4 @@ In Java, loading scripts is as simple as calling a single method:
 ScriptManager.load();
 ```
 
-`ScriptManager` contains everything you would need to interacts with scripts, learn more about it [here](wip-java-interoperability.md).
+`ScriptManager` contains everything you would need to interacts with scripts, learn more about it [here](wip-java-interoperability).

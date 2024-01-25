@@ -4,7 +4,7 @@ title: Player skin
 
 There are three ways of defining a player skin:
 
-* Setting your player UUID (see [here](player-uuid.md)) to their Mojang UUID, clients by default retrieve the skin based on this value. This is done automatically by `MojangAuth.init()`
+* Setting your player UUID (see [here](player-uuid)) to their Mojang UUID, clients by default retrieve the skin based on this value. This is done automatically by `MojangAuth.init()`
 * Changing it in the `PlayerSkinInitEvent` event
 * Using the method `Player#setSkin(PlayerSkin)`
 
@@ -20,9 +20,9 @@ PlayerSkin skinFromUUID = PlayerSkin.fromUuid(MOJANG_UUID_AS_STRING);
 PlayerSkin skinFromUsername = PlayerSkin.fromUsername("Notch");
 ```
 
-{% hint style="warning" %}
+:::danger
 Those methods make direct requests to the Mojang API, it is recommended to cache the values.
-{% endhint %}
+:::
 
 ### Retrieve texture value & signature manually
 

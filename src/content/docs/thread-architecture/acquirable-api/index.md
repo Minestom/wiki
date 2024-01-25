@@ -134,9 +134,9 @@ AcquirableCollection<Player> acquirablePlayers = getOnlinePlayers();
 Stream<Player> players = acquirablePlayers.unwrap();
 ```
 
-{% hint style="warning" %}
+:::danger
 Those are not safe operations, be sure to read the [Thread safety](../thread-safety.md) page to understand the implications.
-{% endhint %}
+:::
 
 I would personally recommend commenting everywhere you use those unsafe methods to indicate why this operation does not compromise the application's safety. If you cannot find any reason, you likely shouldn't.
 

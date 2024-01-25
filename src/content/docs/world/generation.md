@@ -43,7 +43,7 @@ Modification over the border of a `GenerationUnit` cannot be done without extra 
 
 Forked units are designed to be placed into the instance whenever it is possible to do so. This eliminates any section bordering issues that may arise.
 
-There are two fork methods, both useful in their own ways. Here is a simple example of adding a structure (snowman):\
+There are two fork methods, both useful in their own ways. Here is a simple example of adding a structure (snowman):
 
 
 ```java

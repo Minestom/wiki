@@ -59,9 +59,9 @@ NBTCompound nbt = tnt.nbt();
 
 Tags data can be serialized and will be saved on disk automatically.
 
-{% hint style="warning" %}
+:::danger
 Tags `id`, `x`, `y`, `z `and `keepPacked`are used by the anvil loader and may cause unexpected behavior when added to blocks.
-{% endhint %}
+:::
 
 ## Handlers
 
