@@ -32,10 +32,10 @@ inventory.addInventoryCondition((player, slot, clickType, inventoryConditionResu
 });
 ```
 
-### InventoryPreClickEvent (see [the events page](events/))
+### InventoryPreClickEvent (see [the events page](/feature/events))
 
 Really similar to inventory conditions except that it listens to every inventory (you can obviously add checks when needed, but its goal is to be more "general")
 
-### InventoryClickEvent (see [the events page](events/))
+### InventoryClickEvent (see [the events page](/feature/events))
 
 This event only listens to successful actions (not canceled) and is fired after setting the items in the inventory.

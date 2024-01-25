@@ -89,4 +89,4 @@ Graphics2D framebuffers also support getting/setting pixels individually if nece
 
 ### GLFW-Capable buffers
 
-[This is an article all to itself.](glfwmaprendering.md)
+[This is an article all to itself.](/feature/map-rendering/glfwmaprendering)

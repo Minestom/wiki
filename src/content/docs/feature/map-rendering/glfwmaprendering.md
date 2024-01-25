@@ -2,7 +2,7 @@
 title: GLFWMapRendering
 ---
 
-_**This article requires being comfortable with**_ [_**Map Rendering**_](./)
+_**This article requires being comfortable with**_ [_**Map Rendering**_](/feature/map-rendering)
 
 _Access to GLFW capable framebuffers requires using LWJGL, and Minestom LWJGL-related code. For more information, see_ [_Minestom LWJGL Example_](https://github.com/Minestom/LWJGL-Example)
 

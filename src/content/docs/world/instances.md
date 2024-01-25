@@ -26,7 +26,7 @@ You can create an `InstanceContainer` by calling:
 InstanceContainer instanceContainer = instanceManager.createInstanceContainer();
 ```
 
-In order to have a valid world generation, you need to specify which `ChunkGenerator` the instance should use, without it no chunk can be generated. (check [here](generation) to make your own)
+In order to have a valid world generation, you need to specify which `ChunkGenerator` the instance should use, without it no chunk can be generated. (check [here](/world/generation) to make your own)
 
 ```java
 instance.setChunkGenerator(YOUR_GENERATOR);

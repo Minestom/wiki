@@ -69,7 +69,7 @@ Then, Minestom ensures all required dependencies for the extension are found. Fo
 
 #### 4. Instanciation and callbacks
 
-The extension is then instanciated from the class provided inside `entrypoint`, and the `preInitialize`, `initialize` and `postInitialize` callbacks are called. (see [Callback order](extensions.md#callback-order) for more information)
+The extension is then instanciated from the class provided inside `entrypoint`, and the `preInitialize`, `initialize` and `postInitialize` callbacks are called. (see [Callback order](#callback-order) for more information)
 
 ## Dependencies
 
