@@ -148,6 +148,10 @@ export default defineConfig({
           ]
         },
       ],
+      components: {
+        MobileMenuToggle: "./src/components/MobileMenuToggle.astro",
+        MobileTableOfContents: "./src/components/MobileTableOfContents.astro",
+      }
     }),
   ],
 });

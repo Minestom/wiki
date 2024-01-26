@@ -11,6 +11,8 @@
 	--sl-color-gray-5: #36383d;
 	--sl-color-gray-6: #25272b;
 	--sl-color-black: #17181a;
+	--sl-mobile-toc-height: 0em;
+	--sl-nav-pad-y: 0.5em;
 }
 /* Light mode colors. */
 :root[data-theme='light'] {
