@@ -1,0 +1,95 @@
+---
+title: Dependencies
+description: Describes how to add Minestom as a dependency in your project.
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+:::note
+Minestom needs Java 17 or newer in order to run. If you are using Gradle, you must use version 7.2 or higher.
+:::
+
+:::danger
+This page needs to be updated once PR [#1937](https://github.com/Minestom/Minestom/pull/1937) has been merged since then, the artifact will be available on Maven Central.
+:::
+
+Adding Minestom to your Java project is really simple, you only need to add a few repositories:
+
+## Repositories
+
+<Tabs>
+<TabItem label="Gradle (Groovy)">
+```groovy
+repositories {
+    // ...
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+```
+</TabItem>
+
+<TabItem label="Gradle (Kotlin)">
+```groovy
+repositories {
+    // ...
+    mavenCentral()
+    maven(url = "https://jitpack.io")
+}
+```
+</TabItem>
+
+<TabItem label="Maven">
+```xml
+<repositories>
+    <!-- ... -->
+    <repository>
+        <id>jitpack</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+</TabItem>
+</Tabs>
+
+## Dependencies
+
+<Tabs>
+<TabItem label="Gradle (Groovy)">
+```groovy
+dependencies {
+    // ...
+    implementation 'com.github.Minestom:Minestom:VERSION'
+}
+```
+</TabItem>
+<TabItem label="Gradle (Kotlin)">
+```groovy
+dependencies {
+    //...
+    implementation("com.github.Minestom:Minestom:VERSION")
+}
+```
+</TabItem>
+
+<TabItem label="Maven">
+```xml
+<dependencies>
+    <!-- ... -->
+    <dependency>
+        <groupId>com.github.Minestom</groupId>
+        <artifactId>Minestom</artifactId>
+        <version>VERSION</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.jboss.shrinkwrap.resolver</groupId>
+                <artifactId>shrinkwrap-resolver-depchain</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+</dependencies>
+```
+
+When using Maven it is recommended to exclude the artifact `shrinkwrap-resolver-depchain` from the group `org.jboss.shrinkwrap.resolver` as otherwise resolving the dependencies will fail. Shrinkwrap can be added as a separate dependency if needed without issues to restore its functionality.
+</TabItem>
+</Tabs>
+
+A list of versions can be found at [https://jitpack.io/#Minestom/Minestom](https://jitpack.io/#Minestom/Minestom).

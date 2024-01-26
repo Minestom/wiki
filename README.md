@@ -1,7 +1,28 @@
-# Presentation
+# Minestom Documentation
 
-The goal of this wiki is to familiarize you with our library. The most important concepts are described here, however many are not. You can contact one of the Minestom contributors if you wish to help develop the library or have any questions.
+[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-The project Javadoc is currently hosted [here](https://minestom.github.io/Minestom/). Additionally, we do have a [Discord server](https://discord.gg/pkFRvqB) where you can ask anything you want.
+This is the documentation for [Minestom](https://github.com/Minestom/Minestom).
 
-If you do not know how you landed here, Minestom is a complete rewrite of the Minecraft server software without any Mojang code. You can learn more about it [here](https://github.com/Minestom/Minestom).
+# Install
+
+To install the documentation, you need to install Node and PNPM. Then, clone this repository and run the following command:
+```bash
+pnpm install
+```
+
+# Usage
+
+To start a development server, run the following command:
+```bash
+pnpm dev
+```
+
+To build the documentation, run the following command:
+```bash
+pnpm astro build
+```
+
+# Contributing
+
+See the [contributing file](https://github.com/Minestom/Minestom/blob/master/.github/CONTRIBUTING.md)! 
