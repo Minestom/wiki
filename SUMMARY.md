@@ -17,6 +17,7 @@
 * [Instances](world/instances.md)
 * [Chunk management](world/chunk-management.md)
   * [Anvil Loader](world/anvilloader.md)
+  * [Lighting](world/lightloader.md)
 * [Blocks](world/blocks.md)
 * [Coordinates](world/coordinates.md)
 * [Generation](world/generation.md)
