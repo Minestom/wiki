@@ -5,7 +5,7 @@ description: >-
 
 ## Setting the chunk supplier
 
-To use the LightingChunk class, you can call `InstanceContainer#setChunkSupplier(LightingChunk::new)` method.
+To use the LightingChunk class, you can call the `InstanceContainer#setChunkSupplier(LightingChunk::new)` method.
 By default lighting will be generated for chunks when they are sent to the client.
 
 An example of using this method:
