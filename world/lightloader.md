@@ -10,7 +10,7 @@ By default lighting will be generated for chunks when they are sent to the clien
 
 An example of using this method:
 ```java
-InstanceContainer.setChunkLoader(LightingChunk::new);
+InstanceContainer.setChunkSupplier(LightingChunk::new);
 ```
 ## Precalculating Lighting
 
