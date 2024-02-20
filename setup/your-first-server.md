@@ -105,6 +105,40 @@ plugins {
 }
 ```
 {% endtab %}
+{% tab title="Maven" %}
+```markup
+<dependencies>
+        <!-- ... -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+        <!-- ... -->
+    </dependencies>
+    <!-- ... -->
+     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                  
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+```
+{% endtab %}
 {% endtabs %}
 
 If the JAR is meant to be run, which it probably is, you also need to specify the class containing the main method like so,
@@ -131,11 +165,35 @@ tasks.withType<Jar> {
 }
 ```
 {% endtab %}
+{% tab title="Maven" %}
+```markup
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                  <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <shadedArtifactAttached>true</shadedArtifactAttached>
+                    <shadedClassifierName>jar-with-dependencies</shadedClassifierName>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                        <!-- Change this to your main class -->
+                            <mainClass>org.example.Main</mainClass>
+                        </transformer>
+                    </transformers>
+                </configuration>
+                <!-- ... -->
+```
+{% endtab %}
 {% endtabs %}
 
 With all of this done, all we need to do is run the `shadowJar` task to create a working uber (fat) jar! (The jar will be put in `/build/libs/` by default)
 
 Now, just to be sure that you understood everything, here is a complete `build.gradle`/`build.gradle.kts` file.
+
+If you're building for Maven now all you need to run is `mv package`, and a working uber jar will be built to `/target/PLUGIN-NAME-jar-with-dependencies.jar`.
 
 {% tabs %}
 {% tab title="Gradle (Groovy)" %}
