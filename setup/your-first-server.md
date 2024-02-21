@@ -30,7 +30,7 @@ _Please check the_ [_instances_](../world/instances.md) _and_ [_events_](../feat
 
 ```java
 GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
-globalEventHandler.addListener(PlayerLoginEvent.class, event -> {
+globalEventHandler.addListener(AsyncPlayerConfigurationEvent.class, event -> {
    event.setSpawningInstance(YOUR_SPAWNING_INSTANCE);
 });
 ```
@@ -43,7 +43,7 @@ package demo;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.GlobalEventHandler;
-import net.minestom.server.event.player.PlayerLoginEvent;
+import net.minestom.server.event.player.AsyncPlayerConfigurationEvent;
 import net.minestom.server.instance.*;
 import net.minestom.server.instance.batch.ChunkBatch;
 import net.minestom.server.instance.block.Block;
