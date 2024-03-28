@@ -5,7 +5,7 @@ description: Describes how to add Minestom as a dependency in your project.
 # Dependencies
 
 {% hint style="info" %}
-Minestom needs Java 17 or newer in order to run. If you are using Gradle, you must use version 7.2 or higher.
+Minestom needs Java 21 or newer in order to run. If you are using Gradle, you must use version 7.2 or higher.
 {% endhint %}
 
 Adding Minestom to your Java project is really simple, you only need to add a few repositories:
