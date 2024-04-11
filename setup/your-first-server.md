@@ -190,7 +190,7 @@ dependencies {
 tasks.withType<Jar> {
     manifest {
         // Change this to your main class
-        attributes["Main-Class"] = "org.example.Main"
+        attributes["Main-Class"] = "org.example.MainKt"
     }
 }
 ```
