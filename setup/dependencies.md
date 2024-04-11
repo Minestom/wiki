@@ -1,19 +1,23 @@
 ---
-description: Describes how to add Minestom as a dependency in your project.
+description: How to add Minestom as a dependency in your project.
 ---
 
 # Dependencies
 
-{% hint style="info" %}
-Minestom needs Java 21 or newer in order to run. If you are using Gradle, you must use version 7.2 or higher.
+{% hint style="warning" %}
+Minestom needs Java 21 or newer in order to run. If you are using Gradle, you must use version 8.5 or higher.
 {% endhint %}
 
-Adding Minestom to your Java project is really simple, you only need to add a few repositories:
+{% hint style="info" %}
+To find a VERSION string, go to [Minestom's commit history](https://github.com/Minestom/Minestom/commits/master/) and click the copy button next to the commit you want to use. Maven central uses the first 10 characters.
+{% endhint %}
+
+Adding Minestom to your project is really simple, you only need to add a few repositories:
 
 ## Repositories
 
 {% tabs %}
-{% tab title="Gradle (Groovy)" %}
+{% tab title="Gradle" %}
 ```groovy
 repositories {
     // ...
@@ -49,11 +53,11 @@ repositories {
 ## Dependencies
 
 {% tabs %}
-{% tab title="Gradle (Groovy)" %}
+{% tab title="Gradle" %}
 ```groovy
 dependencies {
     // ...
-    implementation 'com.github.Minestom:Minestom:VERSION'
+    implementation 'net.minestom:minestom-snapshots:VERSION'
 }
 ```
 {% endtab %}
@@ -62,7 +66,7 @@ dependencies {
 ```groovy
 dependencies {
     //...
-    implementation("com.github.Minestom:Minestom:VERSION")
+    implementation("net.minestom:minestom-snapshots:VERSION")
 }
 ```
 {% endtab %}
@@ -72,8 +76,8 @@ dependencies {
 <dependencies>
     <!-- ... -->
     <dependency>
-        <groupId>com.github.Minestom</groupId>
-        <artifactId>Minestom</artifactId>
+        <groupId>net.minestom</groupId>
+        <artifactId>minestom-snapshots</artifactId>
         <version>VERSION</version>
         <exclusions>
             <exclusion>
@@ -88,5 +92,3 @@ dependencies {
 When using Maven it is recommended to exclude the artifact `shrinkwrap-resolver-depchain` from the group `org.jboss.shrinkwrap.resolver` as otherwise resolving the dependencies will fail. Shrinkwrap can be added as a separate dependency if needed without issues to restore its functionality.
 {% endtab %}
 {% endtabs %}
-
-A list of versions can be found at [https://jitpack.io/#Minestom/Minestom](https://jitpack.io/#Minestom/Minestom).
