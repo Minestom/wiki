@@ -146,4 +146,46 @@ if (result.getType() == CommandResult.Type.SUCCESS) {
 }
 ```
 
+## Custom Tab Completers
+Sometimes you want to have your own custom tab completer. This can easily be done by using the `setSuggestionCallback` method. To add a suggestion use `suggestion.addEntry`, and you can get whatever the sender is typing by using `suggestion.getInput()`.
+
+```java
+// Set the command name
+super("my");
+
+// Define a string argument with a custom suggestion callback
+var customTabCompleterArgument = ArgumentType.String("completion").setSuggestionCallback((sender, context, suggestion) -> {
+    suggestion.addEntry("tab");
+    suggestion.addEntiy("completer");
+    
+    // Get the sender's input
+    sender.sendMessage(suggestion.getInput());
+});
+
+addSyntax((sender, context) -> {
+    // Retrieve data from the custom tab completer
+    final String completion = context.get("completion");
+    sender.sendMessage("Your completion was " + completion);
+}, customTabCompleterArgument);
+```
+
+![Basic Tab Completer](../.gitbook/assets/Bildschirmfoto-2024-04-18-um-10.27.58.png)
+
+If you want to go for a more vanilla style of tab completer you can create enum tab completers using the `ArgumentType.Enum` method. Most enums are written upper-cased, but command arguments are usually lower-cased. Making enums lowercase is as easy as using the `setFormat(ArgumentEnum.Format.LOWER_CASED)` method.
+
+```java
+var gamemodeArgument = ArgumentType.Enum("gamemode", GameMode.class);
+
+addSyntax((sender, context) -> {
+    final GameMode gamemode = context.get("gamemode").setFormat(ArgumentEnum.Format.LOWER_CASED);
+    
+    Player player = (Player) sender;
+    
+    player.setGameMode(gamemode);
+    player.sendMessage("Changed own gamemode to " + String.valueOf(gamemode));
+}, gamemodeArgument);
+```
+
+![Tab Completer using an Enum](../.gitbook/assets/Bildschirmfoto-2024-04-18-um-10.34.53.png)
+
 This tool opens a lot of possibilities, including powerful scripts, remote calls, and an overall easy-to-use interface for all your APIs.

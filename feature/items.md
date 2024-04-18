@@ -49,3 +49,23 @@ item = item.with(builder -> {
                 .displayName(Component.text("Again..."));
         });
 ```
+
+If you want to use NBT features that are not available within the `ItemStack`, you can simply add your own NBT tags to it:
+
+```java
+ItemStack item = ItemStack.fromNBT(Material.STONE, new NBTCompound().withEntries(
+        NBT.Entry("CustomModelData", new NBTInt(1))
+));
+```
+
+Or just use a full Item NBT:
+
+```java
+var ItemNBT = item.toItemNBT();
+
+ItemStack newItem = ItemStack.fromItemNBT(itemNBT);
+```
+
+{% hint style="warning" %}
+ItemNBT is still marked as Experimental, so be careful when using it
+{% endhint %}
