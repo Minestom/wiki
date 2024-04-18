@@ -46,6 +46,7 @@ import net.minestom.server.event.GlobalEventHandler;
 import net.minestom.server.event.player.AsyncPlayerConfigurationEvent;
 import net.minestom.server.instance.*;
 import net.minestom.server.instance.batch.ChunkBatch;
+import net.minestom.server.instance.LightingChunk;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.world.biomes.Biome;
@@ -71,6 +72,10 @@ public class MainDemo {
             event.setSpawningInstance(instanceContainer);
             player.setRespawnPoint(new Pos(0, 42, 0));
         });
+        
+        // Fix lighting
+        instanceContainer.setChunkSupplier(LightingChunk::new);
+        
         // Start the server on port 25565
         minecraftServer.start("0.0.0.0", 25565);
     }
