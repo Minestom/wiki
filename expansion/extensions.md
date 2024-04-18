@@ -1,5 +1,9 @@
 # Extensions
 
+{% hint style="warning" %}
+Extensions are no longer available in vanilla Minestom. Use the [minestom-ce-extensions](https://github.com/hollow-cube/minestom-ce-extensions) library instead.
+{% endhint %}
+
 Summary:
 
 * [Writing your own extension for Minestom](extensions.md#writing-your-own-extension-for-minestom)
