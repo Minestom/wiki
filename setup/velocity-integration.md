@@ -106,6 +106,6 @@ You entered the wrong port, IP address or didn't start the proxy. You can find t
 Make sure you changed `player-info-forwarding-mode` to `MODERN`
 
 * Connection lost: "Unable to connect you to (server). Please try again later."\
-You didn't set up the proxy correctly (in `velocity.toml`) file. Make sure it has the correct port and IP address, the Minestom server is running, and you are using the correct secret.
+You didn't set up the proxy correctly (in the `velocity.toml`) file. Make sure it has the correct port and IP address, the Minestom server is running, and you are using the correct secret.
 
 If you still have issues you can join the [Discord server](https://discord.gg/Pt9Mgd9cgR)
