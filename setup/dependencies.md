@@ -53,7 +53,7 @@ repositories {
 ```groovy
 dependencies {
     // ...
-    implementation 'com.github.Minestom:Minestom:VERSION'
+    implementation 'net.minestom:minestom-snapshots:VERSION'
 }
 ```
 {% endtab %}
@@ -62,7 +62,7 @@ dependencies {
 ```groovy
 dependencies {
     //...
-    implementation("com.github.Minestom:Minestom:VERSION")
+    implementation("net.minestom:minestom-snapshots:VERSION")
 }
 ```
 {% endtab %}
@@ -72,8 +72,8 @@ dependencies {
 <dependencies>
     <!-- ... -->
     <dependency>
-        <groupId>com.github.Minestom</groupId>
-        <artifactId>Minestom</artifactId>
+        <groupId>net.minestom</groupId>
+        <artifactId>minestom-snapshots</artifactId>
         <version>VERSION</version>
         <exclusions>
             <exclusion>
@@ -89,4 +89,4 @@ When using Maven it is recommended to exclude the artifact `shrinkwrap-resolver-
 {% endtab %}
 {% endtabs %}
 
-A list of versions can be found at [https://jitpack.io/#Minestom/Minestom](https://jitpack.io/#Minestom/Minestom).
+A list of versions can be found at [https://mvnrepository.com/artifact/net.minestom/minestom-snapshots](https://mvnrepository.com/artifact/net.minestom/minestom-snapshots).

@@ -155,7 +155,7 @@ repositories {
 
 dependencies {
     // Change this to the latest version
-    implementation 'com.github.Minestom:Minestom:VERSION'
+    implementation 'net.minestom:minestom-snapshots:VERSION'
 }
 
 jar {
@@ -184,7 +184,7 @@ repositories {
 
 dependencies {
     // Change this to the latest version
-    implementation("com.github.Minestom.Minestom:Minestom:VERSION")
+    implementation("net.minestom:minestom-snapshots:VERSION")
 }
 
 tasks.withType<Jar> {
