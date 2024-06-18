@@ -1,3 +1,7 @@
+> [!IMPORTANT]  
+> The wiki has been moved to the main site [here](https://github.com/Minestom/minestom.net/tree/master/docs).
+> This repository will not be updated in the future, please direct issues/PRs there.
+
 # Presentation
 
 The goal of this wiki is to familiarize you with our library. The most important concepts are described here, however many are not. You can contact one of the Minestom contributors if you wish to help develop the library or have any questions.
